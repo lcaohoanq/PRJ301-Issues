@@ -5,8 +5,10 @@
  */
 package controller;
 
+import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginServlet extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -32,12 +33,12 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("<title>Servlet LoginServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
@@ -75,17 +76,23 @@ public class LoginServlet extends HttpServlet {
         String user = request.getParameter("user").trim();
         String pass = request.getParameter("pass").trim();
         
-        String u_init = getServletContext().getInitParameter("user");
-        String p_init = getServletContext().getInitParameter("pass");
-        String ms = "";
-        if(user.equals(u_init) && pass.equals(p_init) || (user.equals("bao") && pass.equals("1"))  ){
-            ms = "Welcome " + user + "!";
-            request.setAttribute("success", ms);
-            request.getRequestDispatcher("welcome.jsp").forward(request, response);
+        if ((!user.isEmpty() && !pass.isEmpty())) {
+            String u_init = getServletContext().getInitParameter("user");
+            String p_init = getServletContext().getInitParameter("pass");
+            try {
+                if (!(u_init.equals(u_init) && p_init.equals(p_init)) || ((new UserDAO().checkLogin(user, pass) == null))) {
+                    request.setAttribute("fail", "Invalid user or password!!!");
+                    request.getRequestDispatcher("fail.jsp").forward(request, response);
+                    throw new Exception("Invalid user or password!!!");
+                }
+                request.setAttribute("success", "Welcome " + user + "!");
+                request.getRequestDispatcher("welcome.jsp").forward(request, response);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }else{
-            ms = "Invalid user or password!!!";
-            request.setAttribute("fail", ms);
-            request.getRequestDispatcher("fail.jsp").forward(request, response);
+            System.out.println("Is empty data");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 
@@ -99,6 +106,4 @@ public class LoginServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
-    
 }

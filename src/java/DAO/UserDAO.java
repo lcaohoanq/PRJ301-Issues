@@ -101,10 +101,18 @@ public class UserDAO {
                 // Example usage to print all users
                 List<UserDTO> usersList = userDAO.getAllUsers();
                 for (UserDTO item : usersList) {
-                    System.out.println(item);
+                    System.out.println(item.toString());
                 }
 
-//        System.out.println(user.checkLogin("bao", "1"));
+                String username = "Hao";
+                String password = "1234";
+
+                if (!(userDAO.checkLogin(username, password) == null)) {
+                    System.out.println("Login success for: " + username + " " + password);
+                } else {
+                    System.out.println("Login fail");
+                }
+
             } else {
                 throw new Error("Do not connect");
             }
