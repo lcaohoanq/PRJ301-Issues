@@ -1,0 +1,1470 @@
+/*!***********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_googleButton.scss ***!
+  \***********************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+/*!******************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/abstracts/_function.scss ***!
+  \******************************************************************************************************************************/
+
+/*!****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/abstracts/_mixins.scss ***!
+  \****************************************************************************************************************************/
+
+/*!*******************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/abstracts/_variables.scss ***!
+  \*******************************************************************************************************************************/
+
+/*!***************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/base/_animations.scss ***!
+  \***************************************************************************************************************************/
+
+/*!*********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/base/_base.scss ***!
+  \*********************************************************************************************************************/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.Options {
+  background: #19b719;
+}
+/*!**********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/base/_board.scss ***!
+  \**********************************************************************************************************************/
+.board {
+  background-color: black;
+}
+/*!***************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/base/_typography.scss ***!
+  \***************************************************************************************************************************/
+
+/*!**************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/base/_utilities.scss ***!
+  \**************************************************************************************************************************/
+
+/*!*****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_button.scss ***!
+  \*****************************************************************************************************************************/
+.Button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Button .Login-Register-Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.Button .Login-Register-Container .card_button a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15vw;
+  height: 10vh;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  transition: 0.2s;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.Button .Login-Register-Container .card_button a.log {
+  background-color: #19b719;
+  border: 1.5px solid #118011;
+  box-shadow: 0 3px 0 #118011;
+  transition: 0.2s;
+}
+.Button .Login-Register-Container .card_button a.log:hover {
+  background-color: #22e122;
+}
+.Button .Login-Register-Container .card_button a.log:active {
+  box-shadow: 0 1px 0 black;
+  transform: translateY(2px);
+}
+.Button .Login-Register-Container .card_button a.reg {
+  background-color: #ff0000;
+  border: 1.5px solid #b30000;
+  box-shadow: 0 3px 0 #b30000;
+  transition: 0.2s;
+}
+.Button .Login-Register-Container .card_button a.reg:hover {
+  background-color: #ff3333;
+}
+.Button .Login-Register-Container .card_button a.reg:active {
+  box-shadow: 0 1px 0 black;
+  transform: translateY(2px);
+}
+.Button .Continue-Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.Button .Continue-Container .card_button a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27vw;
+  height: 10vh;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  transition: 0.2s;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.Button .Continue-Container .card_button a.continue {
+  background-color: #4d96ff;
+  border: 1.5px solid #002299;
+  box-shadow: 0 3px 0 #0027b6;
+  transition: 0.2s;
+}
+.Button .Continue-Container .card_button a.continue:hover {
+  background-color: #80b4ff;
+}
+.Button .Continue-Container .card_button a.continue:active {
+  box-shadow: 0 1px 0 black;
+  transform: translateY(2px);
+}
+/*!***************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_card.scss ***!
+  \***************************************************************************************************************************/
+
+/*!********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_direction.scss ***!
+  \********************************************************************************************************************************/
+.bottom-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.bottom-btn p {
+  color: black;
+}
+.bottom-btn a {
+  border: none;
+  color: #19b719;
+  background-color: #ffffff;
+}
+.bottom-btn a:hover {
+  font-weight: bold;
+}
+/*!********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_errorText.scss ***!
+  \********************************************************************************************************************************/
+.invalid-feedback {
+  max-width: 250px;
+  font-size: 1.6rem;
+  margin: 0.5vh 0 0 0;
+  text-align: left;
+  font-style: italic;
+  color: red;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .invalid-feedback {
+    margin: 1vh 0 0 0;
+  }
+}
+/*!*****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_footer.scss ***!
+  \*****************************************************************************************************************************/
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem;
+  color: #19b719;
+}
+footer a:hover {
+  font-weight: bold;
+}
+/*!***************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_form.scss ***!
+  \***************************************************************************************************************************/
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+form .submit-btn button {
+  cursor: pointer;
+  border-radius: 5px;
+  width: 250px;
+  height: 50px;
+  background-color: #19b719;
+  border: 1.5px solid #118011;
+  box-shadow: 0 3px 0 #118011;
+  transition: 0.2s;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 0.25rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+form .submit-btn button:hover {
+  background-color: #22e122;
+}
+form .submit-btn button:active {
+  box-shadow: 0 1px 0 black;
+  transform: translateY(2px);
+}
+form .submit-btn button:hover {
+  background-color: #2bcd2b;
+}
+form .submit-btn button:active {
+  box-shadow: 0 1px 0 #ffffff;
+  transform: translateY(2px);
+}
+/*!***************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_googleButton.scss (1) ***!
+  \***************************************************************************************************************************************/
+.google-button {
+  margin-bottom: 20px;
+}
+
+.google-btn {
+  margin: 0 auto;
+  width: 250px;
+  height: 42px;
+  background-color: #4285f4;
+  border-radius: 10px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  font-family: "Roboto";
+}
+.google-btn:hover {
+  box-shadow: 0 0 6px #4285f4;
+  cursor: pointer;
+}
+.google-btn:active {
+  background: #1669f2;
+}
+.google-btn .google-icon-wrapper {
+  position: absolute;
+  margin-top: 2px;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 2px;
+  width: 35px;
+  height: 34px;
+  border-radius: 5px;
+  background-color: #fff;
+  z-index: 1;
+}
+.google-btn .google-icon {
+  position: relative;
+  margin-top: 9px;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 1px;
+  width: 18px;
+  height: 18px;
+}
+.google-btn .btn-text {
+  width: fit-content;
+  margin-top: 11px;
+  margin-right: 11px;
+  margin-bottom: 11px;
+  margin-left: 70px;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 0.2px;
+}
+/*!*****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_header.scss ***!
+  \*****************************************************************************************************************************/
+header {
+  margin-top: 2rem;
+  font-weight: bold;
+  color: #19b719;
+}
+/*!****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_input.scss ***!
+  \****************************************************************************************************************************/
+.input-container {
+  padding-top: 0;
+  padding-right: 50px;
+  padding-bottom: 0;
+  padding-left: 50px;
+}
+.input-container input {
+  border: none;
+  font-size: 1.8rem;
+  font-family: "Roboto", sans-serif;
+  border-radius: 10px;
+  text-indent: 10px;
+  background-color: #f0f0f0;
+}
+.input-container input:hover {
+  background-color: #e4e4e4;
+}
+.input-container #username-login,
+.input-container #password-login,
+.input-container #username-register,
+.input-container #password-register,
+.input-container #confirmPassword {
+  width: 250px;
+  height: 50px;
+}
+/*!***************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_logo.scss ***!
+  \***************************************************************************************************************************/
+.Logo img {
+  max-width: 70%;
+}
+
+#App-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+#App-logo img {
+  width: 90%;
+}
+/*!***********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_optionButton.scss ***!
+  \***********************************************************************************************************************************/
+.input-7 {
+  top: 420px;
+}
+
+.input-6 {
+  top: 360px;
+}
+
+.input-5 {
+  top: 300px;
+}
+
+.input-4 {
+  top: 240px;
+}
+
+.input-3 {
+  top: 180px;
+}
+
+.input-2 {
+  top: 120px;
+}
+
+.input-1 {
+  top: 60px;
+}
+/*!*****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_tittle.scss ***!
+  \*****************************************************************************************************************************/
+.title {
+  color: #19b719;
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+/*!*****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/_toggle.scss ***!
+  \*****************************************************************************************************************************/
+.toggle {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.toggle-input {
+  position: absolute;
+  z-index: 2;
+  bottom: 160%;
+  border-radius: 50%;
+  transform: rotate(-25deg);
+  transform-origin: 50% 10.5em;
+  width: 3.5em;
+  height: 2.625em;
+  opacity: 0;
+  transition: transform 0.24s cubic-bezier(0.65, 1.35, 0.5, 1);
+  cursor: pointer;
+}
+.toggle-input:checked {
+  transform: rotate(25deg);
+}
+
+.toggle-handle-wrapper {
+  position: absolute;
+  z-index: 1;
+  bottom: -135%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 62.125%, transparent 50%);
+  mask-image: linear-gradient(to bottom, #000 62.125%, transparent 50%);
+  width: 200%;
+  overflow: hidden;
+}
+
+.toggle-handle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(-25deg);
+  transform-origin: bottom center;
+  transition: transform 0.24s cubic-bezier(0.65, 1.35, 0.5, 1);
+}
+.toggle-input:checked + .toggle-handle-wrapper > .toggle-handle {
+  transform: rotate(25deg);
+}
+
+.toggle-handle-knob {
+  position: relative;
+  z-index: 1;
+  border-radius: 50%;
+  width: 1.75em;
+  height: 1.75em;
+  background-image: radial-gradient(farthest-corner at 70% 30%, #fedee2 4%, #d63534 12% 24%, #a81a1a 50% 65%, #d63534 75%);
+  transition: transform 0.24s cubic-bezier(0.65, 1.35, 0.5, 1);
+}
+.toggle-input:checked + .toggle-handle-wrapper .toggle-handle-knob {
+  transform: rotate(-90deg);
+}
+.toggle-handle-knob::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 8px 2px rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+@media (hover: hover) {
+  .toggle-input:hover + .toggle-handle-wrapper .toggle-handle-knob::after, .toggle-input:focus-visible + .toggle-handle-wrapper .toggle-handle-knob::after {
+    opacity: 1;
+  }
+}
+
+.toggle-handle-bar-wrapper {
+  position: relative;
+  width: 0.5em;
+  height: 3em;
+}
+
+.toggle-handle-bar {
+  position: absolute;
+  top: calc(-1.75em / 2);
+  left: 0;
+  width: 100%;
+  height: calc(100% + 1.75em / 2);
+  background-image: linear-gradient(to right, #777475, #a4a4a4, #fff 45% 55%, #a4a4a4, #777475);
+  background-position-x: 0.06125em;
+  transition: background-position-x 0.24s cubic-bezier(0.65, 1.35, 0.5, 1);
+  box-shadow: inset 0 1em 0.25em rgba(0, 0, 0, 0.4);
+}
+.toggle-input:checked + .toggle-handle-wrapper .toggle-handle-bar {
+  background-position-x: -0.06125em;
+}
+
+.toggle-base {
+  position: relative;
+  border-radius: 3.125em;
+  padding: 0.25em;
+  width: 3.5em;
+  height: 1.125em;
+  background-color: #fff;
+  background-image: linear-gradient(to bottom, #fff, #d7d7d7);
+  box-shadow: 0 -0.25em 0.5em #fff, 0 0.25em 0.5em #d7d7d7;
+}
+
+.toggle-base-inside {
+  position: relative;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #a6a6a6, #7d7d7d);
+  box-shadow: inset 0 0.0625em rgba(255, 255, 255, 0.2), inset 0 -0.03125em rgb(255, 255, 255), inset 0 -0.0625em 0.25em rgba(0, 0, 0, 0.1);
+}
+.toggle-base-inside::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #5ab054, #438c3c);
+  box-shadow: inherit;
+  opacity: 0;
+  transition: opacity 0.24s cubic-bezier(0.65, 1.35, 0.5, 1);
+}
+.toggle-input:checked ~ .toggle-base .toggle-base-inside::after {
+  opacity: 1;
+}
+/*!***********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/layout/_body.scss ***!
+  \***********************************************************************************************************************/
+@media only screen and (min-width: 321px) and (max-width: 768px) {
+  .Home header {
+    font-size: 7vw;
+  }
+  .Home .Body .Logo .logo-img {
+    width: 60%;
+  }
+  .Home .Body .Button {
+    margin-top: 50px;
+  }
+  .Home .Body .Button .Login-Register-Container {
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  .Home .Body .Button .Login-Register-Container .card_button a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35vw;
+    height: 7vh;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.25rem 0.75rem;
+    border-radius: 10px;
+    transition: 0.2s;
+    color: white;
+    font-size: 5vw;
+    font-weight: bold;
+  }
+  .Home .Body .Button .Continue-Container {
+    margin-bottom: 3.5rem;
+  }
+  .Home .Body .Button .Continue-Container .card_button a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    height: 7vh;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.25rem 0.75rem;
+    border-radius: 10px;
+    transition: 0.2s;
+    color: white;
+    font-size: 5vw;
+    font-weight: bold;
+  }
+  .App #App-logo {
+    display: none;
+  }
+  .App .forgot-password {
+    margin-left: 50px;
+  }
+  .GameOver {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15vw;
+  }
+  .GameOver header {
+    font-size: 15vw;
+  }
+  .GameOver main .Score {
+    font-size: 7vw;
+  }
+  .GameOver main .Direction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .GameOver main .Direction .card_button_gameover {
+    width: 50vw;
+    height: 7vh;
+    font-size: 5vw;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 2vh;
+    margin-left: 0;
+  }
+  .GameOver main .Direction .card_button_gameover a#playAgain {
+    width: 50vw;
+    height: 7vh;
+  }
+  .GameOver main .Direction .card_button_gameover a#highScore {
+    width: 50vw;
+    height: 7vh;
+  }
+  .GameOver main .Direction .card_button_gameover a#mainMenu {
+    width: 50vw;
+    height: 7vh;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+  .Home header {
+    font-size: 7vw;
+  }
+  .App {
+    display: flex;
+    flex-direction: row;
+  }
+  .App #App-logo {
+    width: 70%;
+  }
+  .GameOver header {
+    font-size: 15vw;
+  }
+  .GameOver main .Score {
+    font-size: 7vw;
+  }
+  .GameOver main .Direction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .GameOver main .Direction .card_button_gameover {
+    width: 40vw;
+    height: 8vh;
+    font-size: 5vw;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 4vh;
+    margin-left: 0;
+  }
+  .GameOver main .Direction .card_button_gameover a#playAgain {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 8vh;
+    background-color: #19b719;
+  }
+  .GameOver main .Direction .card_button_gameover a#highScore {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 8vh;
+    background-color: #ff0000;
+  }
+  .GameOver main .Direction .card_button_gameover a#mainMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 8vh;
+    background-color: #4d96ff;
+  }
+  .GameOver footer {
+    margin-top: 15vh;
+  }
+}
+@media only screen and (min-width: 1201px) and (max-width: 1920px) {
+  .Home header {
+    font-size: 8rem;
+  }
+  .Home .Body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  .Home .Body .Logo img {
+    width: 100%;
+    height: auto;
+  }
+  .Home .Body .Button {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  .Home .Body .Button .Login-Register-Container {
+    gap: 3rem;
+  }
+  .Home .Body .Button a .log {
+    font-size: 4rem;
+    width: 250px;
+    height: 100px;
+  }
+  .Home .Body .Button a .reg {
+    font-size: 4rem;
+    width: 250px;
+    height: 100px;
+  }
+  .Home .Body .Button a .continue {
+    font-size: 3rem;
+    width: 400px;
+    height: 100px;
+  }
+  .Home footer p {
+    font-size: 1.5rem;
+  }
+  .Home footer a {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  .App {
+    display: flex;
+    flex-direction: row;
+  }
+  .GameOver header {
+    font-size: 8vw;
+  }
+  .GameOver main .Score {
+    font-size: 3vw;
+  }
+  .GameOver main .Direction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .GameOver main .Direction .card_button_gameover {
+    width: 30vw;
+    height: 6vw;
+    font-size: 3vw;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 2vh;
+    margin-left: 0;
+  }
+  .GameOver main .Direction .card_button_gameover a#playAgain {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 6vw;
+    background-color: #19b719;
+  }
+  .GameOver main .Direction .card_button_gameover a#highScore {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 6vw;
+    background-color: #ff0000;
+  }
+  .GameOver main .Direction .card_button_gameover a#mainMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 6vw;
+    background-color: #4d96ff;
+  }
+}
+/*!****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/layout/_container.scss ***!
+  \****************************************************************************************************************************/
+.App {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 700px;
+}
+.App #App-data {
+  width: 350px;
+  padding: 30px 0px 30px 0px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  gap: 20px;
+}
+/*!***************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_apartment.scss ***!
+  \***************************************************************************************************************************/
+
+/*!*********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_box.scss ***!
+  \*********************************************************************************************************************/
+.board {
+  background-color: black;
+}
+/*!**************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_campaign.scss ***!
+  \**************************************************************************************************************************/
+
+/*!***************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_dashboard.scss ***!
+  \***************************************************************************************************************************/
+
+/*!***********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_error.scss ***!
+  \***********************************************************************************************************************/
+
+/*!**************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_gameover.scss ***!
+  \**************************************************************************************************************************/
+.GameOver header {
+  margin-bottom: 2vh;
+}
+.GameOver main .Score {
+  text-align: center;
+  font-size: 3vw;
+  margin-bottom: 6vh;
+}
+.GameOver main .Direction {
+  width: 100%;
+  margin-bottom: 5vw;
+}
+.GameOver main .Direction .card_button_gameover {
+  background-color: #19b719;
+  border-radius: 10px;
+}
+.GameOver main .Direction .card_button_gameover a {
+  color: white;
+  border-radius: 10px;
+}
+.GameOver main .Direction .card_button_gameover a#playAgain {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #19b719;
+}
+.GameOver main .Direction .card_button_gameover a#playAgain:hover {
+  background-color: #19b719;
+  transition: 0.2s;
+}
+.GameOver main .Direction .card_button_gameover a#highScore {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff0000;
+}
+.GameOver main .Direction .card_button_gameover a#highScore:hover {
+  background-color: #ff0000;
+  transition: 0.2s;
+}
+.GameOver main .Direction .card_button_gameover a#mainMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #4d96ff;
+}
+.GameOver main .Direction .card_button_gameover a#mainMenu:hover {
+  background-color: #4d96ff;
+  transition: 0.2s;
+}
+.GameOver footer {
+  margin-top: 4vh;
+}
+/*!**********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_home.scss ***!
+  \**********************************************************************************************************************/
+header {
+  margin-top: 2rem;
+  font-weight: bold;
+  color: #19b719;
+}
+
+@media only screen and (min-width: 321px) and (max-width: 768px) {
+  .Home header {
+    font-size: 7vw;
+  }
+  .Home .Body .Logo .logo-img {
+    width: 60%;
+  }
+  .Home .Body .Button {
+    margin-top: 50px;
+  }
+  .Home .Body .Button .Login-Register-Container {
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  .Home .Body .Button .Login-Register-Container .card_button a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35vw;
+    height: 7vh;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.25rem 0.75rem;
+    border-radius: 10px;
+    transition: 0.2s;
+    color: white;
+    font-size: 5vw;
+    font-weight: bold;
+  }
+  .Home .Body .Button .Continue-Container {
+    margin-bottom: 3.5rem;
+  }
+  .Home .Body .Button .Continue-Container .card_button a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    height: 7vh;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.25rem 0.75rem;
+    border-radius: 10px;
+    transition: 0.2s;
+    color: white;
+    font-size: 5vw;
+    font-weight: bold;
+  }
+  .App #App-logo {
+    display: none;
+  }
+  .App .forgot-password {
+    margin-left: 50px;
+  }
+  .GameOver {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15vw;
+  }
+  .GameOver header {
+    font-size: 15vw;
+  }
+  .GameOver main .Score {
+    font-size: 7vw;
+  }
+  .GameOver main .Direction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .GameOver main .Direction .card_button_gameover {
+    width: 50vw;
+    height: 7vh;
+    font-size: 5vw;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 2vh;
+    margin-left: 0;
+  }
+  .GameOver main .Direction .card_button_gameover a#playAgain {
+    width: 50vw;
+    height: 7vh;
+  }
+  .GameOver main .Direction .card_button_gameover a#highScore {
+    width: 50vw;
+    height: 7vh;
+  }
+  .GameOver main .Direction .card_button_gameover a#mainMenu {
+    width: 50vw;
+    height: 7vh;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+  .Home header {
+    font-size: 7vw;
+  }
+  .App {
+    display: flex;
+    flex-direction: row;
+  }
+  .App #App-logo {
+    width: 70%;
+  }
+  .GameOver header {
+    font-size: 15vw;
+  }
+  .GameOver main .Score {
+    font-size: 7vw;
+  }
+  .GameOver main .Direction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .GameOver main .Direction .card_button_gameover {
+    width: 40vw;
+    height: 8vh;
+    font-size: 5vw;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 4vh;
+    margin-left: 0;
+  }
+  .GameOver main .Direction .card_button_gameover a#playAgain {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 8vh;
+    background-color: #19b719;
+  }
+  .GameOver main .Direction .card_button_gameover a#highScore {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 8vh;
+    background-color: #ff0000;
+  }
+  .GameOver main .Direction .card_button_gameover a#mainMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 8vh;
+    background-color: #4d96ff;
+  }
+  .GameOver footer {
+    margin-top: 15vh;
+  }
+}
+@media only screen and (min-width: 1201px) and (max-width: 1920px) {
+  .Home header {
+    font-size: 8rem;
+  }
+  .Home .Body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  .Home .Body .Logo img {
+    width: 100%;
+    height: auto;
+  }
+  .Home .Body .Button {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  .Home .Body .Button .Login-Register-Container {
+    gap: 3rem;
+  }
+  .Home .Body .Button a .log {
+    font-size: 4rem;
+    width: 250px;
+    height: 100px;
+  }
+  .Home .Body .Button a .reg {
+    font-size: 4rem;
+    width: 250px;
+    height: 100px;
+  }
+  .Home .Body .Button a .continue {
+    font-size: 3rem;
+    width: 400px;
+    height: 100px;
+  }
+  .Home footer p {
+    font-size: 1.5rem;
+  }
+  .Home footer a {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  .App {
+    display: flex;
+    flex-direction: row;
+  }
+  .GameOver header {
+    font-size: 8vw;
+  }
+  .GameOver main .Score {
+    font-size: 3vw;
+  }
+  .GameOver main .Direction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .GameOver main .Direction .card_button_gameover {
+    width: 30vw;
+    height: 6vw;
+    font-size: 3vw;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 2vh;
+    margin-left: 0;
+  }
+  .GameOver main .Direction .card_button_gameover a#playAgain {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 6vw;
+    background-color: #19b719;
+  }
+  .GameOver main .Direction .card_button_gameover a#highScore {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 6vw;
+    background-color: #ff0000;
+  }
+  .GameOver main .Direction .card_button_gameover a#mainMenu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 6vw;
+    background-color: #4d96ff;
+  }
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem;
+  color: #19b719;
+}
+footer a:hover {
+  font-weight: bold;
+}
+
+.App {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 700px;
+}
+.App #App-data {
+  width: 350px;
+  padding: 30px 0px 30px 0px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  gap: 20px;
+}
+
+.Home {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0;
+}
+/*!***********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_login.scss ***!
+  \***********************************************************************************************************************/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.Options {
+  background: #19b719;
+}
+
+.forgot-password {
+  font-size: 1.5rem;
+  padding: 0 50px 0 50px;
+  text-align: left;
+}
+
+.forgot-password a {
+  color: #19b719;
+}
+
+.forgot-password a:hover {
+  font-weight: bold;
+}
+/*!**********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_mill.scss ***!
+  \**********************************************************************************************************************/
+
+/*!************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_nomaze.scss ***!
+  \************************************************************************************************************************/
+.board {
+  background-color: black;
+}
+/*!*************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_options.scss ***!
+  \*************************************************************************************************************************/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.Options {
+  background: #19b719;
+}
+
+.input-7 {
+  top: 420px;
+}
+
+.input-6 {
+  top: 360px;
+}
+
+.input-5 {
+  top: 300px;
+}
+
+.input-4 {
+  top: 240px;
+}
+
+.input-3 {
+  top: 180px;
+}
+
+.input-2 {
+  top: 120px;
+}
+
+.input-1 {
+  top: 60px;
+}
+
+.select-ctr {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px; /* sum of input-1 -> input-7 */
+  height: 490px;
+}
+.select-ctr > div {
+  padding: 15px 20px;
+  position: absolute;
+  width: 100%;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.select-ctr > div.input {
+  background: #19b719;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px 3px rgba(0, 0, 0, 0.1);
+}
+.select-ctr > div.input.active {
+  color: #2bcd2b;
+}
+.select-ctr > div.input:hover {
+  background-color: #2bcd2b;
+  transition: 0.2s;
+}
+.select-ctr > div.input-preview {
+  position: relative;
+  transition: 0.3s all ease;
+}
+.select-ctr > div.input-preview.active {
+  color: white;
+}
+.select-ctr > div.input-preview.active:before {
+  background: white;
+  clip-path: polygon(50% 0, 0 73%, 100% 73%);
+}
+.select-ctr > div.input-preview:before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  bottom: 20px;
+  width: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  clip-path: polygon(50% 73%, 0 0, 100% 0);
+  padding: 10px;
+  box-sizing: border-box;
+  transition: 0.3s all ease;
+}
+
+@media only screen and (min-width: 321px) and (max-width: 768px) {
+  .select-ctr {
+    width: 70%;
+  }
+  .select-ctr > div {
+    font-size: 2rem;
+  }
+  .select-ctr > div.input-preview {
+    font-size: 1.5rem;
+  }
+}
+/*!***********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_rails.scss ***!
+  \***********************************************************************************************************************/
+
+/*!**************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_register.scss ***!
+  \**************************************************************************************************************************/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.Options {
+  background: #19b719;
+}
+
+.policy {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.policy input {
+  width: 15px;
+  height: 30px;
+  margin-right: 10px;
+}
+.policy p,
+.policy a {
+  font-size: 15px;
+}
+/*!************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/pages/_tunnel.scss ***!
+  \************************************************************************************************************************/
+
+/*!**********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/theme/_dark.scss ***!
+  \**********************************************************************************************************************/
+body#dark {
+  background-color: #121212;
+}
+body#dark .App {
+  background-color: #121212;
+}
+body#dark .App footer a {
+  color: #ffffff;
+}
+body#dark .select-ctr {
+  color: white;
+  background-color: #121212;
+}
+body#dark .GameOver .Score {
+  color: white;
+}
+/*!***********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/theme/_light.scss ***!
+  \***********************************************************************************************************************/
+body#light {
+  background-color: #f1f1f1;
+}
+body#light .App {
+  background-color: #f1f1f1;
+}
+body#light .App footer a {
+  color: black;
+}
+body#light .select-ctr {
+  color: #121212;
+  background-color: #f1f1f1;
+}
+body#light .GameOver .Score {
+  color: #121212;
+}
