@@ -1,3 +1,4 @@
+<%@page import="model.UserError"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,7 +13,6 @@
         <link rel="stylesheet" href="./style/util/commons.css" />
         <link rel="stylesheet" href="./style/component/login/login.css" />
         <link rel="stylesheet" href="./style/component/google/google-btn.css" />
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
     </head>
     <body>
 
@@ -25,6 +25,13 @@
                 msg = successMsg;
             } else if (failMsg != null) {
                 msg = failMsg;
+            }
+        %>
+        
+        <%
+            UserError userError = (UserError) request.getAttribute("USER_ERROR");
+            if (userError == null) {
+                userError = new UserError();
             }
         %>
 
@@ -46,6 +53,10 @@
                             id="username"
                             name="user"
                             />
+                        </br>
+                        <div id="invalid-feedback"> 
+                            <p style="color: red; margin-top: 1vh; text-align: left; padding-left: 50px; font-style: italic"><%= userError != null ? userError.getUserID() : ""%></p>
+                        </div>
                     </div>
                     <div class="form-floating mb-3">
                         <input
@@ -55,6 +66,10 @@
                             id="password"
                             name="pass"
                             />
+                        </br>
+                        <div id="invalid-feedback"> 
+                            <p style="color: red; margin-top: 1vh; text-align: left; padding-left: 50px; font-style: italic"><%= userError != null ? userError.getUserID() : ""%></p>
+                        </div>
                     </div>
                     <div class="forgot-password">
                         <a href="#">Forgot password?</a>

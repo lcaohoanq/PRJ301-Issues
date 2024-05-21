@@ -1,10 +1,7 @@
 package controller;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import constant.ServletController;
+import constant.ServletName;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,45 +10,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author ADMIN
- */
 @WebServlet(name = "MainController", urlPatterns = {"/MainController"})
 public class MainController extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    private static final String ERROR = "error.jsp";
-    private static final String LOGIN = "Login";
-    private static final String LOGIN_CONTROLLER = "LoginController";
-    private static final String REGISTER = "Register";
-    private static final String REGISTER_CONTROLLER = "RegisterController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
+        String directTo = "";
         try {
-            String action = request.getParameter("action");
-            System.out.println("action = " + action);
-            if (LOGIN.equals(action)) {
-                url = LOGIN_CONTROLLER;
-            } else if (REGISTER.equals(action)) {
-                url = REGISTER_CONTROLLER;
-            } else {
-                request.setAttribute("ERROR", "Your action not support");
+            switch (request.getParameter("action")) {
+                case ServletName.LOGIN:
+                    directTo = ServletController.LOGIN_CONTROLLER;
+                    break;
+                case ServletName.REGISTER:
+                    directTo = ServletController.REGISTER_CONTROLLER;
+                    break;
+                case ServletName.SEARCH:
+                    directTo = ServletController.SEARCH_CONTROLLER;
+                    break;
+                case ServletName.UPDATE:
+                    directTo = ServletController.UPDATE_CONTROLLER;
+                    break;
+                case ServletName.DELETE:
+                    directTo = ServletController.DELETE_CONTROLLER;
+                    break;
+                case ServletName.LOGOUT:
+                    directTo = ServletController.LOGOUT_CONTROLLER;
+                    break;
+                default:
+                    request.setAttribute("ERROR", "Your action not supported");
+                    break;
             }
+
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
         } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+            request.getRequestDispatcher(directTo).forward(request, response);
         }
     }
 

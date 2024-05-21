@@ -91,9 +91,12 @@
                         <button name="action" value="Register">Submit</button>
                     </div>
                     <div class="policy">
-                        <input type="checkbox" id="tickBox" />
+                        <input type="checkbox" id="tickBox" name="tickBox" />
                         <p>I Agree to the&nbsp;</p>
                         <a href="#"> Term & Condition</a>
+                    </div>
+                    <div id="invalid-feedback"> 
+                        <p style="color: red; text-align: left; padding-left: 50px; font-style: italic"><%= userError != null ? userError.getTickBox() : ""%> </p>
                     </div>
                 </form>
                 <div class="bottom-btn" name="">

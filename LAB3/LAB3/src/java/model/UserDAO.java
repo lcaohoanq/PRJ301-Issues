@@ -53,7 +53,7 @@ public class UserDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(DBQueries.USER_INSERT);
+                ptm = conn.prepareStatement(DBQueries.USER_SEARCH);
                 ptm.setString(1, "%" + search + "%");
                 rs = ptm.executeQuery();
                 while (rs.next()) {
@@ -78,6 +78,46 @@ public class UserDAO {
             }
         }
         return list;
+    }
+    
+    public boolean update(UserDTO user) throws SQLException {
+        boolean checkUpdate= false;
+        Connection conn= null;
+        PreparedStatement ptm= null;
+        try {
+            conn= DBUtils.getConnection();
+            if(conn!= null){
+                ptm= conn.prepareStatement(DBQueries.USER_UPDATE);
+                ptm.setString(1, user.getName());
+                ptm.setString(2, user.getRoleID());
+                ptm.setString(3, user.getUserID());
+                checkUpdate= ptm.executeUpdate()>0?true:false;
+            }
+        } catch (Exception e) {
+        }finally{
+            if(ptm!= null) ptm.close();
+            if(conn!= null) conn.close();
+        }
+        return checkUpdate;
+    }
+    
+    public boolean delete(String userID) throws SQLException {
+        boolean checkDelete= false;
+        Connection conn= null;
+        PreparedStatement ptm= null;
+        try {
+            conn= DBUtils.getConnection();
+            if(conn!= null){
+                ptm= conn.prepareStatement(DBQueries.USER_DELETE);
+                ptm.setString(1, userID);
+                checkDelete= ptm.executeUpdate()>0?true:false;
+            }
+        } catch (Exception e) {
+        }finally{
+            if(ptm!= null) ptm.close();
+            if(conn!= null) conn.close();
+        }
+        return checkDelete;
     }
 
     public boolean checkDuplicate(String userID) throws SQLException {

@@ -1,10 +1,5 @@
 package controller;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,10 +12,6 @@ import model.UserDTO;
 import model.UserError;
 import util.DataHandler;
 
-/**
- *
- * @author hd
- */
 @WebServlet(name = "RegisterController", urlPatterns = {"/RegisterController"})
 public class RegisterController extends HttpServlet {
 
@@ -38,10 +29,11 @@ public class RegisterController extends HttpServlet {
             String name = request.getParameter("name");
             String password = request.getParameter("password");
             String confirm = request.getParameter("confirm");
+            String tickBox = request.getParameter("tickBox");
 
             System.out.println("Data register: " + userID + " " + name + " " + password + " " + confirm);
 
-            if (!DataHandler.isEmtpyField(userID, name, password, confirm)) {
+            if (!DataHandler.isEmtpyField(userID, name, password, confirm, tickBox)) {
                 boolean checkValidation = true;
 
                 boolean checkDuplicate = dao.checkDuplicate(userID);
@@ -76,6 +68,7 @@ public class RegisterController extends HttpServlet {
                 userError.setName("*Is Required");
                 userError.setPassword("*Is Required");
                 userError.setConfirm("*Is Required");
+                userError.setTickBox("*Is Required");
                 request.setAttribute("USER_ERROR", userError);
             }
 
@@ -103,9 +96,4 @@ public class RegisterController extends HttpServlet {
         processRequest(request, response);
     }
     
-    public static void main(String[] args) {
-        String userID = "USHoang123";
-        System.out.println(DataHandler.isMatchUserID(userID));
-    }
-
 }

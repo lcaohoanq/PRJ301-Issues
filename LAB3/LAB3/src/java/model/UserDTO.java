@@ -5,6 +5,7 @@ public class UserDTO {
     private String userID;
     private String name;
     private String password;
+    private String roleID;
 
     public UserDTO() {
     }
@@ -12,6 +13,13 @@ public class UserDTO {
     public UserDTO(String userID, String name, String password) {
         this.userID = userID;
         this.name = name;
+        this.password = password;
+    }
+    
+    public UserDTO(String userID, String name, String roleID, String password){
+        this.userID = userID;
+        this.name = name;
+        this.roleID = roleID;
         this.password = password;
     }
 
@@ -38,9 +46,12 @@ public class UserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public String getRoleID(){
+
+    public String getRoleID() {
         return this.userID.substring(0, 2);
     }
-    
+    public void setRoleID(String roleID){
+        
+    }
+
 }
