@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="Servlet-Project">
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/src/java/model/UserDTO.java</file>
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/src/java/controller/MainController.java</file>
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/src/java/util/DBUtils.java</file>
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/src/java/model/UserDAO.java</file>
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/src/java/util/DataHandler.java</file>
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/src/java/constant/Regex.java</file>
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/src/java/controller/LoginController.java</file>
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/web/login.jsp</file>
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/web/style/component/google/google-btn.css</file>
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/src/java/controller/RegisterController.java</file>
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/web/register.jsp</file>
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/web/welcome.jsp</file>
+            <file>file:/D:/FPT/SU24/PRJ301/LAB3/LAB3/web/fail.jsp</file>
+        </group>
+    </open-files>
+</project-private>
