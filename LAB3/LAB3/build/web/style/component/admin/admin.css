@@ -3,17 +3,16 @@
 body{
     display: flex;
     flex-direction: column;
-    background: #121212;
+    background: #f1f1f1;
 }
 
 .greeting{
-    border: 1px solid white;
-    color: pink;
+    color: blue;
     margin: 20px;
 }
 
 table{
-    background: white;
+    background: #f1f1f1;
     color: black;
     border: 1px solid black;
     border-collapse:collapse;
@@ -30,7 +29,7 @@ table{
     font-size: 1.5rem;
     margin: 1vh 2vw;
     color: black;
-    background: #121212;
+    background: #f1f1f1;
 }
 
 #custom-input{
@@ -42,7 +41,8 @@ table{
 }
 
 th#no, td#no{
-    color: black;
+    color: red;
+    margin: 10px;
 }
 
 .center-element{
@@ -50,16 +50,21 @@ th#no, td#no{
 }
 
 #update-btn{
-    background: grey;
+    background: #f1f1f1;
     color: black;
     border: none;
-    font-weight: bold;
 }
 
 #update-btn:hover{
     cursor: pointer;
+    font-weight: bold
 }
 
 #delete-btn{
     color: red;
+}
+
+#delete-btn:hover{
+    cursor: pointer;
+    font-weight: bold
 }
