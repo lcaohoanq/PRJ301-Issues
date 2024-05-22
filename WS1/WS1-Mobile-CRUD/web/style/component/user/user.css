@@ -1,0 +1,13 @@
+.container{
+    color: black;
+}
+
+h1{
+    color: blue;
+}
+
+.data{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

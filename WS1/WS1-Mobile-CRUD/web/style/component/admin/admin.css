@@ -1,0 +1,70 @@
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    background: #f1f1f1;
+}
+
+.greeting{
+    color: blue;
+    margin: 20px;
+}
+
+table{
+    background: #f1f1f1;
+    color: black;
+    border: 1px solid black;
+    border-collapse:collapse;
+}
+
+.custom-view-data{
+    font-size: 1.5rem;
+    margin: 1vh 2vw;
+}
+
+.custom-input-common{
+    border: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 1vh 2vw;
+    color: black;
+    background: #f1f1f1;
+}
+
+#custom-input{
+    text-align: left;
+}
+
+#custom-input-role{
+    text-align: center;
+}
+
+th#no, td#no{
+    color: red;
+    margin: 10px;
+}
+
+.center-element{
+    text-align: center;
+}
+
+#update-btn{
+    background: #f1f1f1;
+    color: black;
+    border: none;
+}
+
+#update-btn:hover{
+    cursor: pointer;
+    font-weight: bold
+}
+
+#delete-btn{
+    color: red;
+}
+
+#delete-btn:hover{
+    cursor: pointer;
+    font-weight: bold
+}
