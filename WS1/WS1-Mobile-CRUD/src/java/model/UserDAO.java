@@ -24,9 +24,9 @@ public class UserDAO {
                 ptm.setString(2, password);
                 rs = ptm.executeQuery();
                 if (rs.next()) {
-                    String fullName = rs.getString("fullName");
-                    String role = rs.getString("role");
-                    user = new UserDTO(userId, fullName, "***");
+                    String userName = rs.getString("userId");
+                    String pass = rs.getString("password");
+                    user = new UserDTO(userId, pass, "***");
                 }
             }
         } catch (Exception e) {
@@ -213,7 +213,9 @@ public class UserDAO {
     public static void main(String[] args) throws Exception {
 
         try{
-            new UserDAO().getListUser().stream().forEach(System.out::println);
+//            new UserDAO().getListUser().stream().forEach(System.out::println);
+
+            System.out.println(new UserDAO().checkLogin("MN001", "789012").toString());
         }catch(Exception e){
             System.out.println(e.getMessage());
         }

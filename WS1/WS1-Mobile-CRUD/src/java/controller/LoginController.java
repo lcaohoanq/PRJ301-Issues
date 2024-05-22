@@ -44,13 +44,13 @@ public class LoginController extends HttpServlet {
         try {
             userError = new UserError();
             if (!DataHandler.isEmptyFieldV2(user, pass)) {
-                UserDAO userDao = new UserDAO();
-                UserDTO userDTO = userDao.checkLogin(user, pass);
+                UserDTO userDTO = new UserDAO().checkLogin(user, pass);
                 String ms = "";
                 if (userDTO != null) {
                     HttpSession session = request.getSession();
                     session.setAttribute("LOGIN_USER", userDTO);
 //                phan quyen o day ne
+                    System.out.println(userDTO.getRoleID());
                     int roleID = userDTO.getRoleID();
                     switch (roleID) {
                         case 0: {
@@ -82,6 +82,7 @@ public class LoginController extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            System.out.println("URL = " + url);
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
