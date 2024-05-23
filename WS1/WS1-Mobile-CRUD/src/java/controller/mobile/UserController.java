@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
+package controller.mobile;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import constant.Regex;
 import model.MobileDAO;
 import model.MobileDTO;
 import model.UserError;
@@ -23,7 +24,7 @@ import model.UserError;
  * @author lcaohoanq
  */
 @WebServlet(name = "MobileController", urlPatterns = { "/MobileController" })
-public class MobileController extends HttpServlet {
+public class UserController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
@@ -34,16 +35,9 @@ public class MobileController extends HttpServlet {
         System.out.println("Data: " + search);
 
         try {
-            // if not enter anything, will receive the all product in shope
-            if (search.isEmpty()) {
-                List<MobileDTO> mobilesList = new MobileDAO().getAllMobile();
-                req.setAttribute("LIST_MOBILE", mobilesList);
-            }
-
             // if enter the price range, will receive the product in that range
-            String regex = "^\\d+-\\d+$";
-            if (search.matches(regex)) {
-                String[] range = search.split("-");
+            if (search.matches(Regex.MOBILE_SEARCH_RANGE)) {
+                String[] range = search.split(",");
                 int min = Integer.parseInt(range[0]);
                 int max = Integer.parseInt(range[1]);
 
@@ -55,8 +49,12 @@ public class MobileController extends HttpServlet {
 
                 List<MobileDTO> mobilesList = new MobileDAO().selectPriceInRange(min, max);
                 req.setAttribute("LIST_MOBILE", mobilesList);
+            } else if (search.isEmpty()) {
+                // if not enter anything, will see the all product in shope
+                req.setAttribute("LIST_MOBILE", new MobileDAO().getAllMobile());
+                return;
             } else {
-                req.setAttribute("ERROR", "Please enter the price range in the format: min-max");
+                req.setAttribute("ERROR", "Enter the price range in the format: min,max");
             }
 
         } catch (Exception e) {

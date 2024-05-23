@@ -1,0 +1,9 @@
+input {
+  border: none;
+  width: 50%;
+}
+
+textarea {
+  border: none;
+  width: 25vw;
+}

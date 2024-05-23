@@ -38,7 +38,7 @@
                             class="d-flex flex-row justify-content-between align-items-center"
                             role="search"
                             method="GET"
-                            action="MobileController"
+                            action="UserController"
                             >
                             
                             <div class="col-12">
