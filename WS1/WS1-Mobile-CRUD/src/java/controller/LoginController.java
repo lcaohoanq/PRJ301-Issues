@@ -21,15 +21,15 @@ import model.UserDTO;
 import model.UserError;
 import util.DataHandler;
 
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginController"})
+@WebServlet(name = "LoginServlet", urlPatterns = { "/LoginController" })
 public class LoginController extends HttpServlet {
 
-    private static final String LOGIN = "login.jsp";
-    private static final String AD = "AD";
+    private static final int US = 0;
+    private static final int AD = 1;
+    private static final int ST = 2;
     private static final String ADMIN_PAGE = "admin.jsp";
-    private static final String US = "US";
+    private static final String LOGIN = "login.jsp";
     private static final String USER_PAGE = "user.jsp";
-    private static final String ST = "ST";
     private static final String STAFF_PAGE = "staff.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -49,19 +49,19 @@ public class LoginController extends HttpServlet {
                 if (userDTO != null) {
                     HttpSession session = request.getSession();
                     session.setAttribute("LOGIN_USER", userDTO);
-//                phan quyen o day ne
+                    // phan quyen o day ne
                     System.out.println(userDTO.getRoleID());
                     int roleID = userDTO.getRoleID();
                     switch (roleID) {
-                        case 0: {
+                        case US: {
                             url = USER_PAGE;
                             break;
                         }
-                        case 1: {
+                        case AD: {
                             url = ADMIN_PAGE;
                             break;
                         }
-                        case 2: {
+                        case ST: {
                             url = STAFF_PAGE;
                             break;
                         }

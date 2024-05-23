@@ -9,8 +9,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Admin Page</title>
         <link rel="icon" type="image/png" href="./resources/favicon.ico" />
-        <link rel="stylesheet" href="./style/util/reset.css" />
-        <link rel="stylesheet" href="./style/component/admin/admin.css" />
+        <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     </head>
     <body>
         <%
@@ -24,14 +28,35 @@
                 search = "";
             }
         %>
-        <div class="greeting">
-            <p>Welcome</p>
-            <h1> Admin: <%= loginUser.getName()%></h1>
-        </div>
-        <form action="MainController" method="POST">
-            <input type="submit" name="action" value="Logout"/>
-        </form>
-        <form action="MainController" id="search-form">
+        <header>
+            <nav class="navbar bg-body-tertiary">
+              <div class="container-fluid d-flex flex-row-reverse">
+                <form action="MainController" method="POST">
+                    <input type="submit" name="action" value="Logout"/>
+                </form>
+                <a class="navbar-brand"> Admin: <%= loginUser.getName()%></a>
+                <form
+                  class="d-flex"
+                  role="search"
+                  method="GET"
+                  action="MobileController"
+                >
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    name="action"
+                  />
+                  <button class="btn btn-outline-success" type="submit">
+                    Search
+                  </button>
+                </form>
+              </div>
+            </nav>
+          </header>
+        
+        <form action="MainController" id="search-form" method="GET">
             Search<input type="text" name="search" value="<%= search%>"/>
             <input type="submit" name="action" value="Search"/>
 
@@ -103,5 +128,10 @@
     <%
         }
     %>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
 </body>
 </html>

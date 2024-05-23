@@ -18,7 +18,7 @@ public class DBUtils {
         Connection conn= null;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         String url= "jdbc:sqlserver://localhost:1433;databaseName=MobileCRUD";
-        conn= DriverManager.getConnection(url, "sa", "12345");
+        conn= DriverManager.getConnection(url, "sa", "Luucaohoang1604^^");
         return conn;
     }
     

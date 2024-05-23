@@ -30,7 +30,39 @@ public class MobileDAO {
                     int quantity = rs.getInt("quantity");
                     int notSale = rs.getInt("notSale");
 
-                    mobilesList.add(new MobileDTO(mobileId, description, price, mobileName, yearOfProduction, quantity, notSale));
+                    mobilesList.add(new MobileDTO(mobileId, description, price, mobileName, yearOfProduction, quantity,
+                            notSale));
+                }
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return mobilesList;
+    }
+
+    public List<MobileDTO> selectPriceInRange(int min, int max) throws Exception {
+        List<MobileDTO> mobilesList = new ArrayList<>();
+        try {
+            con = DBUtils.getConnection();
+            if (con != null) {
+                pstm = con.prepareStatement("SELECT * FROM tbl_Mobile WHERE price BETWEEN ? AND ?");
+                pstm.setInt(1, min);
+                pstm.setInt(2, max);
+                rs = pstm.executeQuery();
+
+                while (rs.next()) {
+                    String mobileId = rs.getString("mobileId");
+                    String description = rs.getString("description");
+                    float price = rs.getFloat("price");
+                    String mobileName = rs.getString("mobileName");
+                    int yearOfProduction = rs.getInt("yearOfProduction");
+                    int quantity = rs.getInt("quantity");
+                    int notSale = rs.getInt("notSale");
+
+                    mobilesList.add(new MobileDTO(mobileId, description, price, mobileName, yearOfProduction, quantity,
+                            notSale));
                 }
 
             }
