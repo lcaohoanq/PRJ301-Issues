@@ -14,7 +14,7 @@
     <body>
         <%
             UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-            if (loginUser == null || !"US".equals(loginUser.getRoleID())) {
+            if (loginUser == null || !(loginUser.getRoleID() == 0)) {
                 response.sendRedirect("login.jsp");
                 return;
             }
