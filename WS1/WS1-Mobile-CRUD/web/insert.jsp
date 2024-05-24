@@ -1,5 +1,5 @@
-<%@page import="model.MobileError"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.MobileError"%> <%@page contentType="text/html"
+                                             pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,23 +22,16 @@
         </style>
     </head>
     <body>
-        <%
-
-            String msg = (String) request.getAttribute("INSERT_STATUS");
-
-            if (msg == null) {
+        <% String msg = (String) request.getAttribute("INSERT_STATUS");
+            if (msg
+                    == null) {
                 msg = "";
-            }
+            } %> <% MobileError mobileError = (MobileError) request.getAttribute("USER_ERROR");
+                    if (mobileError == null) {
+                        mobileError
+                                = new MobileError();
+                    } %>
 
-        %>
-        
-        <%
-            MobileError mobileError = (MobileError) request.getAttribute("USER_ERROR");
-            if (mobileError == null) {
-                mobileError = new MobileError();
-            }
-        %>
-        
         <form
             class="m-5"
             id="form-insert"
@@ -47,7 +40,13 @@
             >
             <div class="mb-3">
                 <label for="mobileId" class="form-label">Id</label>
-                <input type="text" class="form-control" id="mobileId" name="mobileId" required/>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="mobileId"
+                    name="mobileId"
+                    required
+                    />
                 <div id="emailHelp" class="form-text">MOBxxx</div>
             </div>
             <div class="mb-3">
@@ -62,15 +61,33 @@
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input type="text" class="form-control" id="price" name="mobilePrice" required/>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="price"
+                    name="mobilePrice"
+                    required
+                    />
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="mobileName" required/>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="mobileName"
+                    required
+                    />
             </div>
             <div class="mb-3">
                 <label for="year" class="form-label">Year of production</label>
-                <input type="text" class="form-control" id="year" name="mobileYear" required/>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="year"
+                    name="mobileYear"
+                    required
+                    />
             </div>
             <div class="mb-3">
                 <label for="quantity" class="form-label">Quantity</label>
@@ -94,13 +111,16 @@
                 <div id="emailHelp" class="form-text">0,1,NULL</div>
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="confirm" required/>
+                <input type="checkbox" class="form-check-input" id="confirm" required />
                 <label class="form-check-label" for="confirm"
                        >I agree with my data</label
                 >
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="d-flex flex-row gap-3">
+                <button type="submit" class="btn btn-success" id="back">Get back</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </form>
 
         <script
@@ -109,14 +129,15 @@
             crossorigin="anonymous"
         ></script>
 
-        <%        if (!msg.isEmpty()) {
-        %>
+        <% if (!msg.isEmpty()) {%>
         <script>
-            alert('<%= msg%>');
+            alert("<%= msg%>");
         </script>
-        <%
-            }
-        %>
-
+        <% }%> <
+        <script>
+            document.querySelector("#back").addEventListener("click", function () {
+                window.location.href = "staff.jsp";
+            });
+        </script>
     </body>
 </html>

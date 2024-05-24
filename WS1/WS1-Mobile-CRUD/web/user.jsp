@@ -53,7 +53,7 @@
                             <button class="btn btn-outline-success ms-2" name="action" value="SearchProductUser">
                                 Search
                             </button>
-                            <a class="navbar-brand ms-5">UserID:<%= loginUser.getUserID()%></a>
+                            <a class="navbar-brand ms-5">ID: <%= loginUser.getUserID()%></a>
                             <button class="btn btn-outline-danger" name="action" value="Logout">
                                 Logout
                             </button>

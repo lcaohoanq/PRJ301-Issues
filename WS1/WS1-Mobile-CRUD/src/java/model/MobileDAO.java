@@ -156,20 +156,13 @@ public class MobileDAO {
         return result;
     }
 
-    public boolean updateMobile(MobileDTO mobile) throws Exception {
+    public boolean deleteMobile(String mobileId) throws Exception {
         boolean result = false;
         try {
             con = DBUtils.getConnection();
             if (con != null) {
-                pstm = con.prepareStatement(
-                        "UPDATE tbl_Mobile SET description = ?, price = ?, mobileName = ?, yearOfProduction = ?, quantity = ?, notSale = ? WHERE mobileId = ?");
-                pstm.setString(1, mobile.getDescription());
-                pstm.setFloat(2, mobile.getPrice());
-                pstm.setString(3, mobile.getMobileName());
-                pstm.setInt(4, mobile.getYearOfProduction());
-                pstm.setInt(5, mobile.getQuantity());
-                pstm.setInt(6, mobile.getNotSale());
-                pstm.setString(7, mobile.getMobileId());
+                pstm = con.prepareStatement("DELETE FROM tbl_Mobile WHERE mobileId = ?");
+                pstm.setString(1, mobileId);
 
                 result = pstm.executeUpdate() > 0;
             }
@@ -178,6 +171,32 @@ public class MobileDAO {
             System.out.println(e.getMessage());
         }
         return result;
+    }
+
+    public boolean updateMobile(MobileDTO mobile) throws Exception {
+        boolean checkUpdate = false;
+        try {
+            con = DBUtils.getConnection();
+            if (con != null) {
+                pstm = con.prepareStatement(
+                        "UPDATE tbl_Mobile SET price = ?, description = ?, quantity = ?, notSale = ? WHERE mobileId = ?");
+                pstm.setFloat(1, mobile.getPrice());
+                pstm.setString(2, mobile.getDescription());
+                pstm.setInt(3, mobile.getQuantity());
+                pstm.setInt(4, mobile.getNotSale());
+                pstm.setString(5, mobile.getMobileId());
+                checkUpdate = pstm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+        } finally {
+            if (pstm != null) {
+                pstm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return checkUpdate;
     }
 
     public static void main(String[] args) throws Exception {

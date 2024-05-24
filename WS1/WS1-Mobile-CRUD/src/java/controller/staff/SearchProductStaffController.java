@@ -20,12 +20,14 @@ public class SearchProductStaffController extends HttpServlet {
         res.setContentType("text/html;charset=UTF-8");
 
         String action = req.getParameter("searchQuery").trim();
+        
+        System.out.println("searchQuery: " + action);
         try {
             // if enter the price range, will receive the product in that range
             if (action.matches(Regex.MOBILE_NAME) && !action.contains("MOB")) {
                 req.setAttribute("LIST_MOBILE", new MobileDAO().searchMobileByName(action));
             } else if (action.matches(Regex.MOBILE_ID)) {
-                req.setAttribute("MOBILE", new MobileDAO().getMobileById(action));
+                req.setAttribute("LIST_MOBILE", new MobileDAO().getMobileById(action));
             } else if (action.isEmpty()) {
                 // if not enter anything, will see the all product in shope
                 req.setAttribute("LIST_MOBILE", new MobileDAO().getAllMobile());

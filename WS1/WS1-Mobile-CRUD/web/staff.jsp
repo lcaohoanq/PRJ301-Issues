@@ -40,7 +40,7 @@
                             role="search"
                             method="GET"
                             action="MainController"
-                        >
+                            >
                             <div class="col-12">
                                 <input
                                     class="form-control me-2"
@@ -48,12 +48,12 @@
                                     placeholder="Search"
                                     aria-label="Search"
                                     name="searchQuery"
-                                />
+                                    />
                             </div>
                             <button class="btn btn-outline-success ms-2" type="submit" name="action" value="SearchProductStaff">
                                 Search
                             </button>
-                            <a class="navbar-brand ms-5">UserID:<%= loginUser.getUserID()%></a>
+                            <a class="navbar-brand ms-5">ID: <%= loginUser.getUserID()%></a>
                             <button class="btn btn-outline-warning me-5" type="submit" name="action" value="InsertProductStaff">
                                 Insert
                             </button>
@@ -80,11 +80,11 @@
                             <th scope="col">No</th>
                             <th scope="col">Id</th>
                             <th scope="col">Name</th>
-                            <th scope="col-md-6">Price</th>
-                            <th scope="col">Description</th>
+                            <th class="text-danger" scope="col-md-6">*Price</th>
+                            <th class="text-danger" scope="col">*Description</th>
                             <th scope="col">Release</th>
-                            <th scope="col">Quantity available</th>
-                            <th scope="col">Sale</th>
+                            <th class="text-danger" scope="col">*Quantity available</th>
+                            <th class="text-danger"  scope="col">*Sale</th>
                             <th scope="col">Update</th>
                             <th scope="col">Delete</th>
 
@@ -95,47 +95,45 @@
                             int count = 1;
                             for (MobileDTO mobile : mobilesList) {
                         %>
-
+                    <form action="MainController" method="POST">
                         <tr>
                             <th scope="row"><%= count++%></th>
                             <td><%= mobile.getMobileId()%></td>
                             <td><%= mobile.getMobileName()%></td>
                             <td>
-                                <input class="text-primary" value="<%= mobile.getPrice()%>" />
+                                <input class="text-primary"  name="mobilePrice" value="<%= mobile.getPrice()%>" />
                             </td>
                             <td>
-                                <textarea><%= mobile.getDescription()%></textarea>
+                                <textarea name="mobileDescription"><%= mobile.getDescription()%></textarea>
                             </td>
                             <td><%= mobile.getYearOfProduction()%></td>
                             <td>
-                                <input value="<%= mobile.getQuantity()%>"/>
+                                <input name="mobileQuantity" value="<%= mobile.getQuantity()%>"/>
                             </td>
                             <c:set var="notSale" value="<%= mobile.getNotSale()%>" />
                             <td>
-                                <c:choose>
-                                    <c:when test="${notSale == 0}">
-                                        <input value="No"/>
-                                    </c:when>
-                                    <c:when test="${notSale == 1}">
-                                        <input value="Yes"/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        Unknown
-                                    </c:otherwise>
-                                </c:choose>
+                                <select name="mobileNotSale">
+                                    <option value="0" <% if (mobile.getNotSale() == 0) {
+                                            out.print("selected");
+                                        } %>>No</option>
+                                    <option value="1" <% if (mobile.getNotSale() == 1)
+                                            out.print("selected");%>>Yes</option>
+                                </select>
                             </td>
-                            <form action="MainController" method="GET">
-                                <td>
-                                    <button id="update-btn" class="btn btn-outline-primary" type="submit" name="action" value="UpdateProductStaff">Update</button>
-                                </td>
-                                <td>
-                                    <button id="delete-btn" class="btn btn-outline-danger" type="submit" name="action" value="DeleteProductStaff">Delete</button>
-                                </td>
-                            </form>
-                        </tr>
-                        <%
-                            }
-                        %>
+                            <td>
+                                <input type="hidden" name="mobileId" value="<%= mobile.getMobileId()%>" />
+                                <button id="update-btn" class="btn btn-outline-primary" type="submit" name="action" value="UpdateProductStaff">Update</button>
+                            </td>
+                            <td>
+                                <input type="hidden" name="mobileId" value="<%= mobile.getMobileId()%>" />
+                                <input type="hidden" name="action" value="DeleteProductStaff" />
+                                <button id="delete-btn" class="btn btn-outline-danger" type="submit">Delete</button>
+                            </td>
+                    </form>
+                    </tr>
+                    <%
+                        }
+                    %>
                     </tbody>
                 </table>
 
@@ -156,6 +154,35 @@
             <%
                 }
             %>
+
+            <!-- Update message -->
+            <%
+                String msgUpdate = (String) request.getAttribute("UPDATE_STATUS");
+                if (msgUpdate == null)
+                    msgUpdate = "";
+                else {
+            %>
+            <script>
+                alert('<%= msgUpdate%>');
+            </script>
+            <%
+                }
+            %>
+
+            <!-- Delete message -->
+            <%
+                String msgDelete = (String) request.getAttribute("DELETE_STATUS");
+                if (msgDelete == null)
+                    msgDelete = "";
+                else {
+            %>
+            <script>
+                alert('<%= msgDelete%>');
+            </script>
+            <%
+                }
+            %>
+
             <script
                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

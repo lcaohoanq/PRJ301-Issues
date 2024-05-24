@@ -2,6 +2,9 @@ package controller.staff;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,13 +43,13 @@ public class InsertProductStaffController extends HttpServlet {
                     "Insert data = " + mobileId + " " + mobileDescription + " " + mobilePrice + " " + mobileName
                             + " " + mobileYear + " " + mobileQuantity + " " + mobileNotSale);
 
-//            if (new MobileDAO().insertMobile(new MobileDTO(mobileId, mobileDescription, mobilePrice, mobileName,
-//                    mobileYear, mobileQuantity, mobileNotSale))) {
-//                request.setAttribute("INSERT_STATUS", "Insert success");
-//            } else {
-//
-//                request.setAttribute("INSERT_STATUS", "Insert failed");
-//            }
+            if (new MobileDAO().insertMobile(new MobileDTO(mobileId, mobileDescription,
+                    mobilePrice, mobileName,
+                    mobileYear, mobileQuantity, mobileNotSale))) {
+                request.setAttribute("INSERT_STATUS", "Insert success");
+            } else {
+                request.setAttribute("INSERT_STATUS", "Insert failed");
+            }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
