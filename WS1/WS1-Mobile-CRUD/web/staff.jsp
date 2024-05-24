@@ -39,29 +39,29 @@
                             class="d-flex flex-row justify-content-between align-items-center"
                             role="search"
                             method="GET"
-                            action="StaffController"
-                            >
-                            
+                            action="MainController"
+                        >
                             <div class="col-12">
                                 <input
-                                class="form-control me-2"
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search"
-                                name="action"
+                                    class="form-control me-2"
+                                    type="search"
+                                    placeholder="Search"
+                                    aria-label="Search"
+                                    name="searchQuery"
                                 />
                             </div>
-                            <button class="btn btn-outline-success ms-2" type="submit">
+                            <button class="btn btn-outline-success ms-2" type="submit" name="action" value="SearchProductStaff">
                                 Search
                             </button>
                             <a class="navbar-brand ms-5">UserID:<%= loginUser.getUserID()%></a>
-                            <button class="btn btn-outline-warning me-5" type="submit">
+                            <button class="btn btn-outline-warning me-5" type="submit" name="action" value="InsertProductStaff">
                                 Insert
                             </button>
-                            <button class="btn btn-outline-danger" type="submit">
+                            <button class="btn btn-outline-danger" type="submit" name="action" value="Logout">
                                 Logout
                             </button>
                         </form>
+
                     </div>
                 </nav>
             </header>
@@ -97,20 +97,20 @@
                         %>
 
                         <tr>
-                            <th scope="row"><%= count++%></th> 
-                            <td><%= mobile.getMobileId()%></td> 
-                            <td><%= mobile.getMobileName()%></td> 
+                            <th scope="row"><%= count++%></th>
+                            <td><%= mobile.getMobileId()%></td>
+                            <td><%= mobile.getMobileName()%></td>
                             <td>
                                 <input class="text-primary" value="<%= mobile.getPrice()%>" />
-                            </td> 
+                            </td>
                             <td>
                                 <textarea><%= mobile.getDescription()%></textarea>
-                            </td> 
-                            <td><%= mobile.getYearOfProduction()%></td> 
+                            </td>
+                            <td><%= mobile.getYearOfProduction()%></td>
                             <td>
                                 <input value="<%= mobile.getQuantity()%>"/>
-                            </td> 
-                            <c:set var="notSale" value="<%= mobile.getNotSale()%>" /> 
+                            </td>
+                            <c:set var="notSale" value="<%= mobile.getNotSale()%>" />
                             <td>
                                 <c:choose>
                                     <c:when test="${notSale == 0}">
@@ -124,12 +124,14 @@
                                     </c:otherwise>
                                 </c:choose>
                             </td>
-                            <td>
-                                <button id="update-btn" class="btn btn-outline-primary" type="submit">Update</button>
-                            </td>
-                            <td>
-                                <button id="delete-btn" class="btn btn-outline-danger" type="submit">Delete</button>
-                            </td>
+                            <form action="MainController" method="GET">
+                                <td>
+                                    <button id="update-btn" class="btn btn-outline-primary" type="submit" name="action" value="UpdateProductStaff">Update</button>
+                                </td>
+                                <td>
+                                    <button id="delete-btn" class="btn btn-outline-danger" type="submit" name="action" value="DeleteProductStaff">Delete</button>
+                                </td>
+                            </form>
                         </tr>
                         <%
                             }
@@ -159,5 +161,15 @@
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
                 crossorigin="anonymous"
             ></script>
+            <script>
+                [document.getElementById('update-btn'), document.getElementById('delete-btn')].forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const confirm = window.confirm('Are you sure?');
+                        if (!confirm) {
+                            e.preventDefault();
+                        }
+                    });
+                });
+            </script>
         </body>
     </html>

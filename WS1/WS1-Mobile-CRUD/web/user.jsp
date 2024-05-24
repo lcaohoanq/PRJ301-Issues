@@ -38,23 +38,23 @@
                             class="d-flex flex-row justify-content-between align-items-center"
                             role="search"
                             method="GET"
-                            action="UserController"
+                            action="MainController"
                             >
-                            
+
                             <div class="col-12">
                                 <input
                                 class="form-control me-2"
                                 type="search"
                                 placeholder="Search"
                                 aria-label="Search"
-                                name="action"
+                                name="searchQuery"
                                 />
                             </div>
-                            <button class="btn btn-outline-success ms-2" type="submit">
+                            <button class="btn btn-outline-success ms-2" name="action" value="SearchProductUser">
                                 Search
                             </button>
                             <a class="navbar-brand ms-5">UserID:<%= loginUser.getUserID()%></a>
-                            <button class="btn btn-outline-danger" type="submit">
+                            <button class="btn btn-outline-danger" name="action" value="Logout">
                                 Logout
                             </button>
                         </form>
@@ -92,14 +92,14 @@
                         %>
 
                         <tr>
-                            <th scope="row"><%= count++%></th> 
-                            <td><%= mobile.getMobileId()%></td> 
-                            <td><%= mobile.getMobileName()%></td> 
-                            <td class="text-primary"><%= mobile.getPrice()%></td> 
-                            <td><%= mobile.getDescription()%></td> 
-                            <td><%= mobile.getYearOfProduction()%></td> 
-                            <td><%= mobile.getQuantity()%></td> 
-                            <c:set var="notSale" value="<%= mobile.getNotSale()%>" /> 
+                            <th scope="row"><%= count++%></th>
+                            <td><%= mobile.getMobileId()%></td>
+                            <td><%= mobile.getMobileName()%></td>
+                            <td class="text-primary"><%= mobile.getPrice()%></td>
+                            <td><%= mobile.getDescription()%></td>
+                            <td><%= mobile.getYearOfProduction()%></td>
+                            <td><%= mobile.getQuantity()%></td>
+                            <c:set var="notSale" value="<%= mobile.getNotSale()%>" />
                             <td>
                                 <c:choose>
                                     <c:when test="${notSale == 0}">
@@ -114,7 +114,9 @@
                                 </c:choose>
                             </td>
                             <td>
-                                <button id="addToCart-btn" class="btn btn-outline-primary" type="submit">Add to cart</button>
+                            <form action="MainController" method="GET">
+                                    <button id="addToCart-btn" class="btn btn-outline-primary" type="submit" name="action" value="AddToCart">Add to cart</button>
+                            </form>
                             </td>
                         </tr>
                         <%

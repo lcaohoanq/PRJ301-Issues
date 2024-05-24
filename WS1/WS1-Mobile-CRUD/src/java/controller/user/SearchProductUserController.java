@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.mobile;
+package controller.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,21 +17,20 @@ import javax.servlet.http.HttpServletResponse;
 import constant.Regex;
 import model.MobileDAO;
 import model.MobileDTO;
-import model.UserError;
 
 /**
  *
  * @author lcaohoanq
  */
-@WebServlet(name = "MobileController", urlPatterns = { "/MobileController" })
-public class UserController extends HttpServlet {
+@WebServlet(name = "SearchProductUser", urlPatterns = { "/SearchProductUserController" })
+public class SearchProductUserController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         res.setContentType("text/html;charset=UTF-8");
 
-        String search = req.getParameter("action").trim();
+        String search = req.getParameter("searchQuery").trim();
         System.out.println("Data: " + search);
 
         try {
@@ -62,11 +61,10 @@ public class UserController extends HttpServlet {
         } finally {
             req.getRequestDispatcher("./user.jsp").forward(req, res);
         }
-
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
 
