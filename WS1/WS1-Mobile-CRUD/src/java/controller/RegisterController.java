@@ -11,17 +11,21 @@ import model.UserDAO;
 import model.UserDTO;
 import model.UserError;
 import util.DataHandler;
+import util.PasswordHandler;
 
-@WebServlet(name = "RegisterController", urlPatterns = {"/RegisterController"})
+@WebServlet(name = "RegisterController", urlPatterns = { "/RegisterController" })
 public class RegisterController extends HttpServlet {
 
-    private static final String ERROR = "register.jsp";
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    }
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String url = ERROR;
+        System.out.println("At register controller");
         UserDAO dao = new UserDAO();
         UserError userError = new UserError();
         try {
@@ -57,7 +61,7 @@ public class RegisterController extends HttpServlet {
                 }
 
                 if (checkValidation) {
-                    UserDTO user = new UserDTO(userID, name, password);
+                    UserDTO user = new UserDTO(userID, name, new PasswordHandler().hash(password.toCharArray()));
                     boolean checkInsert = dao.insertV2(user);
                     request.setAttribute("INSERT_SUCCESS", "Register successfully");
                 } else {
@@ -80,20 +84,8 @@ public class RegisterController extends HttpServlet {
             }
 
         } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+            request.getRequestDispatcher("./register.jsp").forward(request, response);
         }
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-    
 }

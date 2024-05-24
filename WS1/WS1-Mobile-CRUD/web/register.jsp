@@ -32,7 +32,7 @@
                 <div class="title">
                     <h1>Sign Up</h1>
                 </div>
-                <form id="registerForm" action="MainController">
+                <form id="registerForm" action="MainController" method="POST">
                     <div class="form-floating mb-3">
                         <input
                             autofocus="autofocus"

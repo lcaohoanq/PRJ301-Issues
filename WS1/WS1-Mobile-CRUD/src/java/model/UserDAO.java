@@ -45,6 +45,37 @@ public class UserDAO {
         return user;
     }
 
+    public String getPassword(String userId) throws SQLException {
+        String password = "";
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement("SELECT password FROM tblUser WHERE userId = ?");
+                ptm.setString(1, userId);
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    password = rs.getString("password");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return password;
+    }
+
     public List<UserDTO> getListUser(String search) throws SQLException {
         List<UserDTO> list = new ArrayList<>();
         Connection conn = null;
@@ -79,7 +110,7 @@ public class UserDAO {
         }
         return list;
     }
-    
+
     public List<UserDTO> getListUser() throws SQLException {
         List<UserDTO> list = new ArrayList<>();
         Connection conn = null;
@@ -113,43 +144,47 @@ public class UserDAO {
         }
         return list;
     }
-    
+
     public boolean update(UserDTO user) throws SQLException {
-        boolean checkUpdate= false;
-        Connection conn= null;
-        PreparedStatement ptm= null;
+        boolean checkUpdate = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
         try {
-            conn= DBUtils.getConnection();
-            if(conn!= null){
-                ptm= conn.prepareStatement(DBQueries.USER_UPDATE);
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(DBQueries.USER_UPDATE);
                 ptm.setString(1, user.getName());
                 ptm.setString(2, String.valueOf(user.getRoleID()));
                 ptm.setString(3, user.getUserID());
-                checkUpdate= ptm.executeUpdate()>0?true:false;
+                checkUpdate = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
-        }finally{
-            if(ptm!= null) ptm.close();
-            if(conn!= null) conn.close();
+        } finally {
+            if (ptm != null)
+                ptm.close();
+            if (conn != null)
+                conn.close();
         }
         return checkUpdate;
     }
-    
+
     public boolean delete(String userId) throws SQLException {
-        boolean checkDelete= false;
-        Connection conn= null;
-        PreparedStatement ptm= null;
+        boolean checkDelete = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
         try {
-            conn= DBUtils.getConnection();
-            if(conn!= null){
-                ptm= conn.prepareStatement(DBQueries.USER_DELETE);
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(DBQueries.USER_DELETE);
                 ptm.setString(1, userId);
-                checkDelete= ptm.executeUpdate()>0?true:false;
+                checkDelete = ptm.executeUpdate() > 0 ? true : false;
             }
         } catch (Exception e) {
-        }finally{
-            if(ptm!= null) ptm.close();
-            if(conn!= null) conn.close();
+        } finally {
+            if (ptm != null)
+                ptm.close();
+            if (conn != null)
+                conn.close();
         }
         return checkDelete;
     }
@@ -209,14 +244,14 @@ public class UserDAO {
         }
         return checkInsert;
     }
-    
+
     public static void main(String[] args) throws Exception {
 
-        try{
-//            new UserDAO().getListUser().stream().forEach(System.out::println);
+        try {
+            // new UserDAO().getListUser().stream().forEach(System.out::println);
 
             System.out.println(new UserDAO().checkLogin("MN001", "789012").toString());
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

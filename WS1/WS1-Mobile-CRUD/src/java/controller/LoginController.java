@@ -20,6 +20,7 @@ import model.UserDAO;
 import model.UserDTO;
 import model.UserError;
 import util.DataHandler;
+import util.PasswordHandler;
 
 @WebServlet(name = "LoginServlet", urlPatterns = { "/LoginController" })
 public class LoginController extends HttpServlet {
@@ -44,35 +45,40 @@ public class LoginController extends HttpServlet {
         try {
             userError = new UserError();
             if (!DataHandler.isEmptyFieldV2(user, pass)) {
-                UserDTO userDTO = new UserDAO().checkLogin(user, pass);
-                String ms = "";
-                if (userDTO != null) {
-                    HttpSession session = request.getSession();
-                    session.setAttribute("LOGIN_USER", userDTO);
-                    // phan quyen o day ne
-                    System.out.println(userDTO.getRoleID());
-                    int roleID = userDTO.getRoleID();
-                    switch (roleID) {
-                        case US: {
-                            url = USER_PAGE;
-                            break;
+                if (new PasswordHandler().authenticate(pass.toCharArray(), new UserDAO().getPassword(user))) {
+                    UserDTO userDTO = new UserDAO().checkLogin(user, pass);
+                    String ms = "";
+                    if (userDTO != null) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("LOGIN_USER", userDTO);
+                        // phan quyen o day ne
+                        System.out.println(userDTO.getRoleID());
+                        int roleID = userDTO.getRoleID();
+                        switch (roleID) {
+                            case US: {
+                                url = USER_PAGE;
+                                break;
+                            }
+                            case AD: {
+                                url = ADMIN_PAGE;
+                                break;
+                            }
+                            case ST: {
+                                url = STAFF_PAGE;
+                                break;
+                            }
+                            default: {
+                                request.setAttribute("ERROR", "Your role is not support!");
+                                break;
+                            }
                         }
-                        case AD: {
-                            url = ADMIN_PAGE;
-                            break;
-                        }
-                        case ST: {
-                            url = STAFF_PAGE;
-                            break;
-                        }
-                        default: {
-                            request.setAttribute("ERROR", "Your role is not support!");
-                            break;
-                        }
+                    } else {
+                        ms = "Invalid user or password!!!";
+                        request.setAttribute("fail", ms);
                     }
                 } else {
-                    ms = "Invalid user or password!!!";
-                    request.setAttribute("fail", ms);
+                    userError.setPassword("Invalid Password");
+                    request.setAttribute("USER_ERROR", userError);
                 }
             } else {
                 userError.setUserID("*Is Required");
