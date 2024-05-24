@@ -132,6 +132,30 @@ public class MobileDAO {
         return mobilesList;
     }
 
+    public boolean insertMobile(MobileDTO mobile) throws Exception {
+        boolean result = false;
+        try {
+            con = DBUtils.getConnection();
+            if (con != null) {
+                pstm = con.prepareStatement(
+                        "INSERT INTO tbl_Mobile(mobileId, description, price, mobileName, yearOfProduction, quantity, notSale) VALUES(?,?,?,?,?,?,?)");
+                pstm.setString(1, mobile.getMobileId());
+                pstm.setString(2, mobile.getDescription());
+                pstm.setFloat(3, mobile.getPrice());
+                pstm.setString(4, mobile.getMobileName());
+                pstm.setInt(5, mobile.getYearOfProduction());
+                pstm.setInt(6, mobile.getQuantity());
+                pstm.setInt(7, mobile.getNotSale());
+
+                result = pstm.executeUpdate() > 0;
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+
     public boolean updateMobile(MobileDTO mobile) throws Exception {
         boolean result = false;
         try {
