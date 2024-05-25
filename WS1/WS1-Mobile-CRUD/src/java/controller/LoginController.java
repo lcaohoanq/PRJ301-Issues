@@ -20,89 +20,80 @@ import model.UserDAO;
 import model.UserDTO;
 import model.UserError;
 import util.DataHandler;
-import util.PasswordHandler;
 
-@WebServlet(name = "LoginServlet", urlPatterns = { "/LoginController" })
+@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginController"})
 public class LoginController extends HttpServlet {
 
-    private static final int US = 0;
-    private static final int AD = 1;
-    private static final int ST = 2;
-    private static final String ADMIN_PAGE = "admin.jsp";
     private static final String LOGIN = "login.jsp";
+    private static final String AD = "AD";
+    private static final String ADMIN_PAGE = "admin.jsp";
+    private static final String US = "US";
     private static final String USER_PAGE = "user.jsp";
+    private static final String ST = "ST";
     private static final String STAFF_PAGE = "staff.jsp";
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = LOGIN;
+        request.getRequestDispatcher("./login.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+                String url = LOGIN;
 
         String user = request.getParameter("user");
         String pass = request.getParameter("pass");
-
+        System.out.println("At Post LoginController");
         System.out.println("Data: " + user + " " + pass);
         UserError userError;
         try {
             userError = new UserError();
             if (!DataHandler.isEmptyFieldV2(user, pass)) {
-                if (new PasswordHandler().authenticate(pass.toCharArray(), new UserDAO().getPassword(user))) {
-                    UserDTO userDTO = new UserDAO().checkLogin(user, pass);
-                    String ms = "";
-                    if (userDTO != null) {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("LOGIN_USER", userDTO);
-                        // phan quyen o day ne
-                        System.out.println(userDTO.getRoleID());
-                        int roleID = userDTO.getRoleID();
-                        switch (roleID) {
-                            case US: {
-                                url = USER_PAGE;
-                                break;
-                            }
-                            case AD: {
-                                url = ADMIN_PAGE;
-                                break;
-                            }
-                            case ST: {
-                                url = STAFF_PAGE;
-                                break;
-                            }
-                            default: {
-                                request.setAttribute("ERROR", "Your role is not support!");
-                                break;
-                            }
+                System.out.println("....Checking user data....");
+                UserDAO userDao = new UserDAO();
+                UserDTO userDTO = userDao.checkLogin(user, pass);
+                System.out.println("UserDTO: " + userDTO);
+                String ms = "";
+                if (userDTO != null) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("LOGIN_USER", userDTO);
+//                phan quyen o day ne
+                    int roleID = userDTO.getRoleID();
+                    System.out.println("RoleId: " + roleID);
+                    switch (roleID) {
+                        case 0: {
+                            url = USER_PAGE;
+                            break;
                         }
-                    } else {
-                        ms = "Invalid user or password!!!";
-                        request.setAttribute("fail", ms);
+                        case 1: {
+                            url = ADMIN_PAGE;
+                            break;
+                        }
+                        case 2: {
+                            url = STAFF_PAGE;
+                            break;
+                        }
+                        default: {
+                            request.setAttribute("ERROR", "Your role is not support!");
+                            break;
+                        }
                     }
                 } else {
-                    userError.setPassword("Invalid Password");
-                    request.setAttribute("USER_ERROR", userError);
+                    ms = "Invalid user or password!!!";
+                    request.setAttribute("fail", ms);
                 }
             } else {
                 userError.setUserID("*Is Required");
                 userError.setPassword("*Is Required");
                 request.setAttribute("USER_ERROR", userError);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         } finally {
-            System.out.println("URL = " + url);
             request.getRequestDispatcher(url).forward(request, response);
         }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
 }

@@ -26,7 +26,7 @@ public class UserDAO {
                 if (rs.next()) {
                     String userName = rs.getString("userId");
                     String pass = rs.getString("password");
-                    user = new UserDTO(userId, pass, "***");
+                    user = new UserDTO(userId, pass);
                 }
             }
         } catch (Exception e) {
@@ -250,7 +250,7 @@ public class UserDAO {
         try {
             // new UserDAO().getListUser().stream().forEach(System.out::println);
 
-            System.out.println(new UserDAO().checkLogin("MN001", "789012").toString());
+            System.out.println(new UserDAO().checkLogin("ST001", "345678").toString());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

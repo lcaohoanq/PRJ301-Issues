@@ -20,6 +20,11 @@ public class UserDTO {
         this.name = name;
         this.password = password;
     }
+    
+    public UserDTO(String userID, String password){
+        this.userID = userID;
+        this.password = password;
+    }
 
     public int getRoleID() {
         String prefix = this.userID.substring(0, 2);
