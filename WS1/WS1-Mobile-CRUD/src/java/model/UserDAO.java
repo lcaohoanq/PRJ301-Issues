@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import constant.DBQueries;
 import util.DBUtils;
+import util.PasswordHandler;
 
 public class UserDAO {
 
@@ -53,7 +54,7 @@ public class UserDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement("SELECT password FROM tblUser WHERE userId = ?");
+                ptm = conn.prepareStatement(DBQueries.USER_PASSWORD);
                 ptm.setString(1, userId);
                 rs = ptm.executeQuery();
                 if (rs.next()) {
@@ -74,6 +75,41 @@ public class UserDAO {
             }
         }
         return password;
+    }
+
+    public UserDTO findUserById(String userId) throws SQLException {
+        UserDTO user = null;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement("SELECT userId, password, fullName, role FROM tbl_User WHERE userId = ?");
+                ptm.setString(1, userId);
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    String id = rs.getString("userId");
+                    String password = rs.getString("password");
+                    String fullName = rs.getString("fullName");
+                    int role = rs.getInt("role");
+                    user = new UserDTO(id, password, fullName, role);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return user;
     }
 
     public List<UserDTO> getListUser(String search) throws SQLException {
@@ -160,10 +196,12 @@ public class UserDAO {
             }
         } catch (Exception e) {
         } finally {
-            if (ptm != null)
+            if (ptm != null) {
                 ptm.close();
-            if (conn != null)
+            }
+            if (conn != null) {
                 conn.close();
+            }
         }
         return checkUpdate;
     }
@@ -181,10 +219,12 @@ public class UserDAO {
             }
         } catch (Exception e) {
         } finally {
-            if (ptm != null)
+            if (ptm != null) {
                 ptm.close();
-            if (conn != null)
+            }
+            if (conn != null) {
                 conn.close();
+            }
         }
         return checkDelete;
     }
@@ -220,7 +260,7 @@ public class UserDAO {
         return check;
     }
 
-    public boolean insertV2(UserDTO user) throws ClassNotFoundException, SQLException {
+    public boolean insertV2(UserDTO user, int role) throws ClassNotFoundException, SQLException {
         boolean checkInsert = false;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -231,7 +271,8 @@ public class UserDAO {
                 ptm.setString(1, user.getUserID());
                 ptm.setString(2, user.getPassword());
                 ptm.setString(3, user.getName());
-                ptm.setString(4, String.valueOf(user.getRoleID()));
+                ptm.setInt(4, role);
+                System.out.println("ptm: " + ptm.toString());
                 checkInsert = ptm.executeUpdate() > 0 ? true : false;
             }
         } finally {
@@ -250,7 +291,11 @@ public class UserDAO {
         try {
             // new UserDAO().getListUser().stream().forEach(System.out::println);
 
-            System.out.println(new UserDAO().checkLogin("ST001", "345678").toString());
+//            System.out.println(new UserDAO().checkLogin("ST001", "345678").toString());
+//            System.out.println(new UserDAO().insertV2(new UserDTO("ad", "1", "1"), 0));
+//            System.out.println(new UserDAO().insertV2(new UserDTO("ST99", "Luucaohoang", new PasswordHandler().hash("1604".toCharArray())), 1));
+            System.out.println(new UserDAO().getPassword("ST99"));
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

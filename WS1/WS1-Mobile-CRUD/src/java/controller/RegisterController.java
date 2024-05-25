@@ -1,5 +1,6 @@
 package controller;
 
+import constant.EnumRole;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,12 +14,13 @@ import model.UserError;
 import util.DataHandler;
 import util.PasswordHandler;
 
-@WebServlet(name = "RegisterController", urlPatterns = { "/RegisterController" })
+@WebServlet(name = "RegisterController", urlPatterns = {"/RegisterController"})
 public class RegisterController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getRequestDispatcher("./register.jsp").forward(request, response);
     }
 
     @Override
@@ -62,8 +64,12 @@ public class RegisterController extends HttpServlet {
 
                 if (checkValidation) {
                     UserDTO user = new UserDTO(userID, name, new PasswordHandler().hash(password.toCharArray()));
-                    boolean checkInsert = dao.insertV2(user);
-                    request.setAttribute("INSERT_SUCCESS", "Register successfully");
+                    System.out.println("Data prepare to insert to db: " + user);
+                    if (dao.insertV2(user, extractRoleFromID(userID) )) {
+                        request.setAttribute("INSERT_SUCCESS", "Register successfully");
+                    } else {
+                        request.setAttribute("INSERT_ERROR", "Register fail");
+                    }
                 } else {
                     request.setAttribute("USER_ERROR", userError);
                 }
@@ -86,6 +92,25 @@ public class RegisterController extends HttpServlet {
         } finally {
             request.getRequestDispatcher("./register.jsp").forward(request, response);
         }
+    }
+
+    private int extractRoleFromID(String userID) {
+        int role = -1;
+        switch (userID.substring(0, 2)) {
+            case "MN": {
+                role = 1;
+                break;
+            }
+            case "ST": {
+                role = 2;
+                break;
+            }
+            case "US": {
+                role = 0;
+                break;
+            }
+        }
+        return role;
     }
 
 }

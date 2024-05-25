@@ -146,13 +146,13 @@ public class PasswordHandler {
   public static void main(String[] args) {
     PasswordHandler pwdHandler = new PasswordHandler();
 
-    String password = "123456";
+//    String password = "123456";
+//
+//    String hashedPassword = new PasswordHandler().hash(password.toCharArray());
+//   
+//    System.out.println("Data: " + hashedPassword);
 
-    String hashedPassword = new PasswordHandler().hash(password.toCharArray());
-
-    System.out.println("Data: " + hashedPassword);
-
-    System.out.println("Authenticated: " + pwdHandler.authenticate(password.toCharArray(), hashedPassword));
+    System.out.println("Authenticated: " + pwdHandler.authenticate("1604".toCharArray(), "$31$16$i_HsO9-pocKvfnUYjVDGfz1k7DlIKKpQ90N8JBaBEvM"));
   }
 
 }

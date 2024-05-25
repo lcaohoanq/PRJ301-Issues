@@ -13,11 +13,10 @@ CREATE TABLE [tbl_Mobile] (
 
 CREATE TABLE [tbl_User] (
 	[userId] varchar(20) Primary Key,
-	[password] int not null,
+	[password] VARCHAR(255) NOT NULL,
 	[fullName] varchar(50) NOT NULL,
 	[role] int --0: user, 1: manager, 2: staff
 )
-
 
 -- Insert sample data into tbl_Mobile
 INSERT INTO [tbl_Mobile] ([mobileId], [description], [price], [mobileName], [yearOfProduction], [quantity], [notSale])
@@ -36,10 +35,10 @@ VALUES
 -- Insert sample data into tbl_User
 INSERT INTO [tbl_User] ([userId], [password], [fullName], [role])
 VALUES 
-('US001', 123456, 'John Doe', 0),
-('MN001', 789012, 'Jane Smith', 1),
-('ST001', 345678, 'Alice Johnson', 2),
-('US002', 901234, 'Bob Brown', 0),
-('ST002', 567890, 'Charlie Davis', 2);
+('US001', '123456', 'John Doe', 0),
+('MN001', '789012', 'Jane Smith', 1),
+('ST001', '345678', 'Alice Johnson', 2),
+('US002', '901234', 'Bob Brown', 0),
+('ST002', '567890', 'Charlie Davis', 2);
 
 SELECT * FROM tbl_Mobile
