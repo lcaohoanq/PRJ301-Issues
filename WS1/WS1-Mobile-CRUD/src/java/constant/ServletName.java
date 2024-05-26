@@ -18,5 +18,6 @@ public class ServletName {
     public static final String SEARCH_PRODUCT_USER = "SearchProductUser";
     public static final String ADD_TO_CART = "AddToCart";
     public static final String VIEW_CART = "ViewCart";
-    public static final String DELETE_FROM_CART = "DeleteFromCart";
+    public static final String REMOVE_FROM_CART = "DeleteFromCart";
+    public static final String CHANGE_PRODUCT_QUANTITY = "ChangeProductQuantity";
 }

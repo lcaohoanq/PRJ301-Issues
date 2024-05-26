@@ -61,8 +61,11 @@ public class MainController extends HttpServlet {
                 case ServletName.VIEW_CART:
                     directTo = ServletController.VIEW_CART_CONTROLLER;
                     break;
-                case ServletName.DELETE_FROM_CART:
-                    directTo = ServletController.DELETE_FROM_CART_CONTROLLER;
+                case ServletName.REMOVE_FROM_CART:
+                    directTo = ServletController.REMOVE_PRODUCT_CART_CONTROLLER;
+                    break;
+                case ServletName.CHANGE_PRODUCT_QUANTITY:
+                    directTo = ServletController.REMOVE_PRODUCT_CART_CONTROLLER;
                     break;
                 default:
                     request.setAttribute("ERROR", "Your action not supported");

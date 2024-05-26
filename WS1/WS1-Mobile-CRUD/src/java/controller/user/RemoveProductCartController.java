@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package controller.user;
 
 import java.io.IOException;
@@ -11,36 +7,40 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.CartDTO;
 
-/**
- *
- * @author lcaohoanq
- */
-@WebServlet(name = "DeleteFromCart", urlPatterns = {"/DeleteFromCartController"})
-public class DeleteFromCartController extends HttpServlet {
+@WebServlet(name = "RemoveProductCartController", urlPatterns = {"/RemoveProductCartController"})
+public class RemoveProductCartController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private static final String ERROR = "viewCart.jsp";
+    private static final String SUCCESS = "viewCart.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet DeleteFromCartController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet DeleteFromCartController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String url = ERROR;
+        try {
+            String id = request.getParameter("id");
+            HttpSession session = request.getSession();
+            CartDTO cart = (CartDTO) session.getAttribute("CART");
+            if (cart != null) {
+                if (cart.getCart().containsKey(id)) {
+                    boolean check = cart.remove(id);
+                    if (check) {
+                        if (cart.getCart().size() == 0) {
+                            session.setAttribute("CART", null);
+                        } else {
+                            session.setAttribute("CART", cart);
+                        }
+                        url = SUCCESS;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            log("Error at AddToCartController: " + e.toString());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

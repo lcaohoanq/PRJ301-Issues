@@ -43,12 +43,12 @@
 
                             <div class="col-12">
                                 <input
-                                class="form-control me-2"
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search"
-                                name="searchQuery"
-                                />
+                                    class="form-control me-2"
+                                    type="search"
+                                    placeholder="Search"
+                                    aria-label="Search"
+                                    name="searchQuery"
+                                    />
                             </div>
                             <button class="btn btn-outline-success ms-2" name="action" value="SearchProductUser">
                                 Search
@@ -90,38 +90,50 @@
                             int count = 1;
                             for (MobileDTO mobile : mobilesList) {
                         %>
-
                         <tr>
-                            <th scope="row"><%= count++%></th>
-                            <td><%= mobile.getMobileId()%></td>
-                            <td><%= mobile.getMobileName()%></td>
-                            <td class="text-primary"><%= mobile.getPrice()%></td>
-                            <td><%= mobile.getDescription()%></td>
-                            <td><%= mobile.getYearOfProduction()%></td>
-                            <td><%= mobile.getQuantity()%></td>
-                            <c:set var="notSale" value="<%= mobile.getNotSale()%>" />
-                            <td>
-                                <c:choose>
-                                    <c:when test="${notSale == 0}">
-                                        No
-                                    </c:when>
-                                    <c:when test="${notSale == 1}">
-                                        Yes
-                                    </c:when>
-                                    <c:otherwise>
-                                        Unknown
-                                    </c:otherwise>
-                                </c:choose>
-                            </td>
-                            <td>
-                            <form action="MainController" method="GET">
-                                    <button id="addToCart-btn" class="btn btn-outline-primary" type="submit" name="action" value="AddToCart">Add to cart</button>
-                            </form>
-                            </td>
-                        </tr>
-                        <%
-                            }
-                        %>
+                    <form action="MainController" method="POST">
+                        <th scope="row"><%= count++%></th>
+                        <td>
+                            <input type="text" name="mobileId" value="<%= mobile.getMobileId()%>" readonly="" />
+                        </td>
+                        <td>
+                            <input type="text" name="mobileName" value=" <%= mobile.getMobileName()%>" readonly="" />
+                        </td>
+                        <td class="text-primary">
+                            <input type="text" name="mobilePrice" value="<%= mobile.getPrice()%>" readonly="" />
+                        </td>
+                        <td>
+                            <input type="text" name="mobileDescription" value="<%= mobile.getDescription()%>" readonly="" />
+                        </td>
+                        <td>
+                            <input type="text" name="mobileYear" value="<%= mobile.getYearOfProduction()%>" readonly="" />
+                        </td>
+                        <td>
+                            <input type="text" name="mobileQuantity" value="<%= mobile.getQuantity()%>" readonly="" />
+                        </td>
+                        <c:set var="notSale" value="<%= mobile.getNotSale()%>" />
+                        <td>
+                            <c:choose>
+                                <c:when test="${notSale == 0}">
+                                    No
+                                </c:when>
+                                <c:when test="${notSale == 1}">
+                                    Yes
+                                </c:when>
+                                <c:otherwise>
+                                    Unknown
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                        <td>
+
+                            <button id="addToCart-btn" class="btn btn-outline-primary" type="submit" name="action" value="AddToCart">Add to cart</button>
+                        </td>
+                    </form>
+                    </tr>
+                    <%
+                        }
+                    %>
                     </tbody>
                 </table>
 
@@ -142,6 +154,18 @@
             <%
                 }
             %>
+
+            <!-- View cart -->
+            <a href="viewCart.jsp">Click here to show your cart</a></br>
+            <br>
+            <%
+                String message = (String) request.getAttribute("MESSAGE");
+                if (message == null) {
+                    message = "";
+                }
+            %>
+            <%= message%>
+
             <script
                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

@@ -23,4 +23,13 @@ public class MobileDTO {
         this.notSale = notSale;
     }
 
+    public MobileDTO(String mobileId, float price, String mobileName, int quantity) {
+        this.mobileId = mobileId;
+        this.price = price;
+        this.mobileName = mobileName;
+        this.quantity = quantity;
+    }
+    
+    
+
 }

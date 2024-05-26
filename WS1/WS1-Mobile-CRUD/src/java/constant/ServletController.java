@@ -18,5 +18,6 @@ public class ServletController {
     public static final String SEARCH_PRODUCT_USER_CONTROLLER = "SearchProductUserController";
     public static final String ADD_TO_CART_CONTROLLER = "AddToCartController";
     public static final String VIEW_CART_CONTROLLER = "ViewCartController";
-    public static final String DELETE_FROM_CART_CONTROLLER = "DeleteFromCartController";
+    public static final String REMOVE_PRODUCT_CART_CONTROLLER = "RemoveProductCartController";
+    public static final String CHANGE_PRODUCT_CART_CONTROLLER = "ChangeProductCartController";
 }
