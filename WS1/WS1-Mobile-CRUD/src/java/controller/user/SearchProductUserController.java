@@ -30,37 +30,39 @@ public class SearchProductUserController extends HttpServlet {
             throws ServletException, IOException {
         res.setContentType("text/html;charset=UTF-8");
 
-        String search = req.getParameter("searchQuery").trim();
-        System.out.println("Data: " + search);
+        String search = req.getParameter("searchQuery");
+        if (search == null || search.trim().isEmpty()) {
+            // If no search query is provided, show all products
+            List<MobileDTO> mobilesList = new MobileDAO().getAllMobile();
+            req.setAttribute("LIST_MOBILE", mobilesList);
+        } else {
+            search = search.trim();
+            System.out.println("Data: " + search);
 
-        try {
-            // if enter the price range, will receive the product in that range
-            if (search.matches(Regex.MOBILE_SEARCH_RANGE)) {
-                String[] range = search.split(",");
-                int min = Integer.parseInt(range[0]);
-                int max = Integer.parseInt(range[1]);
+            try {
+                // if enter the price range, will receive the product in that range
+                if (search.matches(Regex.MOBILE_SEARCH_RANGE)) {
+                    String[] range = search.split(",");
+                    int min = Integer.parseInt(range[0]);
+                    int max = Integer.parseInt(range[1]);
 
-                if (min > max) {
-                    int temp = min;
-                    min = max;
-                    max = temp;
+                    if (min > max) {
+                        int temp = min;
+                        min = max;
+                        max = temp;
+                    }
+
+                    List<MobileDTO> mobilesList = new MobileDAO().selectPriceInRange(min, max);
+                    req.setAttribute("LIST_MOBILE", mobilesList);
+                } else {
+                    req.setAttribute("ERROR", "Enter the price range in the format: min,max");
                 }
-
-                List<MobileDTO> mobilesList = new MobileDAO().selectPriceInRange(min, max);
-                req.setAttribute("LIST_MOBILE", mobilesList);
-            } else if (search.isEmpty()) {
-                // if not enter anything, will see the all product in shope
-                req.setAttribute("LIST_MOBILE", new MobileDAO().getAllMobile());
-                return;
-            } else {
-                req.setAttribute("ERROR", "Enter the price range in the format: min,max");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            req.getRequestDispatcher("./user.jsp").forward(req, res);
         }
+
+        req.getRequestDispatcher("./user.jsp").forward(req, res);
     }
 
     @Override

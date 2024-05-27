@@ -69,10 +69,8 @@
             <!-- receive the list of mobile -->
             <%
                 List<MobileDTO> mobilesList = (List) request.getAttribute("LIST_MOBILE");
-                if (mobilesList != null) {
-                    if (mobilesList.size() > 0) {
+                if (mobilesList != null && !mobilesList.isEmpty()) {
             %>
-
             <main>
                 <table class="table">
                     <thead>
@@ -136,9 +134,11 @@
                     %>
                     </tbody>
                 </table>
-
                 <%
-                        }
+                } else {
+                %>
+                <p>No products found.</p>
+                <%
                     }
                 %>
             </main>

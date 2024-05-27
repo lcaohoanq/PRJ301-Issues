@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import constant.Regex;
 import model.MobileDAO;
 
-@WebServlet(name = "SearchProductStaff", urlPatterns = { "/SearchProductStaffController" })
+@WebServlet(name = "SearchProductStaff", urlPatterns = {"/SearchProductStaffController"})
 public class SearchProductStaffController extends HttpServlet {
 
     @Override
@@ -19,26 +19,29 @@ public class SearchProductStaffController extends HttpServlet {
             throws ServletException, IOException {
         res.setContentType("text/html;charset=UTF-8");
 
-        String action = req.getParameter("searchQuery").trim();
-        
-        System.out.println("searchQuery: " + action);
-        try {
-            // if enter the price range, will receive the product in that range
-            if (action.matches(Regex.MOBILE_NAME) && !action.contains("MOB")) {
-                req.setAttribute("LIST_MOBILE", new MobileDAO().searchMobileByName(action));
-            } else if (action.matches(Regex.MOBILE_ID)) {
-                req.setAttribute("LIST_MOBILE", new MobileDAO().getMobileById(action));
-            } else if (action.isEmpty()) {
-                // if not enter anything, will see the all product in shope
-                req.setAttribute("LIST_MOBILE", new MobileDAO().getAllMobile());
-            } else {
-                req.setAttribute("ERROR", "Enter the price range in the format: min,max");
+        String search = req.getParameter("searchQuery").trim();
+
+        if (search == null || search.trim().isEmpty()) {
+            // if not enter anything, will see the all product in shope
+            req.setAttribute("LIST_MOBILE", new MobileDAO().getAllMobile());
+        } else {
+            search = search.trim();
+            try {
+                // if enter the price range, will receive the product in that range
+                if (search.matches(Regex.MOBILE_NAME) && !search.contains("MOB")) {
+                    req.setAttribute("LIST_MOBILE", new MobileDAO().searchMobileByName(search));
+                } else if (search.matches(Regex.MOBILE_ID)) {
+                    req.setAttribute("LIST_MOBILE", new MobileDAO().getMobileById(search));
+                } else {
+                    req.setAttribute("ERROR", "Enter the price range in the format: min,max");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            req.getRequestDispatcher("./staff.jsp").forward(req, res);
+
         }
+
+        req.getRequestDispatcher("./staff.jsp").forward(req, res);
 
     }
 

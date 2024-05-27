@@ -30,8 +30,8 @@ public class LoginController extends HttpServlet {
     private static final int ST = 2;
     private static final String ADMIN_PAGE = "admin.jsp";
     private static final String LOGIN = "login.jsp";
-    private static final String USER_PAGE = "user.jsp";
-    private static final String STAFF_PAGE = "staff.jsp";
+    private static final String USER_PAGE = "UserController";
+    private static final String STAFF_PAGE = "StaffController";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

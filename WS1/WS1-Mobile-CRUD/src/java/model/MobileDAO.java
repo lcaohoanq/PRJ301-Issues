@@ -13,7 +13,7 @@ public class MobileDAO {
     private PreparedStatement pstm = null;
     private ResultSet rs = null;
 
-    public List<MobileDTO> getAllMobile() throws Exception {
+    public List<MobileDTO> getAllMobile() {
         List<MobileDTO> mobilesList = new ArrayList<>();
         try {
             con = DBUtils.getConnection();
