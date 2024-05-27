@@ -1,6 +1,7 @@
 package constant;
 
 public class ServletController {
+
     public static final String LOGIN_CONTROLLER = "LoginController";
     public static final String REGISTER_CONTROLLER = "RegisterController";
     public static final String DELETE_CONTROLLER = "DeleteController";
@@ -20,4 +21,8 @@ public class ServletController {
     public static final String VIEW_CART_CONTROLLER = "ViewCartController";
     public static final String REMOVE_PRODUCT_CART_CONTROLLER = "RemoveProductCartController";
     public static final String CHANGE_PRODUCT_CART_CONTROLLER = "ChangeProductCartController";
+
+    // order
+    public static final String SUBMIT_ORDER_CONTROLLER = "SubmitOrderController";
+
 }

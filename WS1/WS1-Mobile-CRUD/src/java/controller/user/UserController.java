@@ -12,8 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.MobileDAO;
 import model.MobileDTO;
+import model.UserDTO;
 
 @WebServlet(name = "UserController", urlPatterns = {"/UserController"})
 public class UserController extends HttpServlet {
@@ -24,9 +26,21 @@ public class UserController extends HttpServlet {
         try {
             List<MobileDTO> mobilesList = new MobileDAO().getAllMobile();
             request.setAttribute("LIST_MOBILE", mobilesList);
-            request.getRequestDispatcher("./user.jsp").forward(request, response);
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
+                if (user != null) {
+                    System.out.println("Current user: " + user);
+                } else {
+                    response.sendRedirect("login.jsp"); // Redirect to login page if session is null
+                }
+            } else {
+                response.sendRedirect("login.jsp"); // Redirect to login page if session is null
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            request.getRequestDispatcher("./user.jsp").forward(request, response);
         }
     }
 

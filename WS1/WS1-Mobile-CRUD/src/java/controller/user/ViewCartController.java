@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.UserDTO;
 
 /**
  *
@@ -23,7 +25,19 @@ public class ViewCartController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("./viewCart.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
+            if (user != null) {
+                System.out.println("Current user: " + user);
+                request.setAttribute("LOGIN_USER", user);
+                request.getRequestDispatcher("./viewCart.jsp").forward(request, response);
+            } else {
+                response.sendRedirect("login.jsp"); // Redirect to login page if session is null
+            }
+        } else {
+            response.sendRedirect("login.jsp"); // Redirect to login page if session is null
+        }
     }
 
     @Override

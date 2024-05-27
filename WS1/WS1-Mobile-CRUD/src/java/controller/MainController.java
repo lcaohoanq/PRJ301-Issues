@@ -67,6 +67,8 @@ public class MainController extends HttpServlet {
                 case ServletName.CHANGE_PRODUCT_QUANTITY:
                     directTo = ServletController.REMOVE_PRODUCT_CART_CONTROLLER;
                     break;
+                case ServletName.SUBMIT_ORDER:
+                    directTo = ServletController.SUBMIT_ORDER_CONTROLLER;
                 default:
                     request.setAttribute("ERROR", "Your action not supported");
                     break;
@@ -75,6 +77,7 @@ public class MainController extends HttpServlet {
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
         } finally {
+            System.out.println("MainController will direct to: " + directTo);
             request.getRequestDispatcher(directTo).forward(request, response);
         }
     }

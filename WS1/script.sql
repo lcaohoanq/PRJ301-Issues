@@ -18,6 +18,22 @@ CREATE TABLE [tbl_User] (
 	[role] int --0: user, 1: manager, 2: staff
 )
 
+CREATE TABLE [tbl_Order] (
+	[orderId] varchar(20) PRIMARY KEY,
+	[time] datetime,
+	[userId] varchar(20),
+	FOREIGN KEY ([userId]) REFERENCES [tbl_User]([userId])
+)
+
+CREATE TABLE [tbl_OrderDetail] (
+    [orderId] varchar(20),
+    [mobileId] varchar(10),
+    [quantity] int,
+    PRIMARY KEY ([orderId], [mobileId]), -- Composite primary key
+    FOREIGN KEY ([orderId]) REFERENCES [tbl_Order]([orderId]),
+    FOREIGN KEY ([mobileId]) REFERENCES [tbl_Mobile]([mobileId])
+);
+
 -- Insert sample data into tbl_Mobile
 INSERT INTO [tbl_Mobile] ([mobileId], [description], [price], [mobileName], [yearOfProduction], [quantity], [notSale])
 VALUES 
@@ -41,4 +57,48 @@ VALUES
 ('US002', '901234', 'Bob Brown', 0),
 ('ST002', '567890', 'Charlie Davis', 2);
 
+-- Insert sample data into tbl_Order
+INSERT INTO [tbl_Order] ([orderId], [time], [userId])
+VALUES 
+('ORD001', '2024-05-01 10:00:00', 'US001'),
+('ORD002', '2024-05-02 11:00:00', 'US002'),
+('ORD003', '2024-05-03 12:00:00', 'US001'),
+('ORD004', '2024-05-04 13:00:00', 'US002'),
+('ORD005', '2024-05-05 14:00:00', 'US001'),
+('ORD006', '2024-05-06 15:00:00', 'US002'),
+('ORD007', '2024-05-07 16:00:00', 'US001'),
+('ORD008', '2024-05-08 17:00:00', 'US002'),
+('ORD009', '2024-05-09 18:00:00', 'US001'),
+('ORD010', '2024-05-10 19:00:00', 'US99');
+
+-- Insert sample data into tbl_OrderDetail
+INSERT INTO [tbl_OrderDetail] ([orderId], [mobileId], [quantity])
+VALUES 
+('ORD001', 'MOB001', 1),
+('ORD001', 'MOB004', 2),
+('ORD002', 'MOB002', 1),
+('ORD002', 'MOB005', 1),
+('ORD003', 'MOB003', 3),
+('ORD003', 'MOB006', 1),
+('ORD004', 'MOB007', 1),
+('ORD004', 'MOB008', 2),
+('ORD005', 'MOB009', 1),
+('ORD005', 'MOB010', 2),
+('ORD006', 'MOB001', 2),
+('ORD006', 'MOB003', 1),
+('ORD007', 'MOB004', 1),
+('ORD007', 'MOB006', 1),
+('ORD008', 'MOB002', 1),
+('ORD008', 'MOB008', 1),
+('ORD009', 'MOB005', 1),
+('ORD009', 'MOB009', 1),
+('ORD010', 'MOB001', 1),
+('ORD010', 'MOB010', 1);
+
 SELECT * FROM tbl_Mobile
+SELECT * FROM tbl_Order
+SELECT * FROM tbl_OrderDetail
+SELECT * FROM tbl_User
+
+SELECT * FROM tbl_Mobile mb
+WHERE mb.mobileId in (SELECT od.mobileId FROM tbl_OrderDetail od)

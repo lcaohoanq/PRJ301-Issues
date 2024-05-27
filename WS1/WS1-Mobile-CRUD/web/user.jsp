@@ -142,7 +142,9 @@
             }
         %>
 
-        <a href="ViewCartController">Click here to show your cart</a><br><br>
+        <div class="d-flex flex-row justify-content-end align-items-center me-3">
+            <a class="btn btn-primary" href="ViewCartController">Show your cart</a><br><br>
+        </div>
 
         <%
             String message = (String) request.getAttribute("MESSAGE");
