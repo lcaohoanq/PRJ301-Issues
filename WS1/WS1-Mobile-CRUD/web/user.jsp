@@ -63,6 +63,7 @@
                         <th scope="col">Quantity available</th>
                         <th scope="col">Sale</th>
                         <th scope="col">Add to cart</th>
+                        <th scope="col">Wishlist</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -115,6 +116,9 @@
                         <td>
                             <button id="addToCart-btn" class="btn btn-outline-primary" type="submit" name="action" value="AddToCart">Add to cart</button>
                         </td>
+                        <td>
+                            <button class="btn btn-outline-danger" type="button" name="action" value="SaveItem">❤️</button>
+                        </td>
                     </tr>
                 </form>
                 <%
@@ -142,8 +146,14 @@
             }
         %>
 
-        <div class="d-flex flex-row justify-content-end align-items-center me-3">
-            <a class="btn btn-primary" href="ViewCartController">Show your cart</a><br><br>
+        <div class="d-flex justify-content-end">
+            <div class="d-flex flex-row justify-content-end align-items-center me-3">
+                <a class="btn btn-primary" href="ViewCartController">Show your cart</a><br><br>
+            </div>
+
+            <div class="d-flex flex-row justify-content-end align-items-center me-3">
+                <a class="btn btn-danger" href="#">Show wishlist</a><br><br>
+            </div>
         </div>
 
         <%
