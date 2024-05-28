@@ -54,7 +54,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelector("#login-btn").addEventListener("click", function() {
-                window.location.href = "/mobile-crud/login.jsp";
+                window.location.href = "/mobile-crud/LoginController";
             });
         });
     </script>

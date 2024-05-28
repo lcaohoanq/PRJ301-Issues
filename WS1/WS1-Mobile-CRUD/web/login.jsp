@@ -27,7 +27,7 @@
                 msg = failMsg;
             }
         %>
-        
+
         <%
             UserError userError = (UserError) request.getAttribute("USER_ERROR");
             if (userError == null) {
@@ -78,17 +78,19 @@
                         <button name="action" value="Login">Submit</button>
                     </div>
                 </form>
-                <div class="google-button">
-                    <button class="google-btn" id="log-google">
-                        <div class="google-icon-wrapper">
-                            <img
-                                class="google-icon"
-                                src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                                />
-                        </div>
-                        <div class="btn-text"><p>Sign in with Google</p></div>
-                    </button>
-                </div>
+                <form action="GoogleLoginController" method="POST">
+                    <div class="google-button">
+                        <button class="google-btn" id="log-google">
+                            <div class="google-icon-wrapper">
+                                <img
+                                    class="google-icon"
+                                    src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                                    />
+                            </div>
+                            <div class="btn-text"><p>Sign in with Google</p></div>
+                        </button>
+                    </div>
+                </form>
                 <div class="bottom-btn">
                     <p>Not a member?</p>
                     <a href="./register.jsp">Sign up here</a>
