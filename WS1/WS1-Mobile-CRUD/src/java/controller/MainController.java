@@ -1,7 +1,7 @@
 package controller;
 
 import constant.ServletController;
-import constant.ServletName;
+import constant.ActionValue;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,55 +20,57 @@ public class MainController extends HttpServlet {
         System.out.println("Action: " + request.getParameter("action"));
         try {
             switch (request.getParameter("action")) {
-                case ServletName.LOGIN:
+                case ActionValue.LOGIN:
                     directTo = ServletController.LOGIN_CONTROLLER;
                     break;
-                case ServletName.REGISTER:
+                case ActionValue.REGISTER:
                     directTo = ServletController.REGISTER_CONTROLLER;
                     break;
-                case ServletName.SEARCH:
+                case ActionValue.SEARCH:
                     directTo = ServletController.SEARCH_CONTROLLER;
                     break;
-                case ServletName.UPDATE:
+                case ActionValue.UPDATE:
                     directTo = ServletController.UPDATE_CONTROLLER;
                     break;
-                case ServletName.DELETE:
+                case ActionValue.DELETE:
                     directTo = ServletController.DELETE_CONTROLLER;
                     break;
-                case ServletName.LOGOUT:
+                case ActionValue.LOGOUT:
                     directTo = ServletController.LOGOUT_CONTROLLER;
                     break;
                 // Case for staff: Insert, Update, Delete, Search
-                case ServletName.SEARCH_PRODUCT_STAFF:
+                case ActionValue.SEARCH_PRODUCT_STAFF:
                     directTo = ServletController.SEARCH_PRODUCT_STAFF_CONTROLLER;
                     break;
-                case ServletName.INSERT_PRODUCT_STAFF:
+                case ActionValue.INSERT_PRODUCT_STAFF:
                     directTo = ServletController.INSERT_PRODUCT_STAFF_CONTROLLER;
                     break;
-                case ServletName.UPDATE_PRODUCT_STAFF:
+                case ActionValue.UPDATE_PRODUCT_STAFF:
                     directTo = ServletController.UPDATE_PRODUCT_STAFF_CONTROLLER;
                     break;
-                case ServletName.DELETE_PRODUCT_STAFF:
+                case ActionValue.DELETE_PRODUCT_STAFF:
                     directTo = ServletController.DELETE_PRODUCT_STAFF_CONTROLLER;
                     break;
                 // Case for user: Search, Add to cart, View cart, Delete from cart
-                case ServletName.SEARCH_PRODUCT_USER:
+                case ActionValue.SEARCH_PRODUCT_USER:
                     directTo = ServletController.SEARCH_PRODUCT_USER_CONTROLLER;
                     break;
-                case ServletName.ADD_TO_CART:
+                case ActionValue.ADD_TO_CART:
                     directTo = ServletController.ADD_TO_CART_CONTROLLER;
                     break;
-                case ServletName.VIEW_CART:
+                case ActionValue.VIEW_CART:
                     directTo = ServletController.VIEW_CART_CONTROLLER;
                     break;
-                case ServletName.REMOVE_FROM_CART:
+                case ActionValue.REMOVE_FROM_CART:
                     directTo = ServletController.REMOVE_PRODUCT_CART_CONTROLLER;
                     break;
-                case ServletName.CHANGE_PRODUCT_QUANTITY:
+                case ActionValue.CHANGE_PRODUCT_QUANTITY:
                     directTo = ServletController.REMOVE_PRODUCT_CART_CONTROLLER;
                     break;
-                case ServletName.SUBMIT_ORDER:
+                case ActionValue.SUBMIT_ORDER:
                     directTo = ServletController.SUBMIT_ORDER_CONTROLLER;
+                case ActionValue.SAVE_ITEM:
+                    directTo = ServletController.ADD_TO_WISH_LIST_CONTROLLER;
                 default:
                     request.setAttribute("ERROR", "Your action not supported");
                     break;

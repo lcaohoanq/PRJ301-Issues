@@ -18,7 +18,7 @@ import model.UserDTO;
  *
  * @author lcaohoanq
  */
-@WebServlet(name = "ViewCart", urlPatterns = {"/ViewCartController"})
+@WebServlet(name = "ViewCart", urlPatterns = { "/ViewCartController" })
 public class ViewCartController extends HttpServlet {
 
     @Override
@@ -33,10 +33,10 @@ public class ViewCartController extends HttpServlet {
                 request.setAttribute("LOGIN_USER", user);
                 request.getRequestDispatcher("./viewCart.jsp").forward(request, response);
             } else {
-                response.sendRedirect("login.jsp"); // Redirect to login page if session is null
+                response.sendRedirect("LoginController"); // Redirect to login page if session is null
             }
         } else {
-            response.sendRedirect("login.jsp"); // Redirect to login page if session is null
+            response.sendRedirect("LoginController"); // Redirect to login page if session is null
         }
     }
 

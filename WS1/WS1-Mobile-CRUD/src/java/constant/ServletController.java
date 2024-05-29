@@ -24,5 +24,8 @@ public class ServletController {
 
     // order
     public static final String SUBMIT_ORDER_CONTROLLER = "SubmitOrderController";
+    
+    // wishlist
+    public static final String ADD_TO_WISH_LIST_CONTROLLER = "AddToWishlistController";
 
 }

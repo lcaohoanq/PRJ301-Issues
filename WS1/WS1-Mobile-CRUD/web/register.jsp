@@ -43,7 +43,7 @@
                             name="userID"
                             />
                         </br>
-                        <div id="invalid-feedback"> 
+                        <div id="invalid-feedback">
                             <p style="color: red; margin-top: 1vh; text-align: left; padding-left: 50px; font-style: italic"><%= userError != null ? userError.getUserID() : ""%></p>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                             name="name"
                             />
                         </br>
-                        <div id="invalid-feedback"> 
+                        <div id="invalid-feedback">
                             <p style="color: red; margin-top: 1vh; text-align: left; padding-left: 50px ; font-style: italic"><%= userError != null ? userError.getName() : ""%></p>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                             name="password"
                             />
                         </br>
-                        <div id="invalid-feedback"> 
+                        <div id="invalid-feedback">
                             <p style="color: red; margin-top: 1vh; text-align: left; padding-left: 50px; font-style: italic"><%= userError != null ? userError.getPassword() : ""%></p>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                             name="confirm"
                             />
                         </br>
-                        <div id="invalid-feedback"> 
+                        <div id="invalid-feedback">
                             <p style="color: red; margin-top: 1vh; text-align: left; padding-left: 50px; font-style: italic"><%= userError != null ? userError.getConfirm() : ""%> </p>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                         <p>I Agree to the&nbsp;</p>
                         <a href="#"> Term & Condition</a>
                     </div>
-                    <div id="invalid-feedback"> 
+                    <div id="invalid-feedback">
                         <p style="color: red; text-align: left; padding-left: 50px; font-style: italic"><%= userError != null ? userError.getTickBox() : ""%> </p>
                     </div>
                 </form>

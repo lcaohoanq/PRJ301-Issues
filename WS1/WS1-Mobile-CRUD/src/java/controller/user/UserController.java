@@ -17,7 +17,7 @@ import model.MobileDAO;
 import model.MobileDTO;
 import model.UserDTO;
 
-@WebServlet(name = "UserController", urlPatterns = {"/UserController"})
+@WebServlet(name = "UserController", urlPatterns = { "/UserController" })
 public class UserController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -32,10 +32,10 @@ public class UserController extends HttpServlet {
                 if (user != null) {
                     System.out.println("Current user: " + user);
                 } else {
-                    response.sendRedirect("login.jsp"); // Redirect to login page if session is null
+                    response.sendRedirect("LoginController"); // Redirect to login page if session is null
                 }
             } else {
-                response.sendRedirect("login.jsp"); // Redirect to login page if session is null
+                response.sendRedirect("LoginController"); // Redirect to login page if session is null
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -44,14 +44,15 @@ public class UserController extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -62,10 +63,10 @@ public class UserController extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

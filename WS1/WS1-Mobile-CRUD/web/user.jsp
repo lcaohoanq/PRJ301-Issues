@@ -20,7 +20,7 @@
         <%
             UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
             if (loginUser == null || loginUser.getRoleID() != 0) {
-                response.sendRedirect("login.jsp");
+                response.sendRedirect("LoginController");
                 return;
             }
         %>
@@ -117,7 +117,7 @@
                             <button id="addToCart-btn" class="btn btn-outline-primary" type="submit" name="action" value="AddToCart">Add to cart</button>
                         </td>
                         <td>
-                            <button class="btn btn-outline-danger" type="button" name="action" value="SaveItem">❤️</button>
+                            <button id="addToWishList-btn" class="btn btn-outline-danger" type="submit" name="action" value="SaveItem">❤️</button>
                         </td>
                     </tr>
                 </form>
@@ -148,11 +148,11 @@
 
         <div class="d-flex justify-content-end">
             <div class="d-flex flex-row justify-content-end align-items-center me-3">
-                <a class="btn btn-primary" href="ViewCartController">Show your cart</a><br><br>
+                <a class="btn btn-primary" href="ViewCartController">Show your cart</a>
             </div>
 
             <div class="d-flex flex-row justify-content-end align-items-center me-3">
-                <a class="btn btn-danger" href="#">Show wishlist</a><br><br>
+                <a class="btn btn-danger" href="ViewWishListController">Show Wishlist</a><br><br>
             </div>
         </div>
 
@@ -163,7 +163,20 @@
             }
         %>
         <%= message%>
-
+        <script>
+//            document.addEventListener("DOMContentLoaded", function () {
+//                document.querySelectorAll("#addToWishList-btn").forEach((btn) => {
+//                    btn.addEventListener("click", function (e) {
+//                        e.preventDefault();
+//                        if(btn.className === "btn btn-danger"){
+//                            btn.className = "btn btn-outline-danger";
+//                        } else {
+//                            btn.className = "btn btn-danger";
+//                        }
+//                    });
+//                });
+//            });
+//        </script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

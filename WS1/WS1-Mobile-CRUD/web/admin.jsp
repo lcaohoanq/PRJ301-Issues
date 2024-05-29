@@ -55,7 +55,7 @@
               </div>
             </nav>
           </header>
-        
+
         <form action="MainController" id="search-form" method="GET">
             Search<input type="text" name="search" value="<%= search%>"/>
             <input type="submit" name="action" value="Search"/>
@@ -100,7 +100,7 @@
                     <td>
                         <a id="delete-btn" href="MainController?userID=<%= user.getUserID()%>&action=Delete&search=<%= search%>">Delete</a>
                     </td>
-                    <!--update i day ne-->  
+                    <!--update i day ne-->
                     <td>
                         <input class="center-element" id="update-btn" type="submit" name="action" value="Update"/>
                         <input type="hidden" name="search" value="<%= search%>"/>
@@ -117,7 +117,7 @@
             }
         }
     %>
-    
+
     <%
         String msg = (String) request.getAttribute("ERROR");
         if (msg != null) {

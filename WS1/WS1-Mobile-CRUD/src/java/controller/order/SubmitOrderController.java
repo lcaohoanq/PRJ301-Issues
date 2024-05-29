@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import model.CartDTO;
 import model.MobileDTO;
 
-@WebServlet(name = "SubmitOrderController", urlPatterns = {"/SubmitOrderController"})
+@WebServlet(name = "SubmitOrderController", urlPatterns = { "/SubmitOrderController" })
 public class SubmitOrderController extends HttpServlet {
 
     @Override
@@ -36,7 +36,7 @@ public class SubmitOrderController extends HttpServlet {
                 response.sendRedirect("cart.jsp"); // Redirect to cart page if cart is empty
             }
         } else {
-            response.sendRedirect("login.jsp"); // Redirect to login page if session is null
+            response.sendRedirect("LoginController"); // Redirect to login page if session is null
         }
     }
 }

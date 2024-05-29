@@ -1,6 +1,6 @@
 package constant;
 
-public class ServletName {
+public class ActionValue {
     public static final String LOGIN = "Login";
     public static final String REGISTER = "Register";
     public static final String DELETE = "Delete";
@@ -23,4 +23,8 @@ public class ServletName {
     
     // order
     public static final String SUBMIT_ORDER = "SubmitOrder";
+    
+    // wishlist
+    public static final String SAVE_ITEM = "SaveItem";
+
 }

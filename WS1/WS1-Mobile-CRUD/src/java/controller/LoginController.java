@@ -6,7 +6,7 @@ package controller;
  * and open the template in the editor.
  */
 import util.GoogleLogin;
-import entity.GoogleAccount;
+import model.GoogleAccount;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -24,7 +24,7 @@ import model.UserError;
 import util.DataHandler;
 import util.PasswordHandler;
 
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginController"})
+@WebServlet(name = "LoginServlet", urlPatterns = { "/LoginController" })
 public class LoginController extends HttpServlet {
 
     private static final int US = 0;
@@ -56,9 +56,9 @@ public class LoginController extends HttpServlet {
             if (!DataHandler.isEmptyFieldV2(userID, pass)) {
                 System.out.println("Password input: " + pass);
                 System.out.println("Password indb: " + new UserDAO().getPassword(userID));
-                
+
                 System.out.println(new PasswordHandler().authenticate(pass.toCharArray(), new UserDAO().getPassword(userID)));
-                
+
                 if (new PasswordHandler().authenticate(pass.toCharArray(), new UserDAO().getPassword(userID))) {
                     UserDTO userDTO = new UserDAO().findUserById(userID);
                     String ms = "";
