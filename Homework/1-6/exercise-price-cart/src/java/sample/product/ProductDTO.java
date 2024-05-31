@@ -13,15 +13,22 @@ public class ProductDTO {
     private String id;
     private String brand;
     private String name;
-    private double price;
+    private int price;
     private int quantity;
 
     public ProductDTO() {
     }
 
-    public ProductDTO(String id, String brand, String name, double price, int quantity) {
+    public ProductDTO(String id, String brand, String name, int price, int quantity) {
         this.id = id;
         this.brand = brand;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public ProductDTO(String id, String name, int price, int quantity) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -47,11 +54,11 @@ public class ProductDTO {
         this.name = name;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

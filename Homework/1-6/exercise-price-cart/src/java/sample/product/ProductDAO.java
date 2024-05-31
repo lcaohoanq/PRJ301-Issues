@@ -25,7 +25,7 @@ public class ProductDAO {
                     String id = rs.getString("id");
                     String brand = rs.getString("brand");
                     String name = rs.getString("name");
-                    double price = rs.getDouble("price");
+                    int price = rs.getInt("price");
                     int quantity = rs.getInt("quantity");
                     list.add(new ProductDTO(id, brand, name, price, quantity));
                 }
@@ -61,7 +61,7 @@ public class ProductDAO {
             ps.setString(1, product.getId());
             ps.setString(2, product.getBrand());
             ps.setString(3, product.getName());
-            ps.setDouble(4, product.getPrice());
+            ps.setInt(4, product.getPrice());
             ps.setInt(5, product.getQuantity());
 
             int affectedRows = ps.executeUpdate();
@@ -85,7 +85,7 @@ public class ProductDAO {
                     String id = rs.getString("id");
                     String brand = rs.getString("brand");
                     String name = rs.getString("name");
-                    double price = rs.getDouble("price");
+                    int price = rs.getInt("price");
                     int quantity = rs.getInt("quantity");
                     product = new ProductDTO(id, brand, name, price, quantity);
                 }
@@ -103,7 +103,7 @@ public class ProductDAO {
         try (Connection conn = DBUtils.getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, product.getName());
-            ps.setDouble(2, product.getPrice());
+            ps.setInt(2, product.getPrice());
             ps.setInt(3, product.getQuantity());
             ps.setString(4, product.getId());
 
@@ -124,7 +124,7 @@ public class ProductDAO {
                     String id = rs.getString("id");
                     String brand = rs.getString("brand");
                     String name = rs.getString("name");
-                    double price = rs.getDouble("price");
+                    int price = rs.getInt("price");
                     int quantity = rs.getInt("quantity");
                     list.add(new ProductDTO(id, brand, name, price, quantity));
                 }
@@ -143,7 +143,7 @@ public class ProductDAO {
                 while (rs.next()) {
                     String id = rs.getString("id");
                     String name = rs.getString("name");
-                    double price = rs.getDouble("price");
+                    int price = rs.getInt("price");
                     int quantity = rs.getInt("quantity");
                     list.add(new ProductDTO(id, brand, name, price, quantity));
                 }

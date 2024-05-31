@@ -36,7 +36,7 @@ INSERT [dbo].[tblUsers] ([userID], [fullName], [password]) VALUES (N'1', N'Minh'
 GO
 INSERT [dbo].[tblUsers] ([userID], [fullName], [password]) VALUES (N'2', N'TNam', N'2')
 GO
-INSERT [dbo].[tblUsers] ([userID], [fullName], [password]) VALUES (N'3', N'Vu', N'3')
+INSERT [dbo].[tblUsers] ([userID], [fullName], [password]) VALUES (N'hoang', N'caohoangluu', N'1')
 GO
 
 SELECT * FROM tblItems

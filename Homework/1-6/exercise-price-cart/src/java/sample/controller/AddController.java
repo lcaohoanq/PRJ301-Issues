@@ -33,7 +33,7 @@ public class AddController extends HttpServlet {
 
         if (!isEmptyField(id, brand, name, priceStr, quantityStr)) {
             // data validation
-            double price = Double.parseDouble(priceStr);
+            int price = Integer.parseInt(priceStr);
             int quantity = Integer.parseInt(quantityStr);
 
             if (isDuplicateID(id)) {
@@ -42,10 +42,10 @@ public class AddController extends HttpServlet {
             } else if (!isValidFormatId(id)) {
                 request.setAttribute("MESSAGE", "ID không hợp lệ.");
                 request.getRequestDispatcher(itemsList).forward(request, response);
-            } else if (!isValidFormatPrice(priceStr)) {
+            } else if (!isValidFormatInteger(priceStr)) {
                 request.setAttribute("MESSAGE", "Giá sản phẩm không hợp lệ.");
                 request.getRequestDispatcher(itemsList).forward(request, response);
-            } else if (!isValidFormatQuantity(quantityStr)) {
+            } else if (!isValidFormatInteger(quantityStr)) {
                 request.setAttribute("MESSAGE", "Số lượng sản phẩm không hợp lệ.");
                 request.getRequestDispatcher(itemsList).forward(request, response);
             } else {
@@ -86,11 +86,7 @@ public class AddController extends HttpServlet {
         return id.matches("^\\d{5}$");
     }
 
-    private boolean isValidFormatPrice(String price) {
-        return price.matches("^\\d+\\.\\d+$");
-    }
-
-    private boolean isValidFormatQuantity(String quantity) {
+    private boolean isValidFormatInteger(String quantity) {
         return quantity.matches("^[1-9]\\d*$");
     }
 

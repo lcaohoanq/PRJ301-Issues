@@ -11,7 +11,7 @@ import sample.product.ProductDAO;
 import sample.product.ProductDTO;
 
 @WebServlet(name = "SearchController", urlPatterns = {"/SearchController"})
-public class SearchController extends HttpServlet {
+public class AdminSearchController extends HttpServlet {
 
     private static final String ERROR = "itemsList.jsp";
     private static final String SUCCESS = "itemsList.jsp";

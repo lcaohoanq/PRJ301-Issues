@@ -33,7 +33,7 @@ public class UpdateController extends HttpServlet {
             String productId = request.getParameter("productId");
             String brand = request.getParameter("brand");
             String name = request.getParameter("name");
-            float price = Float.parseFloat(request.getParameter("price"));
+            int price = Integer.parseInt(request.getParameter("price"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             ProductDTO product = new ProductDTO(productId, brand, name, price, quantity);
             ProductDAO dao = new ProductDAO();

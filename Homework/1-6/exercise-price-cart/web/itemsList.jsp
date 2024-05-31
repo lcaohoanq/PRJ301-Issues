@@ -54,7 +54,7 @@
                 toPrice = "";
             }
         %>
-        <form action="SearchController" method="POST">
+        <form action="AdminSearchController" method="POST">
             From Price: <input type="text" name="fromPrice" value="<%= fromPrice%>"/>
             To Price: <input type="text" name="toPrice" value="<%= toPrice%>"/>
             <input type="submit" value="Search"/>
@@ -93,7 +93,7 @@
                 <%
                     int count = 0;
                     for (ProductDTO product : listProduct) {
-                        double subtotal = product.getPrice() * product.getQuantity();
+                        int subtotal = product.getPrice() * product.getQuantity();
                 %>
                 <tr>
             <form action="MainController" method="post">
@@ -106,12 +106,12 @@
                     <input type="text" name="name" value="<%= product.getName()%>" required=""/>
                 </td>
                 <td>
-                    <input type="text"  name="price" value="<%=  (float) product.getPrice()%>" required="" />
+                    <input type="text"  name="price" value="<%=  product.getPrice()%>" required="" />
                 </td>
                 <td>
                     <input type="number" name="quantity" value="<%= product.getQuantity()%>" required="" />
                 </td>
-                <td><%=  (float) subtotal%></td>
+                <td><%= subtotal%></td>
                 <td>
                     <input type="hidden" name="fromPrice" value="<%= fromPrice%>"/>
                     <input type="hidden" name="toPrice" value="<%= toPrice%>" />

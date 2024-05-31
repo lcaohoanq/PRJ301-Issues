@@ -41,6 +41,7 @@ public class MainController extends HttpServlet {
         String url = ERROR;
         try {
             String action = request.getParameter("action");
+            System.out.println("Action: " + action);
             if (LOGIN.equals(action)) {
                 url = LOGIN_CONTROLLER;
             } else if (SEARCH.equals(action)) {
@@ -53,8 +54,12 @@ public class MainController extends HttpServlet {
                 url = ADD_CONTROLLER;
             } else if (REMOVE.equals(action)) {
                 url = REMOVE_CONTROLLER;
-            }else if (UPDATE.equals(action)) {
+            } else if (UPDATE.equals(action)) {
                 url = UPDATE_CONTROLLER;
+            } else if (action.equals("AddToCart")) {
+                url = "AddToCartController";
+            } else if (action.equals("ViewCart")) {
+                url = "ViewCartController";
             } else {
                 request.setAttribute("ERROR", "Your action not support");
             }
@@ -65,14 +70,15 @@ public class MainController extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -83,10 +89,10 @@ public class MainController extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
