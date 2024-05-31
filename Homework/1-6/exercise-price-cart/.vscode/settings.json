@@ -1,0 +1,9 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "/media/lcaohoanq/DATA1/FPT/SU24/PRJ301/PRJ301-Issues/PRJ301-Issues/WS1/WS1-Mobile-CRUD/web/lib/javax.servlet.jsp.jstl-1.2.1.jar",
+    "/media/lcaohoanq/DATA1/FPT/SU24/PRJ301/PRJ301-Issues/PRJ301-Issues/WS1/WS1-Mobile-CRUD/web/lib/javax.servlet.jsp.jstl-api-1.2.1.jar",
+    "/media/lcaohoanq/DATA1/FPT/SU24/PRJ301/PRJ301-Issues/PRJ301-Issues/WS1/WS1-Mobile-CRUD/web/lib/javax.servlet-api-4.0.1.jar",
+    "/media/lcaohoanq/DATA1/FPT/SU24/PRJ301/PRJ301-Issues/PRJ301-Issues/WS1/WS1-Mobile-CRUD/web/lib/sqljdbc4.jar"
+  ]
+}
