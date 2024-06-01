@@ -55,7 +55,9 @@ VALUES
 ('MN001', '789012', 'Jane Smith', 1),
 ('ST001', '345678', 'Alice Johnson', 2),
 ('US002', '901234', 'Bob Brown', 0),
-('ST002', '567890', 'Charlie Davis', 2);
+('ST002', '567890', 'Charlie Davis', 2),
+('US123', '$31$16$YgGVBhunuFPPHv3geroMdPFT10U6o7jfwwauloxwabY', 'hoang', 0),
+('ST123', '$31$16$r9EOiLvbvqPA7absbi_-c_8bBlAIlY516LcX4g6Q9CQ', 'hoang', 2);
 
 -- Insert sample data into tbl_Order
 INSERT INTO [tbl_Order] ([orderId], [time], [userId])
@@ -69,7 +71,7 @@ VALUES
 ('ORD007', '2024-05-07 16:00:00', 'US001'),
 ('ORD008', '2024-05-08 17:00:00', 'US002'),
 ('ORD009', '2024-05-09 18:00:00', 'US001'),
-('ORD010', '2024-05-10 19:00:00', 'US99');
+('ORD010', '2024-05-10 19:00:00', 'US001');
 
 -- Insert sample data into tbl_OrderDetail
 INSERT INTO [tbl_OrderDetail] ([orderId], [mobileId], [quantity])
