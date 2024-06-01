@@ -54,14 +54,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
+                        <th scope="col" class="text-primary">No</th>
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Total</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,17 +69,13 @@
                     %>
                 <form action="MainController" method="POST">
                     <tr>
-                        <td><%= count++%></td>
+                        <td class="text-primary"><%= count++%></td>
                         <td>
                             <%= p.getMobileId()%>
                             <input type="hidden" name="id" value="<%= p.getMobileId()%>"/>
                         </td>
                         <td><%= p.getMobileName()%></td>
                         <td><%= p.getPrice()%></td>
-                        <td>
-                            <input type="number" min="1" name="quantity" value="<%= p.getQuantity()%>" required=""/>
-                        </td>
-                        <td><%= p.getPrice() * p.getQuantity()%></td>
                     </tr>
                 </form>
                 <%

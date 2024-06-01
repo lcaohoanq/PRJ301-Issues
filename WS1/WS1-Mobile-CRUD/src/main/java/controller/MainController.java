@@ -71,6 +71,7 @@ public class MainController extends HttpServlet {
                     directTo = ServletController.SUBMIT_ORDER_CONTROLLER;
                 case ActionValue.SAVE_ITEM:
                     directTo = ServletController.ADD_TO_WISH_LIST_CONTROLLER;
+                    break;
                 default:
                     request.setAttribute("ERROR", "Your action not supported");
                     break;

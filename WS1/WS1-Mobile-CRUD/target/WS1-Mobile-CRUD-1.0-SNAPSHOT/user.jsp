@@ -164,19 +164,18 @@
         %>
         <%= message%>
         <script>
-//            document.addEventListener("DOMContentLoaded", function () {
-//                document.querySelectorAll("#addToWishList-btn").forEach((btn) => {
-//                    btn.addEventListener("click", function (e) {
-//                        e.preventDefault();
-//                        if(btn.className === "btn btn-danger"){
-//                            btn.className = "btn btn-outline-danger";
-//                        } else {
-//                            btn.className = "btn btn-danger";
-//                        }
-//                    });
-//                });
-//            });
-//        </script>
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelectorAll("#addToWishList-btn").forEach((btn) => {
+                    btn.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        if(btn.className === "btn btn-danger"){
+                            btn.className = "btn btn-outline-danger";
+                        } else {
+                            btn.className = "btn btn-danger";
+                        }
+                    });
+                });
+        </script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
