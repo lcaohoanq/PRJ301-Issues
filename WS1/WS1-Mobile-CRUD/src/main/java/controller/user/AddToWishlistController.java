@@ -3,6 +3,7 @@ package controller.user;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,29 +32,29 @@ public class AddToWishlistController extends HttpServlet {
             throws ServletException, IOException {
         System.out.println("WishList added item");
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            String mobileId = request.getParameter("mobileId");
-            String mobileName = request.getParameter("mobileName");
-            float mobilePrice = Float.parseFloat(request.getParameter("mobilePrice"));
-            int buy = 1;
+            try {
+                String mobileId = request.getParameter("mobileId");
+                String mobileName = request.getParameter("mobileName");
+                float mobilePrice = Float.parseFloat(request.getParameter("mobilePrice"));
+                int buy = 1;
 
             HttpSession session = request.getSession();
-            CartDTO cart = (CartDTO) session.getAttribute("CART");
-            if (cart == null) {
-                cart = new CartDTO();
-            }
-            boolean check = cart.add(new MobileDTO(mobileId, mobilePrice, mobileName, buy));
-            if (check) {
-                session.setAttribute("CART", cart);
-            }
+                CartDTO cart = (CartDTO) session.getAttribute("CART");
+                if (cart == null) {
+                    cart = new CartDTO();
+                }
+                boolean check = cart.add(new MobileDTO(mobileId, mobilePrice, mobileName, buy));
+                if (check) {
+                    session.setAttribute("CART", cart);
+                }
 
-        } catch (Exception e) {
-            log("Error at AddToWishlistController: " + e.toString());
-        } finally {
-            List<MobileDTO> mobilesList = new MobileDAO().getAllMobile();
-            request.setAttribute("LIST_MOBILE", mobilesList);
-            request.getRequestDispatcher("./user.jsp").forward(request, response);
+            } catch (Exception e) {
+                log("Error at AddToWishlistController: " + e.toString());
+            } finally {
+                List<MobileDTO> mobilesList = new MobileDAO().getAllMobile();
+                request.setAttribute("LIST_MOBILE", mobilesList);
+                request.getRequestDispatcher("./user.jsp").forward(request, response);
+            }
         }
-    }
 
-}
+    }
