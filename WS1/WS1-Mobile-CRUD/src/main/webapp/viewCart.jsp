@@ -81,7 +81,7 @@
                         <td><%= p.getMobileName()%></td>
                         <td><%= p.getPrice()%></td>
                         <td>
-                            <input type="number" min="1" name="quantity" value="<%= p.getQuantity()%>" required=""/>
+                            <input type="number" min="1" name="quantity" value="<%= p.getQuantity()%>" readonly=""/>
                         </td>
                         <td><%= p.getPrice() * p.getQuantity()%></td>
                         <td>
@@ -104,7 +104,18 @@
                 }
             %>
         </div>
-        </br>
+
+        <%
+            String msgQuantity = (String) request.getAttribute("MESSAGE_CHANGE_QUANTITY");
+
+            if (msgQuantity != null) {
+        %>
+        <script>
+             alert('<%= msgQuantity%>');
+        </script>
+        <%
+            }
+        %>
         <footer class="bg-light py-3">
             <div class="container text-center">
                 <form action="SubmitOrderController" method="GET">

@@ -64,11 +64,12 @@ public class MainController extends HttpServlet {
                 case ActionValue.REMOVE_FROM_CART:
                     directTo = ServletController.REMOVE_PRODUCT_CART_CONTROLLER;
                     break;
-                case ActionValue.CHANGE_PRODUCT_QUANTITY:
-                    directTo = ServletController.REMOVE_PRODUCT_CART_CONTROLLER;
+                case ActionValue.CHANGE_CART:
+                    directTo = ServletController.CHANGE_PRODUCT_CART_CONTROLLER;
                     break;
                 case ActionValue.SUBMIT_ORDER:
                     directTo = ServletController.SUBMIT_ORDER_CONTROLLER;
+                    break;
                 case ActionValue.SAVE_ITEM:
                     directTo = ServletController.ADD_TO_WISH_LIST_CONTROLLER;
                     break;

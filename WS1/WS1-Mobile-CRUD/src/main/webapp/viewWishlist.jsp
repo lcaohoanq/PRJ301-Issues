@@ -48,7 +48,7 @@
 
         <div class="content">
             <%
-                CartDTO cart = (CartDTO) session.getAttribute("CART");
+                CartDTO cart = (CartDTO) session.getAttribute("WISHLIST");
                 if (cart != null) {
             %>
             <table class="table">

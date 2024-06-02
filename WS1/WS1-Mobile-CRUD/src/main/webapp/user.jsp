@@ -24,7 +24,7 @@
                 return;
             }
         %>
-
+        
         <header>
             <nav class="navbar bg-body-tertiary">
                 <div class="container-fluid">
@@ -117,7 +117,7 @@
                             <button id="addToCart-btn" class="btn btn-outline-primary" type="submit" name="action" value="AddToCart">Add to cart</button>
                         </td>
                         <td>
-                            <button id="<%= count%>" class="btn btn-outline-danger addToWishList" type="submit" name="action" value="SaveItem">❤️</button>
+                            <button id="<%= count--%>" class="btn btn-outline-danger addToWishList" type="submit" name="action" value="SaveItem">❤️</button>
                         </td>
                     </tr>
                 </form>
@@ -162,39 +162,9 @@
                 message = "";
             }
         %>
-        <%= message%>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // Add event listeners to buttons with the value "AddItem"
-                document.querySelectorAll("button[type='submit'][value='SaveItem']").forEach((btn) => {
-                    btn.addEventListener("click", function (e) {
-                        e.preventDefault();
-                        console.log(`button: ${e.target.id}`);
-                        btn.classList.toggle('btn-outline-danger');
-                        btn.classList.toggle('btn-danger');
-                    });
-                });
-
-                // Handle form submission
-                document.querySelectorAll('form').forEach((form) => {
-                    form.addEventListener('submit', (event) => {
-                        event.preventDefault();
-
-                        // Only proceed if the submit button value is "AddItem"
-                        const submitButton = event.submitter;
-                        if (submitButton && submitButton.value === 'SaveItem') {
-                            const clickedButtons = Array.from(document.querySelectorAll('.btn-danger'));
-                            // Extract the ids of the clicked buttons
-                            const clickedButtonIds = clickedButtons.map(button => button.id);
-                            console.log(clickedButtonIds);
-
-                            // You can proceed with the form submission here if needed
-                            // form.submit();
-                        }
-                    });
-                });
-            });
-        </script>
+        <h3 class="text ms-2">
+            <%= message%>
+        </h3>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
