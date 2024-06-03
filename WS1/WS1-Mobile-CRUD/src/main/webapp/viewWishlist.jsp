@@ -1,7 +1,7 @@
 <%@page import="model.UserDTO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="model.MobileDTO"%>
-<%@page import="model.CartDTO"%>
+<%@page import="model.WishListDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -48,8 +48,8 @@
 
         <div class="content">
             <%
-                CartDTO cart = (CartDTO) session.getAttribute("WISHLIST");
-                if (cart != null) {
+                WishListDTO wishList = (WishListDTO) session.getAttribute("WISHLIST");
+                if (wishList != null) {
             %>
             <table class="table">
                 <thead>
@@ -58,13 +58,14 @@
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Price</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <%
                         int count = 1;
                         double total = 0;
-                        for (MobileDTO p : cart.getCart().values()) {
+                        for (MobileDTO p : wishList.getWishList().values()) {
                             total += p.getPrice() * p.getQuantity();
                     %>
                 <form action="MainController" method="POST">
@@ -76,6 +77,9 @@
                         </td>
                         <td><%= p.getMobileName()%></td>
                         <td><%= p.getPrice()%></td>
+                        <td>
+                            <button id="deleteWishList-btn" class="btn btn-outline-danger" type="submit" name="action" value="DeleteFromWishList">Delete from wish list</button>
+                        </td>
                     </tr>
                 </form>
                 <%

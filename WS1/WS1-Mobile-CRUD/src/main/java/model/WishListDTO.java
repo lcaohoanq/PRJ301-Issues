@@ -5,33 +5,33 @@ import java.util.Map;
 
 public class WishListDTO {
 
-    private Map<String, MobileDTO> cart;
+    private Map<String, MobileDTO> wishList;
 
     public WishListDTO() {
     }
 
-    public WishListDTO(Map<String, MobileDTO> cart) {
-        this.cart = cart;
+    public WishListDTO(Map<String, MobileDTO> wishList) {
+        this.wishList = wishList;
     }
 
-    public Map<String, MobileDTO> getCart() {
-        return cart;
+    public Map<String, MobileDTO> getWishList() {
+        return wishList;
     }
 
-    public void setCart(Map<String, MobileDTO> cart) {
-        this.cart = cart;
+    public void setCart(Map<String, MobileDTO> wishList) {
+        this.wishList = wishList;
     }
 
     public boolean add(MobileDTO mobile) {
         try {
-            if (this.cart == null) {
-                this.cart = new HashMap<>();
+            if (this.wishList == null) {
+                this.wishList = new HashMap<>();
             }
-            if (this.cart.containsKey(mobile.getMobileId())) {
-                int currentQuantity = this.cart.get(mobile.getMobileId()).getQuantity();
+            if (this.wishList.containsKey(mobile.getMobileId())) {
+                int currentQuantity = this.wishList.get(mobile.getMobileId()).getQuantity();
                 mobile.setQuantity(currentQuantity + mobile.getQuantity());
             }
-            this.cart.put(mobile.getMobileId(), mobile);
+            this.wishList.put(mobile.getMobileId(), mobile);
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -42,9 +42,9 @@ public class WishListDTO {
     public boolean change(String id, MobileDTO mobile) {
         boolean check = false;
         try {
-            if (this.cart != null) {
-                if (this.cart.containsKey(id)) {
-                    this.cart.replace(id, mobile);
+            if (this.wishList != null) {
+                if (this.wishList.containsKey(id)) {
+                    this.wishList.replace(id, mobile);
                     check = true;
                 }
             }
@@ -56,9 +56,9 @@ public class WishListDTO {
     public boolean remove(String id) {
         boolean check = false;
         try {
-            if (this.cart != null) {
-                if (this.cart.containsKey(id)) {
-                    this.cart.remove(id);
+            if (this.wishList != null) {
+                if (this.wishList.containsKey(id)) {
+                    this.wishList.remove(id);
                     check = true;
                 }
             }
