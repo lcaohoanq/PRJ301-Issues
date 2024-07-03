@@ -2,15 +2,17 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>History</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./style.css"/>
     </head>
     <body>
         <%
-            HttpSession session = request.getSession(false);
             if (session == null || session.getAttribute("username") == null) {
                 response.sendRedirect("login.jsp");
             }
@@ -21,13 +23,13 @@
             stmt.setInt(1, userId);
             ResultSet rs = stmt.executeQuery();
         %>
-        <h2>Appointment History</h2>
-        <table border="1">
+        <h2 class="text-center">Appointment History</h2>
+        <table class="table" border="1">
             <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Purpose</th>
-                <th>Status</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Purpose</th>
+                <th scope="col">Status</th>
             </tr>
             <%
                 while (rs.next()) {
@@ -44,6 +46,9 @@
                 conn.close();
             %>
         </table>
-        <a href="dashboard.jsp">Back to Dashboard</a>
+        <a class="btn btn-primary" href="dashboard.jsp">Back to Dashboard</a>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     </body>
 </html>
