@@ -13,7 +13,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.Session;
 
-public class Email {
+public class EmailUtils {
 
     private final String eFrom = "lvhhoangg1@gmail.com";
     private final String ePass = "ojlx ohfr qxwd llxx";
@@ -83,11 +83,11 @@ public class Email {
         return "ClothesShop - mã code xác nhận";
     }
 
-    public String messageNewOrder(String name, int sl, double total) {
+    public String messageNewOrder(String name, String appointmentDate, String appointmentTime, String purposeAppointment) {
         return "<!DOCTYPE html>\n"
                 + "<html>\n"
                 + "    <head>\n"
-                + "        <title>Email Contact</title>\n"
+                + "        <title>Appointment Confirmation</title>\n"
                 + "        <meta charset=\"UTF-8\">\n"
                 + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
                 + "    </head>\n"
@@ -108,7 +108,7 @@ public class Email {
                 + "                            <tr>\n"
                 + "                                <td>\n"
                 + "                                    <p class=\"brand\" style=\"margin:5px 0 0; font-size:30px;\n"
-                + "                                       margin:20px 0;\"><span style=\"color:#e67e22;\">Clothes</span>Shop</p> \n"
+                + "                                       margin:20px 0;\"><span style=\"color:#e67e22;\">Appointment</span>Service</p> \n"
                 + "                                </td>\n"
                 + "                            </tr>\n"
                 + "                            <tr>\n"
@@ -116,20 +116,31 @@ public class Email {
                 + "                                    border-bottom:2px solid #e67e22;\">\n"
                 + "                                    <h1 style=\" font-size:24px;\n"
                 + "                                        color:#e67e22;\n"
-                + "                                        margin:30px 0;\">ĐẶT HÀNG THÀNH CÔNG</h1>\n"
-                + "                                    <p style=\"margin:5px 0 0\">Khách hàng " + name + ",</p>\n"
-                + "                                    <p style=\"margin:5px 0 0\">Cảm ơn bạn đã tin tưởng và sử dụng dịch vụ, chính sách mua hàng của chúng tôi. </p>\n"
-                + "                                    <p style=\"margin:5px 0 0\">Thông tin đến bạn: </p>\n"
-                + "                                    <p style=\"margin:5px 0 0\">Số lượng sản phẩm: <span style=\"color:#e67e22;font-weight: bold;\"> " + sl + " </span></p>\n"
-                + "                                    <p style=\"margin:5px 0 0\">Số tiền sẽ thanh toán: <span style=\"color:#e67e22;font-weight: bold;\">" + total + "</span></p>\n"
-                + "                                    <p style=\"margin:5px 0 0\">Đơn hàng dự kiến sẽ giao đến bạn trong vòng 3 - 7 ngày tới. </p>\n"
-                + "                                    <p style=\"margin:5px 0 0\">Nếu bạn cần hỗ trợ gấp hãy liên hệ hotline: 1900 9090. </p>\n"
-                + "                                    <p style=\"margin:5px 0 0\">Xin cảm ơn. </p>\n"
+                + "                                        margin:30px 0;\">APPOINTMENT CONFIRMATION</h1>\n"
+                + "                                    <p style=\"margin:5px 0 0\">Dear " + name + ",</p>\n"
+                + "                                    <p style=\"margin:5px 0 0\">Thank you for scheduling an appointment with us. Here are the details of your appointment: </p>\n"
+                + "                                    <table style=\"width: 100%;\">\n"
+                + "                                        <tr>\n"
+                + "                                            <td class=\"label\">Date:</td>\n"
+                + "                                            <td style=\"color:#e67e22;font-weight: bold;\" class=\"value\">" + appointmentDate + "</td>\n"
+                + "                                        </tr>\n"
+                + "                                        <tr>\n"
+                + "                                            <td class=\"label\">Time:</td>\n"
+                + "                                            <td style=\"color:#e67e22;font-weight: bold;\" class=\"value\">" + appointmentTime + "</td>\n"
+                + "                                        </tr>\n"
+                + "                                        <tr>\n"
+                + "                                            <td class=\"label\">Purpose:</td>\n"
+                + "                                            <td style=\"color:#e67e22;font-weight: bold;\" class=\"value\">" + purposeAppointment + "</td>\n"
+                + "                                        </tr>\n"
+                + "                                    </table>\n"
+                + "                                    <p style=\"margin:5px 0 0\">We look forward to seeing you. If you need to reschedule or cancel your appointment, please contact us at least 24 hours in advance.</p>\n"
+                + "                                    <p style=\"margin:5px 0 0\">If you have any questions, feel free to call our support hotline: 1900 9090.</p>\n"
+                + "                                    <p style=\"margin:5px 0 0\">Thank you.</p>\n"
                 + "                                </td>\n"
                 + "                            </tr>\n"
                 + "                            <tr class=\"contact\" style=\"font-size:11px; color:#999;\">\n"
                 + "                                <td align=\"center\"> \n"
-                + "                                    Clothes Shop Ho Chi Minh - 0123 456 789 - clothesshop@gmail.com\n"
+                + "                                    Appointment Service - 0123 456 789 - appointments@example.com\n"
                 + "                                </td>\n"
                 + "                            </tr>\n"
                 + "                        </table>\n"
@@ -143,10 +154,10 @@ public class Email {
     }
 
     public static void main(String[] args) {
-        Email handleEmail = new Email();
+        EmailUtils handleEmail = new EmailUtils();
         String email = "hoangclw@gmail.com";
         String sub = "Subject";
         String mess = "Check email";
-        handleEmail.sendEmail(sub, handleEmail.messageNewOrder("hello", 1, 3.2), email);
+        handleEmail.sendEmail(sub, handleEmail.messageNewOrder("anh luu", "16 Apr 2024", "9:PM", "GAP GIAM DOC"), email);
     }
 }

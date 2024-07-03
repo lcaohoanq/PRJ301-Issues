@@ -88,6 +88,68 @@ public class UserDAO {
         return null;
     }
 
+    public String getUserName(int id) throws SQLException {
+        UserDTO user = null;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement("SELECT username FROM Users WHERE id = ?");
+                ptm.setInt(1, id);
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    return rs.getString("username");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return null;
+    }
+
+    public String getEmail(int id) throws SQLException {
+        UserDTO user = null;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement("SELECT email FROM Users WHERE id = ?");
+                ptm.setInt(1, id);
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    return rs.getString("email");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return null;
+    }
+
     public int getID(String username) throws SQLException {
         UserDTO user = null;
         Connection conn = null;
@@ -107,6 +169,14 @@ public class UserDAO {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    public static void main(String[] args) {
+        try {
+            System.out.println(new UserDAO().getEmail(3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

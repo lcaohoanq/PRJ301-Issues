@@ -34,16 +34,42 @@
             </tr>
             <%
                 while (rs.next()) {
+                    String status = rs.getString("status");
             %>
             <tr>
                 <td><%= rs.getDate("appointmentDate")%></td>
                 <td><%= rs.getTime("appointmentTime")%></td>
                 <td><%= rs.getString("purpose")%></td>
-                <td><%= rs.getString("status")%></td>
+                <td><%= status%></td>
                 <td>
-                    <a href="editAppointment.jsp?id=<%= rs.getInt("id")%>">Edit</a> |
-                    <a href="AppointmentServlet?action=cancel&id=<%= rs.getInt("id")%>">Cancel</a> |
-                    <a href="AppointmentServlet?action=reminder&id=<%= rs.getInt("id")%>">Reminder</a>
+                    <form action="AppointmentServlet" method="post">    
+                        <a class="btn btn-warning" href="editAppointment.jsp?id=<%= rs.getInt("id")%>">Edit</a>
+                        <!-- this is id of appointment -->
+                        <input type="hidden" name="id" value="<%= rs.getInt("id")%>">
+
+                        <input type="hidden" name="userId" value="<%= userId%>">
+
+                        <%
+                             if ("Cancelled".equals(status)) {
+                        %>
+                             <button class="btn btn-success" name="action" value="open">Open</button>
+                             <button class="btn btn-success" name="action" value="completed">Completed</button>
+
+                        <%
+                             } else if ("Completed".equals(status)) {
+                        %>
+                             <button class="d-none" name="action" value="completed">Completed</button>
+                             <button class="btn btn-primary" name="action" value="unCompleted">Un-Completed</button>
+                        <%
+                             } else if ("Scheduled".equals(status)) {
+                        %>
+                             <button class="btn btn-danger" name="action" value="cancel">Cancel</button>
+                             <button class="btn btn-success" name="action" value="completed">Completed</button>
+                        <%
+                            }
+                        %>
+                        <button class="btn btn-success" name="action" value="reminder">Reminder</button>
+                    </form>
                 </td>
             </tr>
             <%
