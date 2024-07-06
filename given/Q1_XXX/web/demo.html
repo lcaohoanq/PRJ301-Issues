@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <form action="SumServlet" method="POST">
+                <table border="1">
+                    <!--                <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>-->
+
+                    <tbody>
+                        <tr>
+                            <td rowspan="2"><p style="display: inline">
+                                    Enter an integer number n:  
+                                </p>
+                                <input type="text" name="data" /></td>
+                            <td>
+                                <input id="odd" type="radio" name="action" value="odd" required=""/>
+                                <label for="odd">Sum odd</label>
+                            </td>
+                            <td rowspan="2"><input type="submit" value="Execute"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="even" type="radio" name="action" value="even" required=""/>
+                                <label for="even">Sum even</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+
+            <%
+                String errorData = request.get
+                if(
+            %>
+
+        </div>
+    </body>
+</html>
