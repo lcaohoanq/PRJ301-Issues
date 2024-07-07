@@ -1,5 +1,10 @@
 CREATE DATABASE MobileCRUD
+
+GO
+
 USE MobileCRUD;
+
+GO
 
 CREATE TABLE [tbl_Mobile] (
 	[mobileId] varchar(10) Primary key,
@@ -8,7 +13,8 @@ CREATE TABLE [tbl_Mobile] (
 	[mobileName] varchar(20) NOT NULL,
 	[yearOfProduction] int,
 	[quantity] int,
-	[notSale] bit --0: sale,1,NULL
+	[notSale] bit,--0: sale,1,NULL,
+	[url] varchar(255)
 )
 
 CREATE TABLE [tbl_User] (
@@ -35,18 +41,18 @@ CREATE TABLE [tbl_OrderDetail] (
 );
 
 -- Insert sample data into tbl_Mobile
-INSERT INTO [tbl_Mobile] ([mobileId], [description], [price], [mobileName], [yearOfProduction], [quantity], [notSale])
+INSERT INTO [tbl_Mobile] ([mobileId], [description], [price], [mobileName], [yearOfProduction], [quantity], [notSale], [url])
 VALUES 
-('MOB001', 'High-end smartphone with OLED display', 999.99, 'Smartphone X', 2023, 50, 0),
-('MOB002', 'Budget smartphone with good camera', 199.99, 'Budget Phone A', 2022, 150, 1),
-('MOB003', 'Mid-range phone with long battery life', 399.99, 'Midrange Y', 2023, 75, NULL),
-('MOB004', 'Flagship phone with excellent performance', 799.99, 'Flagship Z', 2023, 30, 0),
-('MOB005', 'Compact phone with powerful features', 499.99, 'Compact V', 2021, 60, 1),
-('MOB006', 'Foldable phone with dual screen', 1200.00, 'Foldable W', 2024, 20, 0),
-('MOB007', 'Gaming phone with high refresh rate', 899.99, 'Gaming G', 2023, 40, 0),
-('MOB008', 'Entry-level phone with basic features', 150.00, 'Entry E', 2021, 200, 1),
-('MOB009', 'Camera-centric phone with optical zoom', 649.99, 'Camera C', 2022, 80, NULL),
-('MOB010', 'Eco-friendly phone made with recycled materials', 299.99, 'EcoPhone', 2023, 120, 0);
+('MOB001', 'High-end smartphone with OLED display', 999.99, 'Smartphone X', 2023, 50, 0, 'resources/phone.jpg'),
+('MOB002', 'Budget smartphone with good camera', 199.99, 'Budget Phone A', 2022, 150, 1, 'resources/phone.jpg'),
+('MOB003', 'Mid-range phone with long battery life', 399.99, 'Midrange Y', 2023, 75, NULL, 'resources/phone.jpg'),
+('MOB004', 'Flagship phone with excellent performance', 799.99, 'Flagship Z', 2023, 30, 0, 'resources/phone.jpg'),
+('MOB005', 'Compact phone with powerful features', 499.99, 'Compact V', 2021, 60, 1, 'resources/phone.jpg'),
+('MOB006', 'Foldable phone with dual screen', 1200.00, 'Foldable W', 2024, 20, 0, 'resources/phone.jpg'),
+('MOB007', 'Gaming phone with high refresh rate', 899.99, 'Gaming G', 2023, 40, 0, 'resources/phone.jpg'),
+('MOB008', 'Entry-level phone with basic features', 150.00, 'Entry E', 2021, 200, 1, 'resources/phone.jpg'),
+('MOB009', 'Camera-centric phone with optical zoom', 649.99, 'Camera C', 2022, 80, NULL, 'resources/phone.jpg'),
+('MOB010', 'Eco-friendly phone made with recycled materials', 299.99, 'EcoPhone', 2023, 120, 0, 'resources/phone.jpg');
 
 -- Insert sample data into tbl_User
 INSERT INTO [tbl_User] ([userId], [password], [fullName], [role])
@@ -96,6 +102,8 @@ VALUES
 ('ORD009', 'MOB009', 1),
 ('ORD010', 'MOB001', 1),
 ('ORD010', 'MOB010', 1);
+
+-- ----------------------------TEST-------------------------------------------
 
 SELECT * FROM tbl_Mobile
 SELECT * FROM tbl_Order
