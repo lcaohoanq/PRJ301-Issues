@@ -57,6 +57,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Price</th>
                         <th scope="col">Description</th>
                         <th scope="col">Release</th>
@@ -81,6 +82,9 @@
                         <td>
                             <%= mobile.getMobileName()%>
                             <input type="hidden" name="mobileName" value="<%= mobile.getMobileName()%>" />
+                        </td>
+                        <td>
+                            <img src="<%= mobile.getUrl() %>" width="200" height="100" alt="phone"/>
                         </td>
                         <td class="text-primary">
                             <%= mobile.getPrice()%>
@@ -165,20 +169,20 @@
         <h3 class="text ms-2">
             <%= message%>
         </h3>
-<!--
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                document.querySelectorAll("button[type='button'][value='SaveItem']").forEach((btn) => {
-                    btn.addEventListener("click", function (e) {
-                        e.preventDefault();
-                        console.log(`button: ${e.target.id}`);
-                        btn.classList.toggle('btn-outline-danger');
-                        btn.classList.toggle('btn-danger');
+        <!--
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        document.querySelectorAll("button[type='button'][value='SaveItem']").forEach((btn) => {
+                            btn.addEventListener("click", function (e) {
+                                e.preventDefault();
+                                console.log(`button: ${e.target.id}`);
+                                btn.classList.toggle('btn-outline-danger');
+                                btn.classList.toggle('btn-danger');
+                            });
+                        });
                     });
-                });
-            });
-        </script>
--->
+                </script>
+        -->
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

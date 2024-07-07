@@ -14,6 +14,7 @@ public class MobileDTO {
     private int yearOfProduction;
     private int quantity;
     private int notSale;
+	private String url;
 
     public MobileDTO(String mobileId, float price, String description, int quantity, int notSale) {
         this.mobileId = mobileId;
@@ -22,6 +23,16 @@ public class MobileDTO {
         this.quantity = quantity;
         this.notSale = notSale;
     }
+
+	public MobileDTO(String mobileId, String description, float price, String mobileName, int yearOfProduction, int quantity, int notSale) {
+		this.mobileId = mobileId;
+		this.description = description;
+		this.price = price;
+		this.mobileName = mobileName;
+		this.yearOfProduction = yearOfProduction;
+		this.quantity = quantity;
+		this.notSale = notSale;
+	}
 
     public MobileDTO(String mobileId, float price, String mobileName, int quantity) {
         this.mobileId = mobileId;

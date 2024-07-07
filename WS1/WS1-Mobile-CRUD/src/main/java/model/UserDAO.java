@@ -294,7 +294,7 @@ public class UserDAO {
 //            System.out.println(new UserDAO().checkLogin("ST001", "345678").toString());
 //            System.out.println(new UserDAO().insertV2(new UserDTO("ad", "1", "1"), 0));
 //            System.out.println(new UserDAO().insertV2(new UserDTO("ST99", "Luucaohoang", new PasswordHandler().hash("1604".toCharArray())), 1));
-            System.out.println(new UserDAO().getPassword("ST99"));
+            System.out.println(new UserDAO().getPassword("ST123"));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

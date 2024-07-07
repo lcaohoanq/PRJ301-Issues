@@ -20,8 +20,8 @@
             <% UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
                 if (loginUser == null || !(loginUser.getRoleID() == 2)) {
                     response.sendRedirect("login.jsp");
-                    return;
-                }%>
+					return;
+				}%>
             <!-- <div class="container">
               <nav>
                 <ul>
@@ -78,6 +78,7 @@
                             <th scope="col">No</th>
                             <th scope="col">Id</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Image</th>
                             <th class="text-danger" scope="col-md-6">*Price</th>
                             <th class="text-danger" scope="col">*Description</th>
                             <th scope="col">Release</th>
@@ -99,6 +100,9 @@
                             <td><%= mobile.getMobileId()%></td>
                             <td><%= mobile.getMobileName()%></td>
                             <td>
+                                <img src="<%= mobile.getUrl()%>" width="200" height="100" alt="phone"/>
+                            </td>
+                            <td>
                                 <input class="text-primary"  name="mobilePrice" value="<%= mobile.getPrice()%>" />
                             </td>
                             <td>
@@ -111,11 +115,11 @@
                             <c:set var="notSale" value="<%= mobile.getNotSale()%>" />
                             <td>
                                 <select name="mobileNotSale">
-                                    <option value="0" <% if (mobile.getNotSale() == 0) {
-                                            out.print("selected");
-                                        } %>>No</option>
-                                    <option value="1" <% if (mobile.getNotSale() == 1)
-                                            out.print("selected");%>>Yes</option>
+                                        <option value="0" <% if (mobile.getNotSale() == 0) {
+											out.print("selected");
+										} %>>No</option>
+                                            <option value="1" <% if (mobile.getNotSale() == 1)
+											out.print("selected");%>>Yes</option>
                                 </select>
                             </td>
                             <td>
