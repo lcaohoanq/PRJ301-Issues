@@ -41,4 +41,20 @@
 
 ![image](https://github.com/lcaohoanq/PRJ301-Issues/assets/136492579/1c5035aa-1317-42e0-8f38-7e00f0379232)
 
+# Init Parameter
+
+- Define a some default value
+- If duplicate `param-name` it will work with the first one
+- How to retrieve the value
+```java
+ServletContext sc = getServletContext();
+String var = sc.getInitParameter(“db_username");
+```
+
+![image](https://github.com/lcaohoanq/PRJ301-Issues/assets/136492579/069fe6a5-ef71-4913-99fd-e7f00b2f1551)
+
+![image](https://github.com/lcaohoanq/PRJ301-Issues/assets/136492579/9d273149-2a83-4b73-80f8-070cfcea7a83)
+
+![image](https://github.com/lcaohoanq/PRJ301-Issues/assets/136492579/35341006-ed1e-4610-ad51-553bd03e7063)
+
 
