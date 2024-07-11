@@ -8,20 +8,21 @@
         <link rel="stylesheet" href="./style.css"/>
     </head>
     <body>
-        <form action="UserServlet?action=login" method="post">
+        <form action="MainController" method="POST">
             <div class="mb-3">
                 <label for="inp-username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="inp-username" name="username" required><br>
+                <input type="text" class="form-control" id="inp-username" name="username"><br>
                 <div id="emailHelp" class="form-text">We'll never share your data with anyone else.</div>
             </div>
             <div class="mb-3">
                 <label for="inp-password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inp-password" name="password" required><br>
+                <input type="password" class="form-control" id="inp-password" name="password"><br>
             </div>
 
-            <input class="btn btn-primary" type="submit" value="Login">
+            <input class="btn btn-primary" type="submit" name="action" value="login">
+             <!--<a class="btn btn-success mt-3" href="register.jsp">Register here</a>-->
+            <input class="btn btn-success mt-3" type="submit" name="action" value="viewRegister">
         </form>
-        <a class="btn btn-success mt-3" href="register.jsp">Register here</a>
         <%
             String error = request.getParameter("error");
             if ("invalid".equals(error)) {

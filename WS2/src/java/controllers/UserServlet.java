@@ -18,10 +18,19 @@ import utils.DBUtils;
 @WebServlet(name = "UserServlet", urlPatterns = {"/UserServlet"})
 public class UserServlet extends HttpServlet {
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("./login.jsp").forward(request, response);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-
+        System.out.println("Du lieu nhan trong UserServlet: " + action);
         switch (action) {
+            case "viewRegister":
+                request.getRequestDispatcher("./register.jsp").forward(request, response);
+                break;
             case "register":
                 registerUser(request, response);
                 break;

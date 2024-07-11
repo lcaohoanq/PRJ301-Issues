@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="./style.css"/>
     </head>
     <body>
-        <form action="UserServlet?action=register" method="post">
+        <form action="MainController" method="post">
             <div class="mb-3">
                 <label for="inp-username" class="form-label">Username</label>
                 <input type="text" id="inp-username" name="username" required><br>
@@ -27,7 +27,7 @@
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
 
-            <input class="btn btn-primary" type="submit" value="Register">
+            <input class="btn btn-primary" type="submit" name="action" value="submitRegister">
 
         </form>
 

@@ -31,8 +31,8 @@
                             <a class="nav-link" href="#">Contact</a>
                         </li>
                     </ul>
-                    <form class="d-flex" method="GET" action="login.jsp">
-                        <button id="login-btn" class="btn btn-outline-success" type="submit">Login</button>
+                    <form class="d-flex" method="GET" action="MainController">
+                        <button id="login-btn" class="btn btn-outline-success" type="submit" name="action" value="login">Login</button>
                     </form>
                 </div>
             </div>
