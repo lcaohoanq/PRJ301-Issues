@@ -45,8 +45,11 @@ public class MainController extends HttpServlet {
                 case "viewHistory":
                     directTo = "AppointmentServlet?action=viewHistory";
                     break;
-                case "editAppointment":
-                    directTo = "AppointmentServlet?action=editAppointment";
+                case "showEditAppointment":
+                    directTo = "AppointmentServlet?action=showEditAppointment";
+                    break;
+                case "saveChangeEditAppointment":
+                    directTo = "AppointmentServlet?action=saveChangeEditAppointment";
                     break;
                 case "deleteAppointment":
                     directTo = "AppointmentServlet?action=deleteAppointment";
@@ -70,7 +73,7 @@ public class MainController extends HttpServlet {
                     directTo = "AppointmentServlet?action=viewDashboard";
                     break;
                 default:
-                    request.setAttribute("ERROR", "Your action not supported");
+                    directTo = "./404.jsp";
                     break;
             }
 

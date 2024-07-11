@@ -5,7 +5,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./style.css"/>
+        <style>
+            body{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                background-color: #f1f1f1;
+            }
+        </style>
     </head>
     <body>
         <form action="MainController" method="POST">
@@ -19,9 +27,10 @@
                 <input type="password" class="form-control" id="inp-password" name="password"><br>
             </div>
 
-            <input class="btn btn-primary" type="submit" name="action" value="submitLogin">
-             <!--<a class="btn btn-success mt-3" href="register.jsp">Register here</a>-->
-            <input class="btn btn-success mt-3" type="submit" name="action" value="viewRegister">
+            <div class="d-flex flex-row justify-content-center align-items-center">
+                <button class="btn btn-primary me-3" type="submit" name="action" value="submitLogin">Login</button>
+                <button class="btn btn-success" type="submit" name="action" value="viewRegister">Register</button>
+            </div>
         </form>
         <%
             String error = request.getParameter("error");

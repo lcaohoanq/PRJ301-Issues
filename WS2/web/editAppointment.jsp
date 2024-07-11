@@ -9,7 +9,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Edit</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./style.css"/>
+        <style>
+            body{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                background-color: #f1f1f1;
+            </style>
+            }
+        </style>
     </head>
     <body>
         <%
@@ -24,19 +33,30 @@
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
         %>
-        <form action="AppointmentServlet?action=edit" method="post">
+        <form action="MainController" method="POST">
             <input type="hidden" name="id" value="<%= id%>">
-            Date: <input type="date" name="appointmentDate" value="<%= rs.getDate("appointmentDate")%>" required><br>
-            Time: <input type="time" name="appointmentTime" value="<%= rs.getTime("appointmentTime")%>" required><br>
-            Purpose: <input type="text" name="purpose" value="<%= rs.getString("purpose")%>" required><br>
-            <input class="btn btn-primary" type="submit" value="Save Changes">
+
+            <div class="mb-3">
+                <label for="changeDate" class="form-label">Date</label>
+                <input class="form-control" id="changeDate" type="date" name="appointmentDate" value="<%= rs.getDate("appointmentDate")%>" required><br>
+            </div>
+            <div class="mb-3">
+                <label for="changeTime" class="form-label">Time</label>
+                <input class="form-control" id="changeTime" type="time" name="appointmentTime" value="<%= rs.getTime("appointmentTime")%>" required><br>
+            </div>
+            <div class="mb-3">
+                <label for="changePurpose" class="form-label">Purpose</label>
+                <input class="form-control" id="changePurpose" type="text" name="purpose" value="<%= rs.getString("purpose")%>" required><br>
+            </div>
+
+            <button class="btn btn-primary" type="submit" name="action" value="saveChangeEditAppointment">Save Changes</button>
+            <a class="btn btn-danger" href="viewAppointment.jsp">Back to Appointments</a>
         </form>
         <%
             }
             stmt.close();
             conn.close();
         %>
-        <a class="text text-danger" href="viewAppointments.jsp">Back to Appointments</a>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     </body>
