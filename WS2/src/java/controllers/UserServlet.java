@@ -28,33 +28,36 @@ public class UserServlet extends HttpServlet {
         String action = request.getParameter("action");
         System.out.println("Du lieu nhan trong UserServlet: " + action);
         switch (action) {
+            case "viewLogin":
+                request.getRequestDispatcher("./login.jsp").forward(request, response);
+                break;
             case "viewRegister":
                 request.getRequestDispatcher("./register.jsp").forward(request, response);
                 break;
-            case "register":
+            case "submitRegister":
                 registerUser(request, response);
                 break;
-            case "login":
+            case "submitLogin":
                 loginUser(request, response);
                 break;
-            case "logout":
+            case "submitLogout":
                 logoutUser(request, response);
                 break;
         }
     }
 
-    private void registerUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void registerUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
         try {
-            new UserDAO().registerUser(username, hashedPassword, email);
-            response.sendRedirect("login.jsp");
+            request.setAttribute("registerStatus", (new UserDAO().registerUser(username, hashedPassword, email) == 1 ? "ok" : "fail"));
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
+        } finally {
+            request.getRequestDispatcher("./register.jsp").forward(request, response);
         }
     }
 
@@ -78,7 +81,7 @@ public class UserServlet extends HttpServlet {
                 response.sendRedirect("login.jsp?error=invalid");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 

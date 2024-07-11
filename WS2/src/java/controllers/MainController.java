@@ -16,23 +16,64 @@ public class MainController extends HttpServlet {
         String directTo = "";
         try {
             switch (request.getParameter("action")) {
-                case "login":
-                    directTo = "UserServlet";
+                // login, register
+                case "viewLogin":
+                    directTo = "UserServlet?action=viewLogin";
                     break;
                 case "submitLogin":
-                    directTo = "UserServlet";
+                    directTo = "UserServlet?action=submitLogin";
                     break;
                 case "viewRegister":
                     directTo = "UserServlet?action=viewRegister";
                     break;
                 case "submitRegister":
-                    directTo = "UserServlet";
+                    directTo = "UserServlet?action=submitRegister";
+                    break;
+                case "submitLogout":
+                    directTo = "UserServlet?action=submitLogout";
+                    break;
+                // appointment
+                case "createNewPrompt":
+                    directTo = "AppointmentServlet?action=createNewPrompt";
+                    break;
+                case "createNew":
+                    directTo = "AppointmentServlet?action=createNew";
+                    break;
+                case "viewAll":
+                    directTo = "AppointmentServlet?action=viewAll";
+                    break;
+                case "viewHistory":
+                    directTo = "AppointmentServlet?action=viewHistory";
+                    break;
+                case "editAppointment":
+                    directTo = "AppointmentServlet?action=editAppointment";
+                    break;
+                case "deleteAppointment":
+                    directTo = "AppointmentServlet?action=deleteAppointment";
+                    break;
+                case "openAppointment":
+                    directTo = "AppointmentServlet?action=openAppointment";
+                    break;
+                case "completedAppointment":
+                    directTo = "AppointmentServlet?action=completedAppointment";
+                    break;
+                case "unCompletedAppointment":
+                    directTo = "AppointmentServlet?action=unCompletedAppointment";
+                    break;
+                case "cancelAppointment":
+                    directTo = "AppointmentServlet?action=cancelAppointment";
+                    break;
+                case "sendReminder":
+                    directTo = "AppointmentServlet?action=sendReminder";
+                    break;
+                case "viewDashboard":
+                    directTo = "AppointmentServlet?action=viewDashboard";
                     break;
                 default:
                     request.setAttribute("ERROR", "Your action not supported");
                     break;
             }
-            
+
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
         } finally {

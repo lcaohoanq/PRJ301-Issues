@@ -29,29 +29,44 @@ public class AppointmentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
-        System.out.println("Action: " + action);
+        System.out.println("Du lieu da nhan trong Appointment: " + action);
 
         switch (action) {
-            case "create":
+            case "viewAll":
+                request.getRequestDispatcher("./viewAppointment.jsp").forward(request, response);
+                break;
+            case "viewHistory":
+                request.getRequestDispatcher("./appointmentHistory.jsp").forward(request, response);
+                break;
+            case "viewDashboard":
+                request.getRequestDispatcher("./dashboard.jsp").forward(request, response);
+                break;
+            case "createNewPrompt":
+                request.getRequestDispatcher("./createAppointment.jsp").forward(request, response);
+                break;
+            case "createNew":
                 createAppointment(request, response);
                 break;
-            case "edit":
+            case "editAppointment":
                 editAppointment(request, response);
                 break;
-            case "cancel":
+            case "deleteAppointment":
+                deleteAppointment(request, response);
+                break;
+            case "cancelAppointment":
                 cancelAppointment(request, response);
                 break;
-            case "open":
+            case "openAppointment":
                 openAppointment(request, response);
                 break;
-            case "completed":
+            case "completedAppointment":
                 completedAppointment(request, response);
                 break;
-            case "unCompleted":
+            case "unCompletedAppointment":
                 // uncompleted ~ back to scheduled status
                 openAppointment(request, response);
                 break;
-            case "reminder":
+            case "sendReminder":
                 sendReminders(request, response);
                 break;
         }
@@ -90,6 +105,16 @@ public class AppointmentServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         try {
             new AppointmentDAO().openAppointment(id);
+            response.sendRedirect("viewAppointment.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteAppointment(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        try {
+            new AppointmentDAO().deleteAppointment(id);
             response.sendRedirect("viewAppointment.jsp");
         } catch (Exception e) {
             e.printStackTrace();

@@ -32,7 +32,7 @@
                         </li>
                     </ul>
                     <form class="d-flex" method="GET" action="MainController">
-                        <button id="login-btn" class="btn btn-outline-success" type="submit" name="action" value="login">Login</button>
+                        <button id="login-btn" class="btn btn-outline-success" type="submit" name="action" value="viewLogin">Login</button>
                     </form>
                 </div>
             </div>

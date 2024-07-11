@@ -29,6 +29,22 @@ public class AppointmentDAO {
         }
     }
 
+    public void deleteAppointment(int id) {
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(
+                        "DELETE FROM Appointments WHERE id = ?");
+                ptm.setInt(1, id);
+                ptm.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void editAppointment(int id, String appointmentDate, String appointmentTime, String purpose) {
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -87,7 +103,7 @@ public class AppointmentDAO {
             conn = DBUtils.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(
-                    "UPDATE Appointments SET status = 'Completed' WHERE id = ?");
+                        "UPDATE Appointments SET status = 'Completed' WHERE id = ?");
                 ptm.setInt(1, id);
                 ptm.executeUpdate();
             }
@@ -136,7 +152,7 @@ public class AppointmentDAO {
         return null;
     }
 
-    public String getPurpose(int id){
+    public String getPurpose(int id) {
         String purpose = "";
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -157,7 +173,7 @@ public class AppointmentDAO {
         return purpose;
     }
 
-    public String getAppointmentStatus(int id){
+    public String getAppointmentStatus(int id) {
         String status = "";
         Connection conn = null;
         PreparedStatement ptm = null;
