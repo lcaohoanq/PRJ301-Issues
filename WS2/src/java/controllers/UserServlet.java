@@ -43,6 +43,9 @@ public class UserServlet extends HttpServlet {
             case "submitLogout":
                 logoutUser(request, response);
                 break;
+            default:
+                request.getRequestDispatcher("./404.jsp").forward(request, response);
+                break;
         }
     }
 

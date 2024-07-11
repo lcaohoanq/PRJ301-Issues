@@ -9,7 +9,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>History</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./style.css"/>
+        <style>
+            body{
+                background-color: #f1f1f1;
+            }
+        </style>        
     </head>
     <body>
         <%
@@ -23,7 +27,14 @@
             stmt.setInt(1, userId);
             ResultSet rs = stmt.executeQuery();
         %>
-        <h2 class="text-center">Appointment History</h2>
+        <h1 class="text-center mt-5 mb-5">Appointment History</h1>
+        <%
+            if (!rs.isBeforeFirst()) { // Check if the result set is empty
+        %>
+        <p class="text-center">No completed appointments found.</p>
+        <%
+        } else {
+        %>
         <table class="table" border="1">
             <tr>
                 <th scope="col">Date</th>
@@ -42,11 +53,18 @@
             </tr>
             <%
                 }
-                stmt.close();
-                conn.close();
             %>
         </table>
-        <a class="btn btn-primary" href="dashboard.jsp">Back to Dashboard</a>
+        <%
+            }
+            stmt.close();
+            conn.close();
+        %>
+
+        <div class="d-flex justify-content-center align-items-center mt-5">
+            <a class="btn btn-primary" href="dashboard.jsp">Back to Dashboard</a>
+        </div>
+
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

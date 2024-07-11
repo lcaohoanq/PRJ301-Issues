@@ -47,7 +47,10 @@ public class AppointmentServlet extends HttpServlet {
             case "createNew":
                 createAppointment(request, response);
                 break;
-            case "editAppointment":
+            case "showEditAppointment":
+                request.getRequestDispatcher("./editAppointment.jsp").forward(request, response);
+                break;
+            case "saveChangeEditAppointment":
                 editAppointment(request, response);
                 break;
             case "deleteAppointment":
@@ -68,6 +71,9 @@ public class AppointmentServlet extends HttpServlet {
                 break;
             case "sendReminder":
                 sendReminders(request, response);
+                break;
+            default:
+                request.getRequestDispatcher("./404.jsp").forward(request, response);
                 break;
         }
     }
@@ -142,21 +148,27 @@ public class AppointmentServlet extends HttpServlet {
         }
     }
 
-    private void sendReminders(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        try {
-            EmailUtils handleEmail = new EmailUtils();
-            UserDAO userDAO = new UserDAO();
-            AppointmentDAO apDAO = new AppointmentDAO();
-            String email = userDAO.getEmail(userId);
+    private void sendReminders(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-            String sub = "Reminder Notification";
-            String msg = handleEmail.messageNewOrder(userDAO.getUserName(userId), apDAO.getDateAppointment(id).toString(), apDAO.getTimeAppointment(id).toString(), apDAO.getPurpose(id));
-            handleEmail.sendEmail(sub, msg, email);
-            response.sendRedirect("viewAppointment.jsp");
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            int userId = Integer.parseInt(request.getParameter("userId"));
+            {
+                EmailUtils handleEmail = new EmailUtils();
+                UserDAO userDAO = new UserDAO();
+                AppointmentDAO apDAO = new AppointmentDAO();
+                String email = userDAO.getEmail(userId);
+
+                String sub = "Reminder Notification";
+                String msg = handleEmail.messageNewOrder(userDAO.getUserName(userId), apDAO.getDateAppointment(id).toString(), apDAO.getTimeAppointment(id).toString(), apDAO.getPurpose(id));
+                handleEmail.sendEmail(sub, msg, email);
+                response.sendRedirect("viewAppointment.jsp");
+            }
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            request.getRequestDispatcher("./viewAppointment.jsp").forward(request, response);
         }
 
     }

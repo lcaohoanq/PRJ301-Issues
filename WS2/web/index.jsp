@@ -39,13 +39,18 @@
         </nav>
 
         <!-- Content -->
-        <div class="container mt-5">
+        <div class="container mt-2">
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h1>Appointments Management System</h1>
                     <p>Alls thing you need</p>
                 </div>
             </div>
+            
+            <div class="row">
+                <img src="image.jpg" width="900" height="500" alt="image"/>
+            </div>
+            
         </div>
 
         <!-- Bootstrap JS -->
