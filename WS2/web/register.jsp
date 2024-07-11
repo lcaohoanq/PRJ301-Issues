@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="./style.css"/>
     </head>
     <body>
+
         <form action="MainController" method="post">
             <div class="mb-3">
                 <label for="inp-username" class="form-label">Username</label>
@@ -27,11 +28,29 @@
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
 
+            <% String registerStatus = (String) request.getAttribute("registerStatus");
+                if (registerStatus != null) {%>
+            <input class="btn btn-primary" type="submit" name="action" value="submitRegister" onclick="showMess('<%= registerStatus%>')">
+            <% } else { %>
             <input class="btn btn-primary" type="submit" name="action" value="submitRegister">
-
+            <% }%>
         </form>
 
         <a class="btn btn-success mt-3" href="login.jsp">Login here</a>
+
+
+
+        <script>
+
+            function showMess(status) {
+                if (status === "ok") {
+                    alert("Register successfully");
+                } else {
+                    alert("Register fail");
+                }
+            }
+
+        </script>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

@@ -42,33 +42,35 @@
                 <td><%= rs.getString("purpose")%></td>
                 <td><%= status%></td>
                 <td>
-                    <form action="AppointmentServlet" method="post">    
-                        <a class="btn btn-warning" href="editAppointment.jsp?id=<%= rs.getInt("id")%>">Edit</a>
+                    <form action="MainController" method="POST">    
+                        <!--<a class="btn btn-warning" href="editAppointment.jsp?id=<%= rs.getInt("id")%>">Edit</a>-->
+                        <button class="btn btn-warning" name="action" value="editAppointment">Edit</button>
+                        <button class="btn btn-danger" name="action" value="deleteAppointment">Delete</button>
                         <!-- this is id of appointment -->
                         <input type="hidden" name="id" value="<%= rs.getInt("id")%>">
 
                         <input type="hidden" name="userId" value="<%= userId%>">
 
                         <%
-                             if ("Cancelled".equals(status)) {
+                            if ("Cancelled".equals(status)) {
                         %>
-                             <button class="btn btn-success" name="action" value="open">Open</button>
-                             <button class="btn btn-success" name="action" value="completed">Completed</button>
+                        <button class="btn btn-success" name="action" value="openAppointment">Open</button>
+                        <button class="btn btn-success" name="action" value="completedAppointment">Completed</button>
 
                         <%
-                             } else if ("Completed".equals(status)) {
+                        } else if ("Completed".equals(status)) {
                         %>
-                             <button class="d-none" name="action" value="completed">Completed</button>
-                             <button class="btn btn-primary" name="action" value="unCompleted">Un-Completed</button>
+                        <button class="d-none" name="action" value="completedAppointment">Completed</button>
+                        <button class="btn btn-primary" name="action" value="unCompletedAppointment">Un-Completed</button>
                         <%
-                             } else if ("Scheduled".equals(status)) {
+                        } else if ("Scheduled".equals(status)) {
                         %>
-                             <button class="btn btn-danger" name="action" value="cancel">Cancel</button>
-                             <button class="btn btn-success" name="action" value="completed">Completed</button>
+                        <button class="btn btn-danger" name="action" value="cancelAppointment">Cancel</button>
+                        <button class="btn btn-success" name="action" value="completedAppointment">Completed</button>
                         <%
                             }
                         %>
-                        <button class="btn btn-success" name="action" value="reminder">Reminder</button>
+                        <button class="btn btn-success" name="action" value="sendReminder">Reminder</button>
                     </form>
                 </td>
             </tr>

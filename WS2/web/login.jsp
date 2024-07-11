@@ -19,7 +19,7 @@
                 <input type="password" class="form-control" id="inp-password" name="password"><br>
             </div>
 
-            <input class="btn btn-primary" type="submit" name="action" value="login">
+            <input class="btn btn-primary" type="submit" name="action" value="submitLogin">
              <!--<a class="btn btn-success mt-3" href="register.jsp">Register here</a>-->
             <input class="btn btn-success mt-3" type="submit" name="action" value="viewRegister">
         </form>

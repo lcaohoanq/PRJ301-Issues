@@ -29,8 +29,8 @@
 
         <p class="text-center">Welcome, <%= session.getAttribute("username")%></p>
 
-        <form method="POST" action="UserServlet">
-            <button class="btn btn-danger mb-3 col-md-12"  name="action" value="logout">Logout</button>
+        <form method="POST" action="MainController">
+            <button class="btn btn-danger mb-3 col-md-12"  name="action" value="submitLogout">Logout</button>
         </form>
 
         <h3 class="text-center mb-3">Upcoming Appointments</h3>
@@ -57,11 +57,13 @@
             %>
         </table>
 
-        <div class="row d-flex justify-content-center">
-            <a class="col-md-3 btn btn-primary mt-3 me-3" href="createAppointment.jsp">Create New Appointment</a>
-            <a class="col-md-3 btn btn-primary mt-3 me-3" href="viewAppointment.jsp">View All Appointments</a>
-            <a class="col-md-3 btn btn-primary mt-3" href="appointmentHistory.jsp">View Appointment History</a>
-        </div>
+        <form method="POST" action="MainController">
+            <div class="row d-flex justify-content-center">
+                <button class="col-md-3 btn btn-primary mt-3 me-3" name="action" value="createNewPrompt">Create New Appointment</button>
+                <button class="col-md-3 btn btn-primary mt-3 me-3" name="action" value="viewAll">View All Appointments</button>
+                <button class="col-md-3 btn btn-primary mt-3 me-3"  name="action" value="viewHistory">View All History</button>
+            </div>
+        </form>
 
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

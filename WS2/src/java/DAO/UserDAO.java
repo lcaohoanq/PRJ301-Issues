@@ -9,7 +9,7 @@ import utils.DBUtils;
 
 public class UserDAO {
 
-    public boolean checkLogin(String username) throws SQLException {
+    public boolean checkLogin(String username) throws SQLException,ClassNotFoundException {
         UserDTO user = null;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -24,8 +24,8 @@ public class UserDAO {
                     return true;
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         } finally {
             if (rs != null) {
                 rs.close();
@@ -40,9 +40,10 @@ public class UserDAO {
         return false;
     }
 
-    public void registerUser(String username, String password, String email) throws SQLException {
+    public int registerUser(String username, String password, String email) throws SQLException,ClassNotFoundException {
         Connection conn = null;
         PreparedStatement ptm = null;
+        int rowsAffected = 0;
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
@@ -50,14 +51,15 @@ public class UserDAO {
                 ptm.setString(1, username);
                 ptm.setString(2, password);
                 ptm.setString(3, email);
-                ptm.executeUpdate();
+                rowsAffected = ptm.executeUpdate();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
+        return rowsAffected;
     }
 
-    public String getPassword(String username) throws SQLException {
+    public String getPassword(String username) throws SQLException ,ClassNotFoundException{
         UserDTO user = null;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -72,8 +74,8 @@ public class UserDAO {
                     return rs.getString("password");
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         } finally {
             if (rs != null) {
                 rs.close();
@@ -88,7 +90,7 @@ public class UserDAO {
         return null;
     }
 
-    public String getUserName(int id) throws SQLException {
+    public String getUserName(int id) throws SQLException,ClassNotFoundException {
         UserDTO user = null;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -103,8 +105,8 @@ public class UserDAO {
                     return rs.getString("username");
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         } finally {
             if (rs != null) {
                 rs.close();
@@ -119,7 +121,7 @@ public class UserDAO {
         return null;
     }
 
-    public String getEmail(int id) throws SQLException {
+    public String getEmail(int id) throws SQLException, ClassNotFoundException {
         UserDTO user = null;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -134,8 +136,8 @@ public class UserDAO {
                     return rs.getString("email");
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         } finally {
             if (rs != null) {
                 rs.close();
@@ -150,7 +152,7 @@ public class UserDAO {
         return null;
     }
 
-    public int getID(String username) throws SQLException {
+    public int getID(String username) throws SQLException,ClassNotFoundException {
         UserDTO user = null;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -165,17 +167,17 @@ public class UserDAO {
                     return rs.getInt("id");
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
         return -1;
     }
 
     public static void main(String[] args) {
         try {
-            System.out.println(new UserDAO().getEmail(3));
-        } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(new UserDAO().registerUser("test2", "1", "caohoanggt0@gmail.com"));
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
 
