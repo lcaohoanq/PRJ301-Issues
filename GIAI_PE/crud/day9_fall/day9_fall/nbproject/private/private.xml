@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/java_web/day9_fall/src/java/control/UpdateControl.java</file>
+            <file>file:/D:/java_web/day9_fall/web/Add.jsp</file>
+            <file>file:/D:/java_web/day9_fall/src/java/entity/Student.java</file>
+            <file>file:/D:/java_web/day9_fall/src/java/control/AddControl.java</file>
+            <file>file:/D:/java_web/day9_fall/web/index.html</file>
+            <file>file:/D:/java_web/day9_fall/src/java/context/DBContext.java</file>
+            <file>file:/D:/java_web/day9_fall/src/java/dao/StudentDAO.java</file>
+            <file>file:/D:/java_web/day9_fall/web/Show.jsp</file>
+            <file>file:/D:/java_web/day9_fall/web/Update.jsp</file>
+            <file>file:/D:/java_web/day9_fall/src/java/control/DeleteControl.java</file>
+        </group>
+        <group name="PRJ301-Issues">
+            <file>file:/media/DATA/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/crud/day9_fall/day9_fall/src/java/context/DBContext.java</file>
+        </group>
+    </open-files>
+</project-private>

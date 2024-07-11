@@ -150,10 +150,14 @@ public class AppointmentServlet extends HttpServlet {
 
     private void sendReminders(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String idStr = request.getParameter("id");
+        String userIdStr = request.getParameter("userId");
+
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            {
+            if (idStr != null || userIdStr != null) {
+                int id = Integer.parseInt(idStr);
+                int userId = Integer.parseInt(userIdStr);
+
                 EmailUtils handleEmail = new EmailUtils();
                 UserDAO userDAO = new UserDAO();
                 AppointmentDAO apDAO = new AppointmentDAO();
@@ -162,9 +166,7 @@ public class AppointmentServlet extends HttpServlet {
                 String sub = "Reminder Notification";
                 String msg = handleEmail.messageNewOrder(userDAO.getUserName(userId), apDAO.getDateAppointment(id).toString(), apDAO.getTimeAppointment(id).toString(), apDAO.getPurpose(id));
                 handleEmail.sendEmail(sub, msg, email);
-                response.sendRedirect("viewAppointment.jsp");
             }
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
