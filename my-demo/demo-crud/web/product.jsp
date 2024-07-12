@@ -10,6 +10,10 @@
     </head>
     <body>
         <h1>Product List</h1>
+        <div>
+            <p style="display: inline">Search: </p>
+            <input type="search" name="action">
+        </div>
         <%
             ProductDAO productDAO = new ProductDAO();
             List<ProductDTO> productList = null;
@@ -27,25 +31,37 @@
                     <th>Description</th>
                     <th>Price</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <% if (productList != null) {
-                    for (ProductDTO product : productList) { %>
-                        <tr>
-                            <td><%= product.getProductID() %></td>
-                            <td><%= product.getProductName() %></td>
-                            <td><%= product.getDescription() %></td>
-                            <td><%= product.getPrice() %></td>
-                            <td><%= product.getStatus() %></td>
-                        </tr>
-                    <% }
-                } else { %>
-                    <tr>
-                        <td colspan="5">No products found.</td>
-                    </tr>
-                <% } %>
-            </tbody>
-        </table>
-    </body>
+                        for (ProductDTO product : productList) {%>
+                <tr>
+            <form method="POST" action="main">
+                <input type="hidden" name="productId" value="<%= product.getProductID()%>">
+                <td><%= product.getProductID()%></td>
+                <td><%= product.getProductName()%></td>
+                <td><%= product.getDescription()%></td>
+                <td><%= product.getPrice()%></td>
+                <td><%= product.getStatus()%></td>
+                <td>
+                    <button type="submit" name="action" value="viewUpdate">Update</button>
+                    <button type="submit" name="action" value="delete">Delete</button>
+                </td>
+            </form>
+        </tr>
+        <% }
+        } else { %>
+        <tr>
+            <td colspan="5">No products found.</td>
+        </tr>
+        <% }%>
+
+        <form action="main" method="POST">
+            <button type="submit" name="action" value="viewCreate">Create</button>
+        </form>
+    </tbody>
+</table>
+</body>
 </html>

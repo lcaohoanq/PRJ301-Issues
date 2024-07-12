@@ -9,7 +9,11 @@ import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Time;
+import java.sql.Timestamp;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -149,30 +153,54 @@ public class AppointmentServlet extends HttpServlet {
     }
 
     private void sendReminders(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String idStr = request.getParameter("id");
         String userIdStr = request.getParameter("userId");
 
         try {
-            if (idStr != null || userIdStr != null) {
+            if (idStr != null && userIdStr != null) {
                 int id = Integer.parseInt(idStr);
                 int userId = Integer.parseInt(userIdStr);
 
-                EmailUtils handleEmail = new EmailUtils();
-                UserDAO userDAO = new UserDAO();
-                AppointmentDAO apDAO = new AppointmentDAO();
-                String email = userDAO.getEmail(userId);
+                Connection conn = DBUtils.getConnection();
+                PreparedStatement stmt = conn.prepareStatement("SELECT appointmentDate, appointmentTime FROM Appointments WHERE id = ?");
+                stmt.setInt(1, id);
+                ResultSet rs = stmt.executeQuery();
 
-                String sub = "Reminder Notification";
-                String msg = handleEmail.messageNewOrder(userDAO.getUserName(userId), apDAO.getDateAppointment(id).toString(), apDAO.getTimeAppointment(id).toString(), apDAO.getPurpose(id));
-                handleEmail.sendEmail(sub, msg, email);
+                if (rs.next()) {
+                    Date appointmentDate = rs.getDate("appointmentDate");
+                    Time appointmentTime = rs.getTime("appointmentTime");
+
+                    Timestamp appointmentTimestamp = new Timestamp(appointmentDate.getTime() + appointmentTime.getTime());
+                    Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+
+                    if (appointmentTimestamp.before(currentTime)) {
+                        response.setContentType("text/html");
+                        PrintWriter out = response.getWriter();
+                        out.println("<script type=\"text/javascript\">");
+                        out.println("alert('The appointment time is in the past. No email will be sent.');");
+                        out.println("window.location.href = 'viewAppointment.jsp';");
+                        out.println("</script>");
+                    } else {
+                        EmailUtils handleEmail = new EmailUtils();
+                        UserDAO userDAO = new UserDAO();
+                        AppointmentDAO apDAO = new AppointmentDAO();
+                        String email = userDAO.getEmail(userId);
+
+                        String sub = "Reminder Notification";
+                        String msg = handleEmail.messageNewOrder(userDAO.getUserName(userId), apDAO.getDateAppointment(id).toString(), apDAO.getTimeAppointment(id).toString(), apDAO.getPurpose(id));
+                        handleEmail.sendEmail(sub, msg, email);
+                    }
+                }
+
+                rs.close();
+                stmt.close();
+                conn.close();
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         } finally {
             request.getRequestDispatcher("./viewAppointment.jsp").forward(request, response);
         }
-
     }
 
 }
