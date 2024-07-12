@@ -1,30 +1,44 @@
 package models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ProductDTO {
-
-    /*
-    [productID] [char](5) NOT NULL,
-	[productName] [varchar](50) NOT NULL,
-	[description] [varchar](500) NOT NULL,
-	[price] [float] NOT NULL,
-	[status] [bit] NOT NULL,
-     */
 
     private String productID;
     private String productName;
     private String description;
     private float price;
     private int status;
-    
-    public static void main(String[] args) {
-        System.out.println(new ProductDTO("1", "Porsche", "Car", 500, 1));
+
+    public ProductDTO(String productID, String productName, String description, float price, int status) {
+        this.productID = productID;
+        this.productName = productName;
+        this.description = description;
+        this.price = price;
+        this.status = status;
+    }
+
+    public String getProductID() {
+        return productID;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductDTO{" + "productID=" + productID + ", productName=" + productName + ", description=" + description + ", price=" + price + ", status=" + status + '}';
     }
 
 }
