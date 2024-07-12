@@ -57,11 +57,10 @@ public class UserServlet extends HttpServlet {
 
         try {
             request.setAttribute("registerStatus", (new UserDAO().registerUser(username, hashedPassword, email) == 1 ? "ok" : "fail"));
+            request.getRequestDispatcher("./register.jsp").forward(request, response);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        } finally {
-            request.getRequestDispatcher("./register.jsp").forward(request, response);
-        }
+        } 
     }
 
     private void loginUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
