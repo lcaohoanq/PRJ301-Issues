@@ -36,28 +36,19 @@
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
 
-            <% String registerStatus = (String) request.getAttribute("registerStatus");
-                if (registerStatus != null) {%>
-            <input class="btn btn-primary" type="submit" name="action" value="submitRegister" onclick="showMess('<%= registerStatus%>')">
-            <% } else { %>
-            <input class="btn btn-primary" type="submit" name="action" value="submitRegister">
-            <% }%>
+            <button class="btn btn-primary" type="submit" name="action" value="submitRegister">Register</button>
+            <a class="btn btn-success" href="login.jsp">Login here</a>
         </form>
 
-        <a class="btn btn-success mt-3" href="login.jsp">Login here</a>
-
-
-
         <script>
-
-            function showMess(status) {
-                if (status === "ok") {
+            window.onload = function () {
+                var registerStatus = "<%= request.getAttribute("registerStatus")%>";
+                if (registerStatus === "ok") {
                     alert("Register successfully");
-                } else {
+                } else if (registerStatus === "fail") {
                     alert("Register fail");
                 }
             }
-
         </script>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
