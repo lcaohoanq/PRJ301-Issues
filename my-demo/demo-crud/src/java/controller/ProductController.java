@@ -28,6 +28,9 @@ public class ProductController extends HttpServlet {
             case "saveChangeCreateProduct":
                 create(request, response);
                 break;
+            case "searchProduct":
+                search(request, response);
+                break;
             case "delete":
                 delete(request, response);
                 break;
@@ -59,7 +62,7 @@ public class ProductController extends HttpServlet {
 
         try {
             new ProductDAO().editProduct(id, name, des, price, status);
-            response.sendRedirect("./updateProduct.jsp");
+            response.sendRedirect("./product.jsp");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -72,6 +75,17 @@ public class ProductController extends HttpServlet {
         try {
             new ProductDAO().deleteProduct(id);
             response.sendRedirect("./product.jsp");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+    
+    private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String data = request.getParameter("searchQuery");
+        try {
+            request.setAttribute("dataSearch", new ProductDAO().search(data));
+            request.getRequestDispatcher("./searchProduct.jsp").forward(request, response);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

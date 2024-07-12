@@ -7,13 +7,25 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Product List</title>
+        <style>
+            button{
+                cursor: pointer;
+            }
+            button:hover{
+                background: green;
+                color: white;
+                font-weight: bold;
+            }
+        </style>
     </head>
     <body>
         <h1>Product List</h1>
-        <div>
-            <p style="display: inline">Search: </p>
-            <input type="search" name="action">
-        </div>
+        <form method="POST" action="main">
+            <div>
+                <input type="search" placeholder="Enter name...." aria-label="Enter name...." name="searchQuery" />
+                <button type="submit" name="action" value="searchProduct">Search</button>
+            </div>
+        </form>
         <%
             ProductDAO productDAO = new ProductDAO();
             List<ProductDTO> productList = null;
@@ -47,7 +59,7 @@
                 <td><%= product.getStatus()%></td>
                 <td>
                     <button type="submit" name="action" value="viewUpdate">Update</button>
-                    <button type="submit" name="action" value="delete">Delete</button>
+                    <button type="submit" name="action" value="delete" onclick="return confirmDelete()">Delete</button>
                 </td>
             </form>
         </tr>
@@ -61,7 +73,15 @@
         <form action="main" method="POST">
             <button type="submit" name="action" value="viewCreate">Create</button>
         </form>
+
+
     </tbody>
 </table>
+
+<script type="text/javascript">
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete?");
+    }
+</script>
 </body>
 </html>

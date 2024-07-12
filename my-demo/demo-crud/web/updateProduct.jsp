@@ -39,7 +39,7 @@
                 <input  id="changePurpose" type="text" name="productStatus" value="<%= rs.getInt("status")%>" required><br>
             </div>
 
-            <button type="submit" name="action" value="saveChangeEditProduct">Save Changes</button>
+            <button type="submit" name="action" value="saveChangeUpdateProduct">Save Changes</button>
             <a href="product.jsp">Back to view</a>
         </form>
         <%
