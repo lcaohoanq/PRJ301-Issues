@@ -8,42 +8,46 @@ package pe.prj301.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import pe.prj301.shopping.Cart;
 
 /**
  *
- * @author hd
+ * @author lcaohoanq
  */
-public class MainController extends HttpServlet {
+@WebServlet(name = "RemoveFromCart", urlPatterns = {"/RemoveFromCart"})
+public class RemoveFromCart extends HttpServlet {
 
-    private static final String ERROR = "error.jsp";
-    private static final String SHOPPING_PAGE = "shopping.jsp";
+     private static final String ERROR = "viewCart.jsp";
+    private static final String SUCCESS = "viewCart.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            String action = request.getParameter("action");
-            System.out.println("MainController doAction: " + action);
-            if (action == null) {
-                url = SHOPPING_PAGE;
-            } //            your code here
-            else if (action.equals("SearchAll")) {
-                url = "SearchAllProduct";
-            } else if (action.equals("Add")) {
-                url = "AddToCart";
-            } else if (action.equals("ViewCart")) {
-                url = "ViewCart";
-            } else if (action.equals("AddMore")) {
-                url = "AddMore";
-            } else if (action.equals("Remove")){
-                url = "RemoveFromCart";
+            String id = request.getParameter("id");
+            HttpSession session = request.getSession();
+            Cart cart = (Cart) session.getAttribute("CART");
+            if (cart != null) {
+                if (cart.getCart().containsKey(id)) {
+                    boolean check = cart.remove(id);
+                    if (check) {
+                        if (cart.getCart().size() == 0) {
+                            session.setAttribute("CART", null);
+                        } else {
+                            session.setAttribute("CART", cart);
+                        }
+                        url = SUCCESS;
+                    }
+                }
             }
         } catch (Exception e) {
-            log("Error at MainController: " + e.toString());
+            log("Error at AddToCartController: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

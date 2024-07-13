@@ -3,47 +3,71 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pe.prj301.controllers;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import DAO.BookDAO;
+import models.BookDTO;
+import models.CartDTO;
 
-/**
- *
- * @author hd
- */
-public class MainController extends HttpServlet {
+@WebServlet(name = "AddToCartController", urlPatterns = {"/AddToCartController"})
+public class AddToCartController extends HttpServlet {
 
-    private static final String ERROR = "error.jsp";
-    private static final String SHOPPING_PAGE = "shopping.jsp";
+    private static final String ERROR = "login.jsp";
+    private static final String SUCCESS = "welcome.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
+        
+        String id = request.getParameter("id");
+        String name = "";
+        String des = "";
+        double price = 0;
+        int quantity = 0;
+        
         try {
-            String action = request.getParameter("action");
-            System.out.println("MainController doAction: " + action);
-            if (action == null) {
-                url = SHOPPING_PAGE;
-            } //            your code here
-            else if (action.equals("SearchAll")) {
-                url = "SearchAllProduct";
-            } else if (action.equals("Add")) {
-                url = "AddToCart";
-            } else if (action.equals("ViewCart")) {
-                url = "ViewCart";
-            } else if (action.equals("AddMore")) {
-                url = "AddMore";
-            } else if (action.equals("Remove")){
-                url = "RemoveFromCart";
+            System.out.println("AddToCart id: " + id);
+            
+            //lay quantity ve
+            quantity = Integer.parseInt(request.getParameter("Quantity"));
+            
+            //tim trong danh sach bang id
+            //de lay nhung gia tri constant (name, des, price)
+            for (BookDTO book : new BookDAO().getListBook()) {
+                if (book.getId().equals(id)) {
+                    name = book.getName();
+                    des = book.getDescription();
+                    price = book.getPrice();
+                }
             }
+            
+            //track cart by session
+            HttpSession session = request.getSession();
+            CartDTO cart = (CartDTO) session.getAttribute("CART");
+            if (cart == null) {
+                cart = new CartDTO();
+            }
+            
+            if (cart.add(new BookDTO(id, name, price, des, 1))) {
+                session.setAttribute("CART", cart);
+                request.setAttribute("MESSAGE", "You added " + name + ". quantity: " + quantity);
+                request.setAttribute("success", "Adding book");
+                url = SUCCESS;
+            } else {
+                throw new Error("Error while add product to cart");
+            }
+
         } catch (Exception e) {
-            log("Error at MainController: " + e.toString());
+            log("Error at AddToCartController: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

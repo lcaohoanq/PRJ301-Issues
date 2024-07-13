@@ -1,5 +1,5 @@
-<%@page import="pe.prj301.shopping.Products"%>
-<%@page import="pe.prj301.shopping.Cart"%>
+<%@page import="models.BookDTO"%>
+<%@page import="models.CartDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,7 @@
     <body>
         <h1>Your Cart:</h1>
         <%
-            Cart cart = (Cart) session.getAttribute("CART");
+            CartDTO cart = (CartDTO) session.getAttribute("CART");
             if (cart != null) {
         %>
         <table border="1">
@@ -30,16 +30,16 @@
                 <%
                     int count = 1;
                     double total = 0;
-                    for (Products b : cart.getCart().values()) {
+                    for (BookDTO b : cart.getCart().values()) {
                         total += b.getPrice() * b.getQuantity();
                 %>
             <form action="MainController" method="POST">
                 <tr>
                     <td><%= count++%></td>
                     <td> 
-                        <input type="text" name="id" value="<%= b.getProductID()%>" readonly=""/>
+                        <input type="text" name="id" value="<%= b.getId()%>" readonly=""/>
                     </td>
-                    <td><%= b.getProductName()%></td>
+                    <td><%= b.getName()%></td>
                     <td><%= b.getDescription()%></td>
                     <td><%= b.getPrice()%>$</td>
                     <td>
@@ -63,14 +63,15 @@
     <%
         } else {
     %>
-        Nothing in cart
+        Nothing in your cart
     <%
         }
     %>
     
     </br>
+    
     <form action="MainController" method="POST">
-        <button type="submit" name="action" value="AddMore">Add more</button>
+        <input type="submit" name="action" value="Addmore"/>
     </form>
     
     </body>
