@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class MainController extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void processRequest(
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
         System.out.println("MainController action: " + action);
@@ -19,14 +21,17 @@ public class MainController extends HttpServlet {
             case "viewUpdate":
                 directTo = "product?action=viewUpdate";
                 break;
-            case "Update":
-                directTo = "product?action=Update";
+            case "saveChangeUpdateProduct":
+                directTo = "product?action=saveChangeUpdateProduct";
                 break;
             case "saveChangeCreateProduct":
                 directTo = "product?action=saveChangeCreateProduct";
                 break;
             case "viewCreate":
                 directTo = "product?action=viewCreate";
+                break;
+            case "searchProduct":
+                directTo = "product?action=searchProduct";
                 break;
             case "create":
                 directTo = "product?action=Create";
@@ -51,8 +56,10 @@ public class MainController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -65,8 +72,10 @@ public class MainController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -78,6 +87,5 @@ public class MainController extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
+    } // </editor-fold>
 }
