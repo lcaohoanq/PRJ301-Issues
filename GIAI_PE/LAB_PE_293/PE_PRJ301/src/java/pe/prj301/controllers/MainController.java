@@ -27,10 +27,21 @@ public class MainController extends HttpServlet {
         String url = ERROR;
         try {
             String action = request.getParameter("action");
+            System.out.println("MainController doAction: " + action);
             if (action == null) {
                 url = SHOPPING_PAGE;
+            } //            your code here
+            else if (action.equals("SearchAll")) {
+                url = "SearchAllProduct";
+            } else if (action.equals("Add")) {
+                url = "AddToCart";
+            } else if (action.equals("ViewCart")) {
+                url = "ViewCart";
+            } else if (action.equals("AddMore")) {
+                url = "AddMore";
+            } else if (action.equals("Remove")){
+                url = "RemoveFromCart";
             }
-//            your code here
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
         } finally {

@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pe.daos.ComesticDAO;
+import pe.daos.UserDAO;
 import pe.dtos.ComesticDTO;
+import pe.utils.DBUtils;
 
 /**
  *
@@ -28,32 +30,44 @@ public class AddComestic extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");  // Set request encoding to UTF-8
+        response.setContentType("text/html;charset=UTF-8"); // Set response content type and encoding
         String url = ERROR;
 
-        try {
-            String id = request.getParameter("id");
-            String name = request.getParameter("name");
-            String description = request.getParameter("description");
-            String price = request.getParameter("price");
-            String size = request.getParameter("size");
-            float priceflo = -1;
-            try {
-                priceflo = Float.parseFloat(price);
-            } catch (Exception e) {
-                request.setAttribute("message", "Price must be a number!");
-                url = ERROR;
-                request.getRequestDispatcher(url).forward(request, response);
-            }
+        String action = request.getParameter("action");
 
-            if (!validateString(id, ID_PATTERN, true)) {
-                request.setAttribute("message", "ID must be has C-XXX format!");
-                url = ERROR;
-                request.getRequestDispatcher(url).forward(request, response);
-            }
-            ComesticDAO comesticDAO = new ComesticDAO();
-            ComesticDTO comestic = new ComesticDTO(id, name, description, priceflo,size);
-             boolean checkDuplicate = comesticDAO.checkDuplicate(name);
+        try {
+            String userId = request.getParameter("userId");
+
+            // prevent role US access to the addComestic.jsp page
+            if (action.equals("ShowAdd")) {
+                if (!new UserDAO().getRoleByID(userId).equals("AD")) {
+                    url = "./authentication.jsp";
+                }
+            } else {
+                // if reach here, the user is only admin
+                String id = request.getParameter("id");
+                String name = request.getParameter("name");
+                String description = request.getParameter("description");
+                String price = request.getParameter("price");
+                String size = request.getParameter("size");
+                float priceflo = -1;
+                try {
+                    priceflo = Float.parseFloat(price);
+                } catch (Exception e) {
+                    request.setAttribute("message", "Price must be a number!");
+                    url = ERROR;
+                    request.getRequestDispatcher(url).forward(request, response);
+                }
+
+                if (!validateString(id, ID_PATTERN, true)) {
+                    request.setAttribute("message", "ID must be has C-XXX format!");
+                    url = ERROR;
+                    request.getRequestDispatcher(url).forward(request, response);
+                }
+                ComesticDAO comesticDAO = new ComesticDAO();
+                ComesticDTO comestic = new ComesticDTO(id, name, description, priceflo, size);
+                boolean checkDuplicate = comesticDAO.checkDuplicate(name);
                 if (checkDuplicate) {
                     request.setAttribute("message", "Name is duplicated!");
                 } else {
@@ -65,7 +79,7 @@ public class AddComestic extends HttpServlet {
 
                     }
                 }
-            
+            }
 
         } catch (Exception e) {
             log("Error at LogoutController: " + e.toString());

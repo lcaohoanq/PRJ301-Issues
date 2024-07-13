@@ -10,9 +10,10 @@ package pe.dtos;
  * @author leyen
  */
 public class UserDTO {
+
     private String fullname;
     private String userID;
-  
+
     private String password;
     private String roleID;
 
@@ -30,7 +31,6 @@ public class UserDTO {
         this.password = password;
         this.roleID = roleID;
     }
-    
 
     public String getFullname() {
         return fullname;
@@ -48,8 +48,6 @@ public class UserDTO {
         this.userID = userID;
     }
 
-
-
     public String getPassword() {
         return password;
     }
@@ -65,5 +63,10 @@ public class UserDTO {
     public void setRoleID(String roleID) {
         this.roleID = roleID;
     }
-    
+
+    @Override
+    public String toString() {
+        return "UserDTO{" + "fullname=" + fullname + ", userID=" + userID + ", password=" + password + ", roleID=" + roleID + '}';
+    }
+
 }

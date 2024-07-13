@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pe.daos.ComesticDAO;
+import pe.daos.UserDAO;
 
 /**
  *
@@ -24,19 +25,32 @@ import pe.daos.ComesticDAO;
 @WebServlet(name = "DeleteComestic", urlPatterns = {"/DeleteComestic"})
 public class DeleteComestic extends HttpServlet {
 
-    
+    String url = null;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("id");
-        ComesticDAO comesticDAO = new ComesticDAO();
-        if(comesticDAO.delete(id)){
-            request.setAttribute("message", "Delete successfully!");
-           
-        }else{
-             request.setAttribute("message", "Delete fail!");
+        String userId = request.getParameter("userId");
+        try {
+            if (!new UserDAO().getRoleByID(userId).equals("AD")) {
+                url = "./authentication.jsp";
+            } else {
+                ComesticDAO comesticDAO = new ComesticDAO();
+                if (comesticDAO.delete(id)) {
+                    request.setAttribute("message", "Delete successfully!");
+                } else {
+                    request.setAttribute("message", "Delete fail!");
+                }
+                url = "ListComestic";
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
-         request.getRequestDispatcher("ListComestic").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

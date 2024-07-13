@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/LAB_PE_293/PE_PRJ301/src/java/pe/prj301/shopping/Cart.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/LAB_PE_293/PE_PRJ301/src/java/pe/prj301/controllers/ViewCart.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/LAB_PE_293/PE_PRJ301/web/viewCart.jsp</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/LAB_PE_293/PE_PRJ301/src/java/pe/prj301/shopping/DAO.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/LAB_PE_293/PE_PRJ301/src/java/pe/prj301/controllers/RemoveFromCart.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/LAB_PE_293/PE_PRJ301/src/java/pe/prj301/utils/DBUtils.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/LAB_PE_293/PE_PRJ301/src/java/pe/prj301/shopping/Products.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/LAB_PE_293/PE_PRJ301/src/java/pe/prj301/controllers/MainController.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/LAB_PE_293/PE_PRJ301/src/java/pe/prj301/controllers/AddMore.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/LAB_PE_293/PE_PRJ301/web/shopping.jsp</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/LAB_PE_293/PE_PRJ301/src/java/pe/prj301/controllers/AddToCart.java</file>
+        </group>
+    </open-files>
 </project-private>
