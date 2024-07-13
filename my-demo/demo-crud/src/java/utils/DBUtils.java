@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DBUtils {
     private static final String DB_NAME="PRODUCT_PE_PRJ301";
     private static final String DB_USER_NAME="sa";
-    private static final String DB_PASSWORD="Luucaohoang1604^^";
+    private static final String DB_PASSWORD="12345";
     public static Connection getConnection() throws ClassNotFoundException, SQLException{
         Connection conn= null;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

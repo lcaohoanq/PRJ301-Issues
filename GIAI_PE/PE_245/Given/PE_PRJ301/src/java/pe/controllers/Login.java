@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
         } catch (Exception e) {
             log("Error at LoginController: " + e.toString());
         } finally {
-            response.sendRedirect(url);
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

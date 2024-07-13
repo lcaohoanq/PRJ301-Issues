@@ -22,7 +22,7 @@
     <body>
 
         <%
-
+            /*
             List<ProductDTO> demo = new ArrayList<>();
             demo.add(new ProductDTO("P001", "iPhone", "Dienthoai", 15, 1));
             demo.add(new ProductDTO("P002", "Nokie", "FPT", 10, 0));
@@ -30,8 +30,9 @@
 
             List<ProductDTO> dataSearch = demo;
             request.setAttribute("dataSearch", dataSearch);
+             */
 
-//            List<ProductDTO> dataSearch = (ArrayList<ProductDTO>) request.getAttribute("dataSearch");
+            List<ProductDTO> dataSearch = (ArrayList<ProductDTO>) request.getAttribute("dataSearch");
             if (dataSearch == null) {
 
         %>
@@ -63,20 +64,22 @@
                     }
                 %>
 
-                <c:forEach var="p" items="${dataSearch}">
-                    <tr>
-                        <td>${p.getProductID()}</td>
-                        <td>${p.getProductName()}</td>
-                        <td>${p.getDescription()}</td>
-                        <td>${p.getPrice()}</td>
-                        <td>${p.getStatus()}</td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-        <%
-            }
-        %>
+            <h1>Below is jstl</h1>
 
-    </body>
+            <c:forEach var="p" items="${dataSearch}">
+                <tr>
+                    <td>${p.getProductID()}</td>
+                    <td>${p.getProductName()}</td>
+                    <td>${p.getDescription()}</td>
+                    <td>${p.getPrice()}</td>
+                    <td>${p.getStatus()}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+    <%
+        }
+    %>
+
+</body>
 </html>
