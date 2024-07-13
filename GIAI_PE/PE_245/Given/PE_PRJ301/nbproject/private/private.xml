@@ -3,22 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/src/java/pe/utils/DBUtils.java</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/src/java/pe/controllers/Login.java</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/web/ComesticList.jsp</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/web/registration.jsp</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/src/java/pe/controllers/ListComestic.java</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/web/addComestic.jsp</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/src/java/pe/daos/UserDAO.java</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/src/java/pe/controllers/AddComestic.java</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/src/java/pe/dtos/ComesticDTO.java</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/src/java/pe/dtos/UserDTO.java</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/web/login.jsp</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/web/error.jsp</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/src/java/pe/controllers/DeleteComestic.java</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/src/java/pe/controllers/MainController.java</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/src/java/pe/daos/ComesticDAO.java</file>
-            <file>file:/D:/STUDY/se5-summer2023/PRJ301/PE/PE2/Given/PE_PRJ301/src/java/pe/controllers/UpdateComestic.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/web/addComestic.jsp</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/src/java/pe/controllers/UpdateComestic.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/src/java/pe/dtos/ComesticDTO.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/web/admin.jsp</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/web/authentication.jsp</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/web/register.jsp</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/web/login.jsp</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/src/java/pe/daos/ComesticDAO.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/src/java/pe/controllers/MainController.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/src/java/pe/controllers/Logout.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/src/java/pe/controllers/DeleteComestic.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/src/java/pe/controllers/AddComestic.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/src/java/pe/dtos/UserDTO.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/src/java/pe/controllers/Register.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/src/java/pe/controllers/Login.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/src/java/pe/utils/DBUtils.java</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/web/ComesticList.jsp</file>
+            <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/GIAI_PE/PE_245/Given/PE_PRJ301/src/java/pe/daos/UserDAO.java</file>
         </group>
     </open-files>
 </project-private>

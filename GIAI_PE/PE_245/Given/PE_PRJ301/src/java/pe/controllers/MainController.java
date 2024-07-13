@@ -29,7 +29,8 @@ public class MainController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");  // Set request encoding to UTF-8
+        response.setContentType("text/html;charset=UTF-8"); // Set response content type and encoding
         String url = ERROR;
         String action = request.getParameter("action");
         try {
@@ -41,14 +42,17 @@ public class MainController extends HttpServlet {
             }
             else if("Logout".equals(action)){
                url = LOGOUT;
-            }
+            } 
+            else if("ShowAdd".equals(action)){
+                url = ADD;
+            } 
             else if("Add".equals(action)){
                url = ADD;
             }
             else if("Search".equals(action)){
                url = SEARCH;
             }
-            else if("delete".equals(action)){
+            else if("Delete".equals(action)){
                url = DELETE;
             }
             else if("Update".equals(action)){

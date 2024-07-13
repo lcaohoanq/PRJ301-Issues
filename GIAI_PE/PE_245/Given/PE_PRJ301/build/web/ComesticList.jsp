@@ -13,8 +13,12 @@
         <title>Comestic List</title>
     </head>
     <body>
-        <h1>Welcome ${sessionScope.LOGIN_USER.getFullname()}</h1>
         <form action="MainController">
+            <div>
+                <h1 style="display: inline">Welcome ${sessionScope.LOGIN_USER.getFullname()}</h1>
+                <input type="submit" name="action" value="Logout"/>
+            </div>
+
             <input type="type" name="search"> <input type="submit" name="action" value="Search"/>
             Price From: <input type="type" name="from"> 
             Price To: <input type="type" name="to"> <input type="submit" name="action" value="Search"/>
@@ -39,19 +43,18 @@
                             <td><input type="text" name="description" value="${c.getDescription()}"/></td>
                             <td><input type="text" name="price" value="${c.getPrice()}"/></td>
                             <td><input type="text" name="size" value="${c.getSize()}"/></td>
-                            <td><a href="MainController?action=delete&id=${c.getId()}">delete</a></td>
-                            <td><input type="submit" name="action" value="Update"></td>
+                            <td><button type="submit" name="action" value="Delete">Delete</button></td>
+                            <td><button type="submit" name="action" value="Update">Update</button></td>
                         <input type="hidden" name="id" value="${c.getId()}">
                         </tr>
                     </form>
-                        
-                    </c:forEach>
+
+                </c:forEach>
                 </tbody>
             </table>
-
-
-            <input type="submit" name="action" value="Logout"/>
-            <a href="addComestic.jsp">Add new comestic</a>
+            
+            <input type="hidden" name="userId" value="${sessionScope.LOGIN_USER.getUserID()}">
+            <button type="submit" name="action" value="ShowAdd">Add new comestic</button>
             <p>${requestScope.message}</p>
         </form>
     </body>

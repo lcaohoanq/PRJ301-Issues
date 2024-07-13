@@ -17,7 +17,7 @@
             User name: <input type="text" name="userID" value="" required><br>
             Password: <input type="text" name="password" value="" required><br>
             <input type="submit" name="action" value="Login"/>
-            <a href="registration.jsp">Registration</a>
+            <a href="./register.jsp">Registration</a>
         </form>
         <p>${requestScope.message}</p>
     </body>

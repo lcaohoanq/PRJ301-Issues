@@ -29,14 +29,14 @@ public class ComesticDAO {
         try {
             con = DBUtils.getConnection();
             if (con != null) {
-                String sql = "INSERT [dbo].[tblComestic] ([id], [name], [description], [price], size, [status]) VALUES (?, ?, ?,?, ?, 1)";
+                String sql = "INSERT [dbo].[tblComestic] ([id], [name], [description], [price], size, [status]) VALUES (?, ?, ?, ?, ?, 1)";
 
                 pstm = con.prepareStatement(sql);
-                pstm.setString(1, comestic.getId());
-                pstm.setString(2, comestic.getName());
-                pstm.setString(3, comestic.getDescription());
+                pstm.setNString(1, comestic.getId());
+                pstm.setNString(2, comestic.getName());
+                pstm.setNString(3, comestic.getDescription());
                 pstm.setFloat(4, comestic.getPrice());
-                pstm.setString(5, comestic.getSize());
+                pstm.setNString(5, comestic.getSize());
 
                 check = pstm.executeUpdate() > 0;
             }
@@ -186,6 +186,18 @@ public class ComesticDAO {
             }
         }
         return list;
+    }
+    
+    public static void main(String[] args) {
+        try{
+            if(new ComesticDAO().insert(new ComesticDTO("C-008", "Tôi là bánh quy", "bánh quy siêu ngon", 10, "XXL"))){
+                System.out.println("Insert success");
+            }else{
+                System.out.println("Insert fail");
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
 }

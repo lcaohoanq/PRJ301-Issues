@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pe.daos;
 
 import java.sql.Connection;
@@ -12,10 +7,6 @@ import java.sql.SQLException;
 import pe.dtos.UserDTO;
 import pe.utils.DBUtils;
 
-/**
- *
- * @author leyen
- */
 public class UserDAO {
 
     public boolean checkDuplicate(String userID) throws SQLException {
@@ -29,7 +20,7 @@ public class UserDAO {
                 String sql = "select userID from tblUsers where userID = ?";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, userID);
-              
+
                 rs = stm.executeQuery();
                 if (rs.next()) {
                     check = true;
@@ -47,6 +38,38 @@ public class UserDAO {
         return check;
     }
 
+    public String getRoleByID(String id) throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "  SELECT roleID from tblUsers WHERE userID = ?";
+        String p = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ps = conn.prepareStatement(query);
+                ps.setString(1, id);
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    p = rs.getString("roleID");
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return p;
+    }
+
     public boolean insert(UserDTO user) throws SQLException {
         boolean check = false;
         Connection con = null;
@@ -58,10 +81,10 @@ public class UserDAO {
                         + "tblUsers(userID,fullName,roleID,password,status)"
                         + " values(?,?,?,?,?)";
                 pstm = con.prepareStatement(sql);
-                pstm.setString(1, user.getUserID());
-                pstm.setString(2, user.getFullname());
-                pstm.setString(3, user.getRoleID());
-                pstm.setString(4, user.getPassword());
+                pstm.setNString(1, user.getUserID());
+                pstm.setNString(2, user.getFullname());
+                pstm.setNString(3, user.getRoleID());
+                pstm.setNString(4, user.getPassword());
 
                 pstm.setBoolean(5, true);
                 check = pstm.executeUpdate() > 0;
@@ -90,15 +113,15 @@ public class UserDAO {
             if (conn != null) {
                 String sql = "select fullname, roleid from tblUsers where userID = ? and password = ?";
                 pstm = conn.prepareStatement(sql);
-                pstm.setString(1, userID);           
+                pstm.setString(1, userID);
                 pstm.setString(2, password);
-                
+
                 rs = pstm.executeQuery();
                 if (rs.next()) {
                     String name = rs.getString("fullName");
-                  
+
                     String role = rs.getString("roleID");
-                    user = new UserDTO(name,userID,"",
+                    user = new UserDTO(name, userID, "",
                             role);
                 }
             }
@@ -118,4 +141,17 @@ public class UserDAO {
         return user;
 
     }
+    
+    public static void main(String[] args) {
+        try{
+            if(new UserDAO().insert(new UserDTO("Hoàng Chí Trung", "admin4", "1", "AD"))){
+                System.out.println("Insert success");
+            }else{
+                System.out.println("insert Fail");
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
 }

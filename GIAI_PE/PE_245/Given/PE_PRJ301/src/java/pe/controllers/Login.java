@@ -26,7 +26,7 @@ public class Login extends HttpServlet {
     private static final String ERROR = "error.jsp";
     private static final String ADMIN_PAGE = "admin.jsp";
     private static final String USER_PAGE = "ListComestic";
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -37,12 +37,10 @@ public class Login extends HttpServlet {
             UserDAO dao = new UserDAO();
             UserDTO user = dao.checklogin(userID, password);
             HttpSession session = request.getSession();
-            if (user != null) {                
+            if (user != null) {
                 session.setAttribute("LOGIN_USER", user);
                 String roleID = user.getRoleID();
-                if ("AD".equals(roleID)) {
-                    url = ADMIN_PAGE;
-                } else if ("US".equals(roleID)) {
+                if ("AD".equals(roleID) || "US".equals(roleID)) {
                     url = USER_PAGE;
                 } else {
                     session.setAttribute("ERROR_MESSAGE", "Your role is not support!");

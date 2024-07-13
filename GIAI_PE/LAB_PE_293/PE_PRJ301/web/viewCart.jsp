@@ -43,7 +43,7 @@
                     <td><%= b.getDescription()%></td>
                     <td><%= b.getPrice()%>$</td>
                     <td>
-                        <input type="number" min="1" name="quantity" value="<%= b.getQuantity()%>" required=""/>
+                        <input type="number" min="1" name="quantity" value="<%= b.getQuantity()%>" required="" readonly=""/>
                     </td>                    
                     <td><%= b.getPrice() * b.getQuantity()%>$</td>
                     <td>
