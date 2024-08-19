@@ -1,3 +1,5 @@
+<%@page import="dao.ProductDAO"%>
+<%@page import="models.ProductDTO"%>
 <%@page import="utils.DBUtils"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -12,31 +14,28 @@
     <body>
         <h1>Update page</h1>
         <%
-            String id = request.getParameter("productId");
-            Connection conn = DBUtils.getConnection();
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM [tblProducts] WHERE productID = ?");
-            stmt.setString(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
+            ProductDTO id = (ProductDTO) request.getAttribute("product");
+            ProductDTO product = new ProductDAO().load(id.getProductID());
+            if(product != null) {
         %>
         <form action="main" method="POST">
-            <input type="hidden" name="productId" value="<%= id%>">
+            <input type="hidden" name="productId" value="<%= product.getProductID() %>">
 
             <div>
                 <label for="changeDate">Name</label>
-                <input id="changeDate" type="text" name="productName" value="<%= rs.getString("productName")%>" required><br>
+                <input id="changeDate" type="text" name="productName" value="<%= product.getProductName()%>" required><br>
             </div>
             <div >
                 <label for="changeTime" >Description</label>
-                <input  id="changeTime" type="text" name="productDescription" value="<%= rs.getString("description")%>" required><br>
+                <input  id="changeTime" type="text" name="productDescription" value="<%= product.getDescription()%>" required><br>
             </div>
             <div >
                 <label for="changePurpose" >Price</label>
-                <input  id="changePurpose" type="text" name="productPrice" value="<%= rs.getFloat("price")%>" required><br>
+                <input  id="changePurpose" type="text" name="productPrice" value="<%= product.getPrice()%>" required><br>
             </div>
             <div >
                 <label for="changePurpose" >Status</label>
-                <input  id="changePurpose" type="text" name="productStatus" value="<%= rs.getInt("status")%>" required><br>
+                <input  id="changePurpose" type="text" name="productStatus" value="<%= product.getStatus()%>" required><br>
             </div>
 
             <button type="submit" name="action" value="saveChangeUpdateProduct">Save Changes</button>
@@ -44,8 +43,6 @@
         </form>
         <%
             }
-            stmt.close();
-            conn.close();
         %>
     </body>
 </html>

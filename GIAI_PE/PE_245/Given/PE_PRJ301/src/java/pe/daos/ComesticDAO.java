@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import static org.apache.tomcat.jni.SSLConf.check;
 import static org.eclipse.jdt.internal.compiler.parser.Parser.name;
 import pe.dtos.ComesticDTO;
 import pe.utils.DBUtils;

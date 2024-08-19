@@ -27,19 +27,19 @@ public class AddToCartController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
-        
+
         String id = request.getParameter("id");
         String name = "";
         String des = "";
         double price = 0;
         int quantity = 0;
-        
+
         try {
             System.out.println("AddToCart id: " + id);
-            
+
             //lay quantity ve
             quantity = Integer.parseInt(request.getParameter("Quantity"));
-            
+
             //tim trong danh sach bang id
             //de lay nhung gia tri constant (name, des, price)
             for (BookDTO book : new BookDAO().getListBook()) {
@@ -49,14 +49,14 @@ public class AddToCartController extends HttpServlet {
                     price = book.getPrice();
                 }
             }
-            
+
             //track cart by session
             HttpSession session = request.getSession();
             CartDTO cart = (CartDTO) session.getAttribute("CART");
             if (cart == null) {
                 cart = new CartDTO();
             }
-            
+
             if (cart.add(new BookDTO(id, name, price, des, 1))) {
                 session.setAttribute("CART", cart);
                 request.setAttribute("MESSAGE", "You added " + name + ". quantity: " + quantity);

@@ -17,8 +17,8 @@
     <dependencies>
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>sqljdbc4</artifactId>
-            <version>4.0</version>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>9.4.1.jre8</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
@@ -81,13 +81,13 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
+<!--         https://mvnrepository.com/artifact/junit/junit 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>

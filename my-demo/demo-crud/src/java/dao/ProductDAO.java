@@ -101,6 +101,33 @@ public class ProductDAO {
         return rowsAffected;
     }
 
+    public ProductDTO load(String productId) {
+        String query = "SELECT * FROM [tblProducts] WHERE productId = ?";
+        ProductDTO productDTO = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ps = conn.prepareStatement(query);
+                ps.setString(1, productId);
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    productDTO = new ProductDTO(
+                            rs.getString("productID"),
+                            rs.getString("productName"),
+                            rs.getString("description"),
+                            rs.getFloat("price"),
+                            rs.getInt("status")
+                    );
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            closeConnection();
+        }
+        return productDTO;
+    }
+
     public int deleteProduct(String productID)
             throws ClassNotFoundException, SQLException {
         String query = "DELETE FROM [tblProducts] WHERE productID = ?";
@@ -172,7 +199,16 @@ public class ProductDAO {
         //        testAddProduct();
         //        testEditProduct();
         //        testDeleteProduct();
-        testSearch();
+//        testSearch();
+        testLoad();
+    }
+
+    public static void testLoad() {
+        try {
+            System.out.println(new ProductDAO().load("P001"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void testGetAllProducts() {
@@ -209,7 +245,7 @@ public class ProductDAO {
                     "UpdatedProduct1",
                     "UpdatedDescription1",
                     15.0f,
-                    0               
+                    0
             );
             System.out.println("Rows affected by editProduct: " + rowsAffected);
         } catch (Exception e) {
@@ -229,7 +265,7 @@ public class ProductDAO {
         }
     }
 
-    public static void testSearch(){
+    public static void testSearch() {
         try {
             for (ProductDTO item : new ProductDAO().search("n")) {
                 System.out.println("Product: " + item);
@@ -238,6 +274,5 @@ public class ProductDAO {
             System.out.println(e.getMessage());
         }
     }
-        
-}
 
+}

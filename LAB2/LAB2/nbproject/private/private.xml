@@ -17,5 +17,18 @@
             <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/LAB2/LAB2/src/java/controller/AddmoreController.java</file>
             <file>file:/E:/FPT/SU24/PRJ301/PRJ301-Issues/LAB2/LAB2/src/java/models/BookDTO.java</file>
         </group>
+        <group name="PRJ301-Issues"/>
+        <group name="PRJ301-3W">
+            <file>file:/D:/PERSONAL/PRJ301-Issues/LAB2/LAB2/src/java/controller/AddToCartController.java</file>
+            <file>file:/D:/PERSONAL/PRJ301-Issues/LAB2/LAB2/web/welcome.jsp</file>
+            <file>file:/D:/PERSONAL/PRJ301-Issues/LAB2/LAB2/web/view.jsp</file>
+            <file>file:/D:/PERSONAL/PRJ301-Issues/LAB2/LAB2/src/java/controller/MainController.java</file>
+        </group>
+        <group name="ASMPRJ301">
+            <file>file:/D:/PERSONAL/PRJ301-Issues/LAB2/LAB2/src/java/controller/AddToCartController.java</file>
+            <file>file:/D:/PERSONAL/PRJ301-Issues/LAB2/LAB2/web/view.jsp</file>
+            <file>file:/D:/PERSONAL/PRJ301-Issues/LAB2/LAB2/src/java/controller/MainController.java</file>
+            <file>file:/D:/PERSONAL/PRJ301-Issues/LAB2/LAB2/web/welcome.jsp</file>
+        </group>
     </open-files>
 </project-private>

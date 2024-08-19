@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ProductController extends HttpServlet {
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -17,6 +17,7 @@ public class ProductController extends HttpServlet {
         System.out.println("ProductController action: " + action);
         switch (action) {
             case "viewUpdate":
+                request.setAttribute("product", new ProductDAO().load(request.getParameter("productId")));
                 request.getRequestDispatcher("./updateProduct.jsp").forward(request, response);
                 break;
             case "saveChangeUpdateProduct":
@@ -36,49 +37,49 @@ public class ProductController extends HttpServlet {
                 break;
         }
     }
-
+    
     private void create(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("productId");
         String name = request.getParameter("productName");
         String des = request.getParameter("productDescription");
         float price = Float.parseFloat(request.getParameter("productPrice"));
         int status = Integer.parseInt(request.getParameter("productStatus"));
-
+        
         try {
             new ProductDAO().addProduct(id, name, des, price, status);
             response.sendRedirect("./product.jsp");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
+        
     }
-
+    
     private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("productId");
         String name = request.getParameter("productName");
         String des = request.getParameter("productDescription");
         float price = Float.parseFloat(request.getParameter("productPrice"));
         int status = Integer.parseInt(request.getParameter("productStatus"));
-
+        
         try {
             new ProductDAO().editProduct(id, name, des, price, status);
             response.sendRedirect("./product.jsp");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
+        
     }
-
+    
     private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("productId");
-
+        
         try {
             new ProductDAO().deleteProduct(id);
             response.sendRedirect("./product.jsp");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
+        
     }
     
     private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -89,7 +90,7 @@ public class ProductController extends HttpServlet {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
